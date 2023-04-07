@@ -5,26 +5,27 @@ import { ListPlus } from 'phosphor-react'
 import { SignIn } from 'phosphor-react'
 import { Chats } from 'phosphor-react'
 import { Atom } from 'phosphor-react'
+import './Navbar.css'
 
 export const Navbar = () => {
   return (
     <div className='navbar'>
       <div className='links'>
        <Link to="/">Electronic Shop
-       <Atom size={35}/>
+       <Atom size={35} className='logo'/>
        </Link>
         <input type="text" name="search" className="search-bar" placeholder='Search...' />
-       <Link to="/cart">
-        <ShoppingCart size={35} />
+       <Link to="/cart" >
+        <ShoppingCart size={35} className='logo' />
        </Link>
        <Link to="/wishlist">
-        <ListPlus size={35} />
+        <ListPlus size={35} className='logo' />
        </Link>
        <Link to="signup">
-        <SignIn size={35} />
+        <SignIn size={35} className='logo' />
        </Link>
        <Link to="contact">
-        <Chats size={35} />
+        <Chats size={35} className='logo' />
        </Link>
       </div>
     </div>
