@@ -23,7 +23,7 @@ namespace ElectronicShop.Data
                         new Product()
                         {
                             Name = "Test",
-                            Description = "This is the description of the first cinema",
+                            Description = "This is the description of the first Product",
                             Price = 78.6,
                             PictureUrl = "Images",
                             Type = ProductCategory.Laptop,

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2K7HRwsVQrCUQvKkXAfx79XxPHqkR51beRssCCeW4FvwED/1iSNBaWSUVNXZ197kCOMoolNVhKyrYawEGnde4A==",
+  "dgSpecHash": "Tsys6Sz8RU899Av0xBskof/IV25OZLq7RbJK3jiNksB1MOxEg/cmkJ+TH88EN/d0aOctTtblQ0isI/a3HqWZXA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\OnLine\\Desktop\\Electronic Shop\\ElectronicShop\\ElectronicShop\\ElectronicShop.csproj",
+  "projectFilePath": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectronicShop\\ElectronicShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OnLine\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\OnLine\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.16\\microsoft.aspnetcore.cryptography.internal.6.0.16.nupkg.sha512",

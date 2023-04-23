@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\OnLine\\Desktop\\Electronic Shop\\ElectronicShop\\ElectronicShop\\ElectronicShop.csproj": {}
+    "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectronicShop\\ElectronicShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\OnLine\\Desktop\\Electronic Shop\\ElectronicShop\\ElectronicShop\\ElectronicShop.csproj": {
+    "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectronicShop\\ElectronicShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OnLine\\Desktop\\Electronic Shop\\ElectronicShop\\ElectronicShop\\ElectronicShop.csproj",
+        "projectUniqueName": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectronicShop\\ElectronicShop.csproj",
         "projectName": "ElectronicShop",
-        "projectPath": "C:\\Users\\OnLine\\Desktop\\Electronic Shop\\ElectronicShop\\ElectronicShop\\ElectronicShop.csproj",
+        "projectPath": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectronicShop\\ElectronicShop.csproj",
         "packagesPath": "C:\\Users\\OnLine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OnLine\\Desktop\\Electronic Shop\\ElectronicShop\\ElectronicShop\\obj\\",
+        "outputPath": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectronicShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\OnLine\\AppData\\Roaming\\NuGet\\NuGet.Config",

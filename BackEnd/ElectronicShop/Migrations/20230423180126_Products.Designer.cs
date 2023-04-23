@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElectronicShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230417144155_Products")]
+    [Migration("20230423180126_Products")]
     partial class Products
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,8 +43,8 @@ namespace ElectronicShop.Migrations
                     b.Property<string>("PictureUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Price")
-                        .HasColumnType("bigint");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");

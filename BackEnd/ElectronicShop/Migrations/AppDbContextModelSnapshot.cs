@@ -41,8 +41,8 @@ namespace ElectronicShop.Migrations
                     b.Property<string>("PictureUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Price")
-                        .HasColumnType("bigint");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
