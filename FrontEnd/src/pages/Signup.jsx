@@ -1,7 +1,9 @@
 import React from 'react'
-
+import { Footer } from '../components/Footer'
 export const Signup = () => {
   return (
-    <div>Signup</div>
+    <div>
+      <Footer />
+    </div>
   )
 }
