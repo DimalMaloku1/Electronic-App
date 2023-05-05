@@ -9,7 +9,7 @@ import './Navbar.css'
 
 export const Navbar = () => {
   return (
-    <div className='navbar'>
+    <div className='navbari'>
       <div className='links'>
        <Link to="/">Electronic Shop
        <Atom size={35} className='logo'/>
@@ -27,6 +27,7 @@ export const Navbar = () => {
        <Link to="contact">
         <Chats size={35} className='logo' />
        </Link>
+      <Link to='dashboard'>AdminTest</Link>
       </div>
     </div>
   )

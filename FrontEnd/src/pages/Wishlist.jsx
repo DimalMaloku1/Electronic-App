@@ -1,7 +1,9 @@
 import React from 'react'
-
+import { Footer } from '../components/Footer'
 export const Wishlist = () => {
   return (
-    <div>Wishlist</div>
+    <div>
+      <Footer />
+    </div>
   )
 }
