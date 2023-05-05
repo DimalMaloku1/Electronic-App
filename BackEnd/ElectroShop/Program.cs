@@ -1,4 +1,5 @@
 using ElectroShop.Data;
+using ElectroShop.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 //DbContext configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
+//Services Configuration
+builder.Services.AddScoped<IProductsService, ProductService>();
 
 // Add services to the container.
 

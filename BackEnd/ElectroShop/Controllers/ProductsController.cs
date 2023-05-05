@@ -1,4 +1,5 @@
 ﻿using ElectroShop.Data;
+using ElectroShop.Data.Services;
 using ElectroShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,30 +10,46 @@ namespace ElectroShop.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IProductsService _service;
 
-        public ProductsController(AppDbContext context)
+
+        public ProductsController(IProductsService service)
         {
-            _context = context;
+            _service = service;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            return await _context.Products.ToListAsync();
+            var data = await _service.GetAllAsync();
+            return Ok(data);
 
         }
-
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+
+        public async Task<IActionResult> Product(int id)
         {
+            var productDetails = await _service.GetByIdAsync(id);
+            if (productDetails == null) return BadRequest("Empty");
+            return Ok(productDetails);
+        }
 
-            var product = await _context.Products.FindAsync(id);
 
-            if (product == null) return NotFound();
+        [HttpPost]
 
-            return product;
+        public async Task<ActionResult<Product>> Post([Bind("Name,Description,Price,PictureUrl,Type,Brand")] Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
+            await _service.AddAsync(product);
+            return Ok();
         }
     }
-}
+    }
+    
+
+
+
 
