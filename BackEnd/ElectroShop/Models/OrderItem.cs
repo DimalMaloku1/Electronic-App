@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ElectroShop.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eTickets.Models
+namespace ElectroShop.Models
 {
     public class OrderItem
     {
@@ -11,9 +12,9 @@ namespace eTickets.Models
         public int Amount { get; set; }
         public double Price { get; set; }
 
-        public int MovieId { get; set; }
-        [ForeignKey("MovieId")]
-        public Movie Movie { get; set; }
+        public int ProductId { get; set; }
+        [ForeignKey("ProductId")]
+        public Product Product { get; set; }
 
         public int OrderId { get; set; }
         [ForeignKey("OrderId")]
