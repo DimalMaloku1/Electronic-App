@@ -1,4 +1,4 @@
-﻿namespace backend.DTO
+﻿namespace ElectroShop.DTO
 {
     public class RegisterDTO
     {

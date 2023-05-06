@@ -1,15 +1,18 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-public class Category
+namespace ElectroShop.Models
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
+    public class Category
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
 
-    [BsonElement("name")]
-    public string Name { get; set; }
-    /*
-    [BsonElement("products")]
-    public List<Product> Products { get; set; }*/
+        [BsonElement("name")]
+        public string Name { get; set; }
+        /*
+        [BsonElement("products")]
+        public List<Product> Products { get; set; }*/
+    }
 }

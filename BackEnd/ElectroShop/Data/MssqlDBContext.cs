@@ -1,4 +1,5 @@
-﻿using backend.Models;
+﻿using ElectroShop.Data;
+using ElectroShop.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

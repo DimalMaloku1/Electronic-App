@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace backend.Migrations
+namespace ElectroShop.Migrations
 {
     public partial class InitialIdentitySchema : Migration
     {

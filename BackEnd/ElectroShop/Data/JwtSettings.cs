@@ -1,4 +1,4 @@
-﻿namespace backend.Data
+﻿namespace ElectroShop.Data
 {
     public class JwtSettings
     {

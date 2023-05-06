@@ -1,7 +1,8 @@
-﻿using MongoDB.Driver;
-using backend.Data;
+﻿using ElectroShop.Models;
+using MongoDB.Driver;
 
-namespace backend.Data
+
+namespace ElectroShop.Data
 {
     public class MongoDBContext
     {
