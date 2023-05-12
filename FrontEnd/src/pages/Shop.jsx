@@ -2,7 +2,7 @@ import React from 'react'
 import { PRODUCTS } from '../products'
 import {Product} from '../components/Product'
 import '../pages/Shop.css'
-import { Footer } from '../components/Footer'
+import { Footer } from '../components/Footer/Footer'
 
 export const Shop = () => {
   return (

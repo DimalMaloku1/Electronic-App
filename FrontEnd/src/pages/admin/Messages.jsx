@@ -2,7 +2,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import './Dashboard.css';
-import HomeBanner from '../../components/HomeBanner';
+import HomeBanner from '../../components/HomeBanner/HomeBanner';
 
 export function Messages() {
   return (

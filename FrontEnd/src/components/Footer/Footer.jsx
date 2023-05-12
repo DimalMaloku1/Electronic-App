@@ -1,5 +1,5 @@
 import React from 'react'
-import '../components/Footer.css'
+import '../Footer/footer.css'
 import {LinkedinLogo} from 'phosphor-react'
 import {InstagramLogo} from 'phosphor-react'
 import {FacebookLogo} from 'phosphor-react'
