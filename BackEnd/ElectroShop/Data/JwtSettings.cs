@@ -7,5 +7,4 @@
         public string Audience { get; set; }
         public int TokenExpiryMinutes { get; set; }
     }
-
 }

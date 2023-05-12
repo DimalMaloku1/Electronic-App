@@ -1,6 +1,4 @@
 ﻿using ElectroShop.Data;
-using ElectroShop.DTO;
-using ElectroShop.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,12 +15,11 @@ namespace ElectroShop.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-
         private readonly IMongoCollection<Product> _products;
 
         public ProductsController(IMongoClient client)
         {
-            var database = client.GetDatabase("Lab2");
+            var database = client.GetDatabase("Electroshop");
             _products = database.GetCollection<Product>("products");
         }
         [AllowAnonymous]
@@ -121,3 +118,4 @@ namespace ElectroShop.Controllers
         }
     }
 }
+

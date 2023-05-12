@@ -2,8 +2,6 @@
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Serializers;
 
-namespace ElectroShop.Models
-{
     public class Product
     {
         [BsonId]
@@ -24,8 +22,8 @@ namespace ElectroShop.Models
         [BsonSerializer(typeof(Int32Serializer))]
         public int Stock { get; set; }
 
-        [BsonElement("image")]
-        public string Image { get; set; }
+        [BsonElement("imageURL")]
+        public string ImageURL { get; set; }
 
         [BsonElement("isFeatured")]
         [BsonSerializer(typeof(BooleanSerializer))]
@@ -34,5 +32,5 @@ namespace ElectroShop.Models
         [BsonElement("categoryId")]
         [BsonRepresentation(BsonType.ObjectId)]
         public string CategoryId { get; set; }
-    }
+    
 }

@@ -15,10 +15,7 @@ using Swashbuckle.AspNetCore.Filters;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-/*
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
-*/
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -56,16 +53,16 @@ builder.Services.AddSingleton<IMongoClient>(s =>
 builder.Services.AddScoped<IMongoDatabase>(s =>
 {
     var client = s.GetService<IMongoClient>();
-    var databaseName = "Lab2"; // change this to your desired database name
+    var databaseName = "ElectroShop"; // change this to your desired database name
     return client.GetDatabase(databaseName);
 });
 
 // Add MSSQL configuration
-builder.Services.AddDbContext<MssqlDBContext>(options =>
+builder.Services.AddDbContext<MssqlDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<MssqlDBContext>()
+    .AddEntityFrameworkStores<MssqlDbContext>()
     .AddDefaultTokenProviders();
 
 // Set up password requirements
@@ -78,6 +75,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredLength = 8;
 });
 
+
 // Add CORS support
 builder.Services.AddCors(options =>
 {
@@ -88,8 +86,6 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod();
     });
 });
-
-
 
 var app = builder.Build();
 
@@ -102,11 +98,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+
+
 app.UseRouting();
 
 // Use CORS middleware
 app.UseCors("AllowAll");
-
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,6 +1,4 @@
-﻿using ElectroShop.Models;
-using ElectroShop.Data;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
@@ -9,7 +7,6 @@ using MongoDB.Driver;
 namespace ElectroShop.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-
     [Route("api/[controller]")]
     [ApiController]
     public class ContactsController : ControllerBase
@@ -18,7 +15,7 @@ namespace ElectroShop.Controllers
 
         public ContactsController(IMongoClient client)
         {
-            var database = client.GetDatabase("Lab2");
+            var database = client.GetDatabase("Electroshop");
             _contacts = database.GetCollection<Contact>("contacts");
         }
         [AllowAnonymous]

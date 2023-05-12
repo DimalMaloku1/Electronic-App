@@ -5,5 +5,4 @@ namespace ElectroShop.Models
     public class ApplicationUser : IdentityUser
     {
     }
-
 }

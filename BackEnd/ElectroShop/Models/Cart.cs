@@ -1,4 +1,6 @@
-﻿using MongoDB.Bson;
+﻿using System;
+using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Serializers;
 
@@ -38,4 +40,5 @@ namespace ElectroShop.Models
         [BsonRepresentation(BsonType.Decimal128)]
         public double Price { get; set; }
     }
+
 }

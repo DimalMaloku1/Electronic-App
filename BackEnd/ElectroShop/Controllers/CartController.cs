@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace backend.Controllers
+namespace ElectroShop.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
@@ -21,7 +21,7 @@ namespace backend.Controllers
 
         public CartController(IMongoClient client)
         {
-            var database = client.GetDatabase("Lab2");
+            var database = client.GetDatabase("Electroshop");
             _carts = database.GetCollection<Cart>("carts");
         }
 
@@ -53,7 +53,7 @@ namespace backend.Controllers
             }
 
             return Ok(cart.Items);
-            
+
         }
 
         // Add item to cart for authenticated user
@@ -96,7 +96,7 @@ namespace backend.Controllers
                 if (existingItem != null)
                 {
                     existingItem.Quantity += cartItem.Quantity;
-                    
+
                     var total = 0.0;
                     foreach (var item in cart.Items)
                     {
@@ -120,7 +120,7 @@ namespace backend.Controllers
             }
 
             // calculate the total of all items in the cart
-            
+
 
             return Ok("Item added to cart successfully!");
         }
