@@ -11,6 +11,9 @@ import Cart from './modules/Cart';
 import WishList from './modules/WishList/WishList';
 import AboutUs from './modules/AboutUs/AboutUs';
 import Contact from './modules/Contact/Contact';
+import Login from './modules/LoginRegister/Login'
+import Register from './modules/LoginRegister/Register'
+
 function App() {
   return (
     <div>
@@ -24,6 +27,8 @@ function App() {
         <Route path="/wishlist" element={<WishList/>} />
         <Route path="/aboutus" element={<AboutUs/>} />
         <Route path="/contact" element={<Contact/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
       <Footer/>
