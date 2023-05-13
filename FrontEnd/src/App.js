@@ -8,7 +8,9 @@ import Product from './modules/Product';
 import Products from './modules/Products';
 import CategoryProducts from './modules/CategoryProducts';
 import Cart from './modules/Cart';
-
+import WishList from './modules/WishList/WishList';
+import AboutUs from './modules/AboutUs/AboutUs';
+import Contact from './modules/Contact/Contact';
 function App() {
   return (
     <div>
@@ -19,6 +21,9 @@ function App() {
         <Route path="/products" element={<Products/>} />
         <Route path="/categories/:name" element={<CategoryProducts/>} />
         <Route path="cart" element={<Cart/>} />
+        <Route path="/wishlist" element={<WishList/>} />
+        <Route path="/aboutus" element={<AboutUs/>} />
+        <Route path="/contact" element={<Contact/>} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
       <Footer/>
