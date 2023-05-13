@@ -18,10 +18,7 @@ const navigations = [
     name: 'Contact Us',
     path: '/contact'
   },
-  {
-    name: 'WishList',
-    path: '/wishlist'
-  }
+ 
 ]
 
 const Header = () => {
@@ -54,6 +51,9 @@ const Header = () => {
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </Link>
+        <Link to={'/login'} className="inline-flex items-center text-white bg-sky-600	 border-0 py-2 px-4 focus:outline-none hover:bg-teal-300	 rounded text-base mt-4 md:mt-0 ml-10 ">Login
+        </Link>
+       
       </div>
     </header>
   )
