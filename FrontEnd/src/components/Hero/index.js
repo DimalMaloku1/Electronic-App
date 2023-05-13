@@ -1,5 +1,5 @@
 import React from 'react'
-import heroImg from '../../assets/heroImg.jpg'
+import BannerImg from '../../assets/BannerImg.png'
 
 const Hero = () => {
   return (
@@ -16,7 +16,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-          <img className="object-cover object-center rounded" alt="hero" src={heroImg}/>
+          <img className="object-cover object-center rounded" alt="hero" src={BannerImg}/>
         </div>
       </div>
     </section>
