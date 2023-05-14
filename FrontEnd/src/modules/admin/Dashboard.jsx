@@ -5,10 +5,10 @@ import './SidebarData'
 const Dashboard = () => {
   return (
     <div>
-      
-      <h1>Admin dashboard test</h1>
+      <>      
       <Sidebar />
-      
+      <h1>Admin dashboard test</h1>
+      </>      
     </div>
   )
 }
