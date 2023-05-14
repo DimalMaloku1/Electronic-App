@@ -14,6 +14,15 @@ import Contact from './modules/Contact/Contact';
 import Login from './modules/LoginRegister/Login'
 import Register from './modules/LoginRegister/Register'
 
+// Admin Navigation from here
+import Dashboard from './modules/Admin/Dashboard'
+import Adminproducts from './modules/Admin/Adminproducts'
+import Categories from './modules/Admin/Categories'
+import Messages from './modules/Admin/Messages'
+import Orders from './modules/Admin/Orders'
+import Statistics from './modules/Admin/Statistics'
+import Users from './modules/Admin/Users'
+
 function App() {
   return (
     <div>
@@ -29,6 +38,16 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
+
+        
+        <Route path="/admin" element={<Dashboard/>} />
+        <Route path="/adminproducts" element={<Adminproducts/>} />
+        <Route path="/categories" element={<Categories/>} />
+        <Route path="/messages" element={<Messages/>} />
+        <Route path="/orders" element={<Orders/>} />
+        <Route path="/users" element={<Users/>} />
+        <Route path="/statistics" element={<Statistics/>} />
+
         <Route path="*" element={<div>404</div>} />
       </Routes>
       <Footer/>

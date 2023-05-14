@@ -1,15 +1,16 @@
-import React from 'react';
-import './Dashboard.css';
-import Sidebar from './Sidebar';
+import React from 'react'
+import  Sidebar  from './Sidebar'
+import './SidebarData'
 
-
-export const Dashboard = () => {
+const Dashboard = () => {
   return (
-    <div className='container'>
-      <>
-      <Sidebar />
+    <div>
+      
       <h1>Admin dashboard test</h1>
-    </>
+      <Sidebar />
+      
     </div>
   )
 }
+
+export default Dashboard

@@ -18,7 +18,10 @@ const navigations = [
     name: 'Contact Us',
     path: '/contact'
   },
- 
+  {
+    name: 'AdminTesting',
+    path: '/admin'
+  }
 ]
 
 const Header = () => {
