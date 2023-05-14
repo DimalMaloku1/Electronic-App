@@ -41,6 +41,32 @@ const Product = () => {
     }
   }
 
+
+//WISHLIST FUNCTION HERE
+  const handleWishlist = (product, redirect) => {
+    console.log(product)
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const isProductExist = wishlist.find(item => item.id === product.id)
+    if(isProductExist) {
+      const updatedWishlist = wishlist.map(item => {
+        if(item.id === product.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1
+          }
+        }
+        return item
+      })
+      localStorage.setItem('wishlist', JSON.stringify(updatedWishlist))
+    } else {
+      localStorage.setItem('wishlist', JSON.stringify([...wishlist, {...product, quantity: 1}]))
+    }
+    alert('Product added to wishlist')
+    if(redirect) {
+      navigate('/wishlist')
+    }
+  }
+
   if(!Object.keys(product).length > 0) return <div>Loading.....</div>
   
   return (
@@ -89,35 +115,14 @@ const Product = () => {
                 </span>
               </div>
               <p className="leading-relaxed">{product?.description}</p>
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                <div className="flex">
-                  <span className="mr-3">Color</span>
-                  <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button className="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                </div>
-                <div className="flex ml-6 items-center">
-                  <span className="mr-3">Size</span>
-                  <div className="relative">
-                    <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                      <option>SM</option>
-                      <option>M</option>
-                      <option>L</option>
-                      <option>XL</option>
-                    </select>
-                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4" viewBox="0 0 24 24">
-                        <path d="M6 9l6 6 6-6"></path>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
+              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"> 
               </div>
               <div className="flex justify-between items-center">
                 <span className="title-font font-medium text-2xl text-gray-900">${product?.price}</span>
                 <div className=' flex'>
                   <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded mr-2" onClick={() => handleCart(product, true)}>Buy it now</button>
                   <button className="flex ml-auto border border-indigo-500 py-2 px-6 focus:outline-none hover:bg-indigo-600 hover:text-white rounded" onClick={() => handleCart(product)}>Add to cart</button>
+                  <button className="flex ml-auto border border-indigo-500 py-2 px-6 focus:outline-none hover:bg-indigo-600 hover:text-white rounded" onClick={() => handleWishlist(product)}>Add to Wish List</button>
                 </div>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
