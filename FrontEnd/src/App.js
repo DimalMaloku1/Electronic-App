@@ -41,13 +41,12 @@ function App() {
         <Route path="/register" element={<Register/>} />
 
         
-        <Route path="/admin" element={<Dashboard/>} />
+        <Route path="/statistics" element={<Statistics/>} />
         <Route path="/adminproducts" element={<Adminproducts/>} />
         <Route path="/categories" element={<Categories/>} />
         <Route path="/messages" element={<Messages/>} />
         <Route path="/orders" element={<Orders/>} />
         <Route path="/users" element={<Users/>} />
-        <Route path="/statistics" element={<Statistics/>} />
 
         <Route path="*" element={<div>404</div>} />
       </Routes>
