@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A+SBiA285SXwWnfaldFwo/rAcyFurP6ki9c0zK/Y8bPBRdKor3cM7sexDYkglOEReQzI8UVSPOeADW844wr9VA==",
+  "dgSpecHash": "zSgUdin4onYl+UBwo8j7MdaMQ8VX83i7TCFCwLnKIUgN67w/Pb4w97Q52aUG1UzdmtgJopzzaKQiO5D1pFA5Ug==",
   "success": true,
-  "projectFilePath": "C:\\Users\\OnLine\\Desktop\\test\\ssees\\ElectroShop\\ElectroShop\\ElectroShop.csproj",
+  "projectFilePath": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OnLine\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\OnLine\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

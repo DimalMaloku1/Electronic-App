@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace backend.Migrations
+namespace ElectroShop.Migrations
 {
-    [DbContext(typeof(MssqlDBContext))]
+    [DbContext(typeof(MssqlDbContext))]
     [Migration("20230428223427_InitialIdentitySchema")]
     partial class InitialIdentitySchema
     {
