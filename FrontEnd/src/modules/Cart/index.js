@@ -71,10 +71,10 @@ const Cart = () => {
                 <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                   <div className="flex w-2/5">
                     <div className="w-20">
-                      <img className="h-24" src={cart?.image} alt={cart?.title} />
+                      <img className="h-24" src={cart?.imageURL} alt={cart?.name} />
                     </div>
                     <div className="flex flex-col justify-between ml-4 flex-grow">
-                      <span className="font-bold text-sm">{cart?.title}</span>
+                      <span className="font-bold text-sm">{cart?.name}</span>
                       <span className="text-red-500 text-xs capitalize">{cart?.category}</span>
                       <div className="font-semibold hover:text-red-500 text-gray-500 text-xs cursor-pointer" onClick={() => removeProduct(cart?.id)}>Remove</div>
                     </div>

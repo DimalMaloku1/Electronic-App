@@ -6,7 +6,7 @@ const Products = () => {
   const [products, setProducts] = useState([])
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch('https://fakestoreapi.com/products')
+      const response = await fetch('https://localhost:7099/api/Products')
       const data = await response.json()
       console.log(data)
       setProducts(data)
