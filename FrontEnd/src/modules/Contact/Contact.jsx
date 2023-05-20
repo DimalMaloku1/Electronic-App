@@ -28,6 +28,17 @@ const Contact = () => {
           />
         </div>
         <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
+            Phone Number
+          </label>
+          <input
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="number"
+            type="number"
+            placeholder="Enter your number"
+          />
+        </div>
+        <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="message">
             Message
           </label>
