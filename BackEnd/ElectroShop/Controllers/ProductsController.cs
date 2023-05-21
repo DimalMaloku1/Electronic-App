@@ -127,6 +127,15 @@ namespace ElectroShop.Controllers
 
             return Ok(distinctCategories);
         }
+        [AllowAnonymous]
+        [HttpGet("category/{name}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(string name)
+        {
+            var filter = Builders<Product>.Filter.AnyEq(p => p.CategoryName, name);
+            var products = await _products.Find(filter).ToListAsync();
+
+            return Ok(products);
+        }
     } 
 }
 
