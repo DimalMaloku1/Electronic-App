@@ -9,14 +9,14 @@ const ProductCard = ({ products = [] }) => {
           {
             products.map((product) => {
               console.log(product, 'product')
-              const { id, name, price, description, categoryId, imageURL } = product;
+              const { id, name, price, description, categoryName, imageURL } = product;
               return (
                 <Link to={`/products/${id}`} className="lg:w-[23%] md:w-1/2 p-4 w-full mb-4 cursor-pointer rounded-lg shadow ml-4">
                   <a className="block relative h-48 rounded overflow-hidden">
                     <img alt={name} className=" object-contain object-center w-full h-full block" src={imageURL} />
                   </a>
                   <div className="mt-4">
-                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase">{categoryId}</h3>
+                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase">{categoryName}</h3>
                     <h2 className="text-gray-900 title-font text-lg font-medium">{name}</h2>
                     <p className="mt-1 text-md font-semibold">${price}</p>
                   </div>

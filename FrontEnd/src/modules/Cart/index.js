@@ -75,7 +75,7 @@ const Cart = () => {
                     </div>
                     <div className="flex flex-col justify-between ml-4 flex-grow">
                       <span className="font-bold text-sm">{cart?.name}</span>
-                      <span className="text-red-500 text-xs capitalize">{cart?.category}</span>
+                      <span className="text-red-500 text-xs capitalize">{cart?.categoryName}</span>
                       <div className="font-semibold hover:text-red-500 text-gray-500 text-xs cursor-pointer" onClick={() => removeProduct(cart?.id)}>Remove</div>
                     </div>
                   </div>

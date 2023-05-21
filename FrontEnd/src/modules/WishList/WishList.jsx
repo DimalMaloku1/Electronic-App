@@ -46,7 +46,7 @@ const WishList = () => {
                     </div>
                     <div className="flex flex-col justify-between ml-4 flex-grow">
                       <span className="font-bold text-sm">{wishlist?.name}</span>
-                      <span className="text-red-500 text-xs capitalize">{wishlist?.category}</span>
+                      <span className="text-red-500 text-xs capitalize">{wishlist?.categoryName}</span>
                       <div className="font-semibold hover:text-red-500 text-gray-500 text-xs cursor-pointer" onClick={() => removeProduct(wishlist?.id)}>Remove</div>
                     </div>
                   </div>
