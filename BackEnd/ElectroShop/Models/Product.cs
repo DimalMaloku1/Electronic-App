@@ -32,5 +32,8 @@ using MongoDB.Bson.Serialization.Serializers;
         [BsonElement("categoryId")]
         [BsonRepresentation(BsonType.ObjectId)]
         public string CategoryId { get; set; }
+
+        [BsonElement("categoryName")]
+        public string[] CategoryName { get; set; }
     
 }

@@ -22,6 +22,7 @@ namespace ElectroShop.Controllers
             var database = client.GetDatabase("Electroshop");
             _products = database.GetCollection<Product>("products");
         }
+
         [AllowAnonymous]
 
         [HttpGet]
@@ -37,6 +38,7 @@ namespace ElectroShop.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
+
         [AllowAnonymous]
 
         [HttpGet("{id:length(24)}", Name = "GetProduct")]
@@ -116,6 +118,15 @@ namespace ElectroShop.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
-    }
+
+        [AllowAnonymous]
+        [HttpGet("categories")]
+        public async Task<ActionResult<IEnumerable<string>>> GetCategories()
+        {
+            var distinctCategories = await _products.Distinct<string>("categoryName", FilterDefinition<Product>.Empty).ToListAsync();
+
+            return Ok(distinctCategories);
+        }
+    } 
 }
 
