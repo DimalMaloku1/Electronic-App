@@ -13,9 +13,13 @@ const Products = () => {
       const data = await response.json()
       console.log(data)
       setProducts(data)
+      setFilteredProducts(data); // Set filtered products initially to all products
+
     }
     fetchProducts()
   }, [])
+
+
   const handleSearch = (searchTerm) => {
     // Filter products based on the entered search term
     const filtered = products.filter((product) =>
@@ -30,11 +34,17 @@ const Products = () => {
         <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">PRODUCTS</h2>
         <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">ALL PRODUCTS</h1>
         <SearchBar handleSearch={handleSearch} />
-        {/* Render your product list using the 'filteredProducts' state */}
-      {filteredProducts.map((product) => (
-        <div key={product.id}>{product.name}</div>
-      ))}
-      </div>
+        <div className="grid grid-cols-3 gap-4">
+        {/* Render product cards */}
+        {filteredProducts.map((product) => (
+          <div key={product.id} className="bg-white p-4 rounded-md shadow">
+            <h3 className="text-lg font-bold mb-2">{product.name}</h3>
+            <p>{product.description}</p>
+            <p className="mt-2">${product.price}</p>
+          </div>
+        ))}
+     </div>
+     </div>
       {
         products.length > 0 ?
         <ProductCard products={products}/>
