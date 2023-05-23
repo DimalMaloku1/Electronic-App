@@ -24,9 +24,9 @@ const Home = () => {
   }, [])
 
 
-  /*
-  QIKY FUNKSION OST NESE NUK SEARCH NUK DALIN PRODUKTET DMTH OSHT ZBRAZT
-  const handleSearch = (searchTerm) => {
+  
+  //QIKY FUNKSION OST NESE NUK SEARCH NUK DALIN PRODUKTET DMTH OSHT ZBRAZT
+  /*const handleSearch = (searchTerm) => {
     if (searchTerm.trim() === '') {
       setFilteredProducts([]); // Clear the filtered products when the search term is empty
     } else {
@@ -39,13 +39,14 @@ const Home = () => {
   };
   */
  //ME KET FUNKSTION PRODUKTET JAN ATY AMA FILTROHEN SA HER E SHKRUN EMRIN E TYNE
-  const handleSearch = (searchTerm) => {
+    const handleSearch = (searchTerm) => {
     // Filter products based on the entered search term
     const filtered = products.filter((product) =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredProducts(filtered);
   };
+  
   return (
     <>
       <Hero />
