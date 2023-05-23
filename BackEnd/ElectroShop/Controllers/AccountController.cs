@@ -18,12 +18,14 @@ namespace ElectroShop.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _configuration = configuration;
         }
 
@@ -38,11 +40,32 @@ namespace ElectroShop.Controllers
                 return BadRequest(result.Errors);
             }
 
+            var userRoleExists = await _roleManager.RoleExistsAsync("User");
+            if (!userRoleExists)
+            {
+                var userRole = new IdentityRole("User");
+                var userRoleResult = await _roleManager.CreateAsync(userRole);
+                if (!userRoleResult.Succeeded)
+                {
+                    return BadRequest(userRoleResult.Errors);
+                }
+            }
+
+            var adminRoleExists = await _roleManager.RoleExistsAsync("Admin");
+            if (!adminRoleExists)
+            {
+                var adminRole = new IdentityRole("Admin");
+                var adminRoleResult = await _roleManager.CreateAsync(adminRole);
+                if (!adminRoleResult.Succeeded)
+                {
+                    return BadRequest(adminRoleResult.Errors);
+                }
+            }
+
             await _userManager.AddToRoleAsync(user, "User");
 
             return Ok();
         }
-
 
 
         [HttpPost("login")]
@@ -98,8 +121,6 @@ namespace ElectroShop.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-
-
         [Authorize]
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
@@ -113,7 +134,7 @@ namespace ElectroShop.Controllers
             // Return information about the logged out user
             return Ok(new { message = $"User {userEmail} has been logged out." });
         }
-        [Authorize(Roles = "Admin")]
+
         [HttpPost("makeAdmin")]
         public async Task<IActionResult> MakeAdmin(string userId)
         {
@@ -124,14 +145,56 @@ namespace ElectroShop.Controllers
                 return BadRequest("User not found");
             }
 
-            var result = await _userManager.AddToRoleAsync(user, "Admin");
+            var userRoles = await _userManager.GetRolesAsync(user);
 
-            if (!result.Succeeded)
+            // Check if user already has the "Admin" role
+            if (userRoles.Contains("Admin"))
             {
-                return BadRequest(result.Errors);
+                return BadRequest("User is already an admin");
+            }
+
+            // Remove all existing roles
+            var removeResult = await _userManager.RemoveFromRolesAsync(user, userRoles);
+            if (!removeResult.Succeeded)
+            {
+                return BadRequest(removeResult.Errors);
+            }
+
+            // Add the "Admin" role
+            var addResult = await _userManager.AddToRoleAsync(user, "Admin");
+            if (!addResult.Succeeded)
+            {
+                return BadRequest(addResult.Errors);
             }
 
             return Ok();
+        }
+
+
+        [HttpGet("usersWithUserRole")]
+        public IActionResult GetUsersWithUserRole()
+        {
+            var users = _userManager.GetUsersInRoleAsync("User").Result;
+            var userDTOs = users.Select(user => new UserDTO
+            {
+                Id = user.Id,
+                Email = user.Email
+            }).ToList();
+
+            return Ok(users);
+        }
+        [HttpGet("usersWithAdminRole")]
+        public IActionResult GetUsersWithAdminRole()
+        {
+            var usersWithAdminRole = _userManager.GetUsersInRoleAsync("Admin").Result;
+
+            var userDTOs = usersWithAdminRole.Select(user => new UserDTO
+            {
+                Id = user.Id,
+                Email = user.Email
+            }).ToList();
+
+            return Ok(userDTOs);
         }
     }
 }
