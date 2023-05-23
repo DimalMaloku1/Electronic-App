@@ -15,14 +15,13 @@ import Login from './modules/LoginRegister/Login'
 import Register from './modules/LoginRegister/Register'
 
 // Admin Navigation from here
-import Dashboard from './modules/Admin/Dashboard'
-import Adminproducts from './modules/Admin/Adminproducts'
-import Categories from './modules/Admin/Categories'
-import Messages from './modules/Admin/Messages'
-import Orders from './modules/Admin/Orders'
-import Statistics from './modules/Admin/Dashboard'
-import Users from './modules/Admin/Users' 
-
+import Adminproducts from './Admin/Adminproducts'
+import Categories from './Admin/Categories'
+import Dashboard from './Admin/Dashboard'
+import Messages from './Admin/Messages'
+import Orders from './Admin/Orders'
+import Users from './Admin/Users'
+import AdminReference from './Admin/AdminReference'
 
 function App() {
   return (
@@ -41,6 +40,7 @@ function App() {
         <Route path="/register" element={<Register/>} />
 
         
+        <Route path="/adminreference" element={<AdminReference/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/adminproducts" element={<Adminproducts/>} />
         <Route path="/categories" element={<Categories/>} />

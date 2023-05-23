@@ -20,7 +20,7 @@ const navigations = [
   },
   {
     name: 'AdminTesting',
-    path: '/dashboard'
+    path: '/adminreference'
   }
 ]
 
