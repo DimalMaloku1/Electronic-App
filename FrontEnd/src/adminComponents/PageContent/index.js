@@ -1,5 +1,5 @@
-/*
-import AppRoutes from "../AppRoutes";
+
+import AppRoutes from "../AdminRoutes";
 
 function PageContent() {
   return (
@@ -9,4 +9,3 @@ function PageContent() {
   );
 }
 export default PageContent;
-*/

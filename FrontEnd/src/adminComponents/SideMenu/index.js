@@ -1,4 +1,4 @@
-/*
+
 import {
     AppstoreOutlined,
     ShopOutlined,
@@ -36,7 +36,7 @@ import {
             {
               label: "Dashbaord",
               icon: <AppstoreOutlined />,
-              key: "/",
+              key: "/dashboard",
             },
             {
               label: "Admin Products",
@@ -49,8 +49,8 @@ import {
               icon: <ShoppingCartOutlined />,
             },
             {
-              label: "Customers",
-              key: "/customers",
+              label: "Users",
+              key: "/users",
               icon: <UserOutlined />,
             },
           
@@ -75,4 +75,3 @@ import {
     );
   }
   export default SideMenu;
-*/  
