@@ -1,6 +1,6 @@
-/*
+
 import { Badge, Drawer, Image, List, Space, Typography } from "antd";
-import PfpImg from '../../Assets/AdminPfp.png'
+import PfpImg from '../../assets/AdminPfp.png'
 
 function AppHeader() {
   
@@ -16,4 +16,4 @@ function AppHeader() {
   );
 }
 export default AppHeader;
-*/
+
