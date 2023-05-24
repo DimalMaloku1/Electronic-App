@@ -104,7 +104,7 @@ const ProductsCreate = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                            <button className="btn btn-success" type="submit">Save</button>
-                                           <Link to="/productslisting" className="btn btn-danger">Back</Link>
+                                           <Link to="/adminproducts" className="btn btn-danger">Back</Link>
                                         </div>
                                     </div>
 
