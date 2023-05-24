@@ -22,6 +22,9 @@ import Messages from './Admin/Messages'
 import Orders from './Admin/Orders'
 import Users from './Admin/Users'
 import AdminReference from './Admin/AdminReference'
+import ProductsListing from './Admin/ProductsListing';
+import ProductsEdit from './Admin/ProductsEdit';
+import ProductsCreate from './Admin/ProductsCreate';
 
 function App() {
   return (
@@ -48,7 +51,12 @@ function App() {
         <Route path="/orders" element={<Orders/>} />
         <Route path="/users" element={<Users/>} />
 
+        <Route path='/productslisting' element={<ProductsListing />}></Route>
+        <Route path='/products/create' element={<ProductsCreate />}></Route>
+        <Route path='/products/edit/:productsid' element={<ProductsEdit />}></Route>
+
         <Route path="*" element={<div>404</div>} />
+
       </Routes>
       <Footer/>
     </div>
