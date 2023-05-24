@@ -3,7 +3,7 @@ import React from 'react'
 import PageContent from "../adminComponents/PageContent";
 import SideMenu from "../adminComponents/SideMenu";
 import AppHeader from '../adminComponents/AdminHeader';
-
+import StatisticsLayout from '../adminComponents/StatisticsLayout';
 const Dashboard = () => {
   return (
     <div>
@@ -11,6 +11,7 @@ const Dashboard = () => {
       <div className="SideMenuAndPageContent">
         <SideMenu></SideMenu>
         <PageContent></PageContent>
+        <StatisticsLayout />
       </div>
     </div>
   )
