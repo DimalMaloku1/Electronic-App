@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import './Products.css'
 
 const ProductsListing = () => {
     const [productsdata, productsdatachange] = useState(null);
