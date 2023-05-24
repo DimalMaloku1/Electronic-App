@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import './Products.css'
+
 
 const ProductsEdit = () => {
     const { productsid } = useParams();
@@ -122,7 +124,7 @@ const ProductsEdit = () => {
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                        <button className="btn btn-success" type="submit">Save</button>
-                                       <Link to="/productslisting" className="btn btn-danger">Back</Link>
+                                       <Link to="/adminproducts" className="btn btn-danger">Back</Link>
                                     </div>
                                 </div>
 

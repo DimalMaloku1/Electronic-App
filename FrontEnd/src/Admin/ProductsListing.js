@@ -43,10 +43,10 @@ const ProductsListing = () => {
                 </div>
                 <div className="card-body">
                     <div className="divbtn">
-                        <Link to="products/create" className="btn btn-success">Add New (+)</Link>
+                        <Link to="/products/create" className="btn btn-success">Add New (+)</Link>
                     </div>
                     <table className="table table-bordered">
-                        <thead className="bg-dark text-white">
+                        <thead className="bg-dark text-black">
                             <tr>
                                 <td>ID</td>
                                 <td>Name</td>

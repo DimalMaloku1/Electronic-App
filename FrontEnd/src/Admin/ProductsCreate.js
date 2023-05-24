@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import './Products.css'
 
-const ProductCreate = () => {
+const ProductsCreate = () => {
 
     const[id,idchange]=useState("");
     const[name,namechange]=useState("");
@@ -121,4 +122,4 @@ const ProductCreate = () => {
     );
 }
 
-export default ProductCreate;
+export default ProductsCreate;
