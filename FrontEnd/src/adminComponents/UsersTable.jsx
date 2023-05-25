@@ -1,43 +1,45 @@
 import React, { useEffect, useState } from 'react';
 
 const UserTable = () => {
-  const [users, setUsers] = useState([]);
+  const [products, setproducts] = useState([]);
 
   useEffect(() => {
-    fetchUsers();
+    fetchproducts();
   }, []);
 
-  const fetchUsers = async () => {
+  const fetchproducts = async () => {
     try {
-      const response = await fetch('https://api.example.com/users'); // Replace with your API endpoint
+      const response = await fetch('https://fakestoreapi.com/products'); // Replace with your API endpoint
       const data = await response.json();
-      setUsers(data);
+      setproducts(data);
     } catch (error) {
       console.log('Error fetching users:', error);
     }
   };
 
   return (
-    <table className="min-w-full border-collapse">
-      <thead>
-        <tr>
-          <th className="py-2 px-4 border-b">ID</th>
-          <th className="py-2 px-4 border-b">Name</th>
-          <th className="py-2 px-4 border-b">Email</th>
-          <th className="py-2 px-4 border-b">Role</th>
-        </tr>
-      </thead>
-      <tbody>
-        {users.map(user => (
-          <tr key={user.id}>
-            <td className="py-2 px-4 border-b">{user.id}</td>
-            <td className="py-2 px-4 border-b">{user.name}</td>
-            <td className="py-2 px-4 border-b">{user.email}</td>
-            <td className="py-2 px-4 border-b">{user.role}</td>
+    <div className="max-w-1x1 mx-1 p-1">
+      <table className="w-full bg-white">
+        <thead>
+          <tr>
+            <th className="py-2 px-4 border-b">ID</th>
+            <th className="py-2 px-4 border-b">Name</th>
+            <th className="py-2 px-4 border-b">Email</th>
+            <th className="py-2 px-4 border-b">Role</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {products.map(products => (
+            <tr key={products.id}>
+              <td className="py-2 px-4 border-b">{products.id}</td>
+              <td className="py-2 px-4 border-b">{products.title}</td>
+              <td className="py-2 px-4 border-b">{products.price}</td>
+              <td className="py-2 px-4 border-b">{products.category}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
