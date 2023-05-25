@@ -99,8 +99,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
-
 app.UseRouting();
 
 // Use CORS middleware

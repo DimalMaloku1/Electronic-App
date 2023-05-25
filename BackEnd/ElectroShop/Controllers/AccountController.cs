@@ -132,9 +132,11 @@ namespace ElectroShop.Controllers
             await _signInManager.SignOutAsync();
 
             // Return information about the logged out user
-            return Ok(new { message = $"User {userEmail} has been logged out." });
+             return Ok(new { message = $"User {userEmail} has been logged out." });
         }
 
+
+        [Authorize(Roles = "User")]
         [HttpPost("makeAdmin")]
         public async Task<IActionResult> MakeAdmin(string userId)
         {
@@ -171,6 +173,7 @@ namespace ElectroShop.Controllers
         }
 
 
+
         [HttpGet("usersWithUserRole")]
         public IActionResult GetUsersWithUserRole()
         {
@@ -181,7 +184,7 @@ namespace ElectroShop.Controllers
                 Email = user.Email
             }).ToList();
 
-            return Ok(users);
+            return Ok(userDTOs);
         }
         [HttpGet("usersWithAdminRole")]
         public IActionResult GetUsersWithAdminRole()
