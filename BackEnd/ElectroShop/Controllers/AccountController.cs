@@ -137,7 +137,6 @@ namespace ElectroShop.Controllers
         }
 
 
-        [Authorize(Roles = "User")]
         [HttpPost("makeAdmin")]
         public async Task<IActionResult> MakeAdmin(string userId)
         {
@@ -174,28 +173,21 @@ namespace ElectroShop.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
+        public IActionResult GetAllUsersWithRoles()
         {
-            var users = await _userManager.Users.ToListAsync();
+            var users = _userManager.Users.ToList();
 
-            var userDTOs = new List<UserDTO>();
-
-            foreach (var user in users)
+            var userDTOs = users.Select(user => new UserDTO
             {
-                var roles = await _userManager.GetRolesAsync(user);
-
-                var userDTO = new UserDTO
-                {
-                    Id = user.Id,
-                    Email = user.Email,
-                    Roles = roles.ToList()
-                };
-
-                userDTOs.Add(userDTO);
-            }
+                Id = user.Id,
+                Email = user.Email,
+                Role = _userManager.GetRolesAsync(user).Result.FirstOrDefault()
+            }).ToList();
 
             return Ok(userDTOs);
         }
+
+
 
         [HttpGet("usersWithUserRole")]
         public IActionResult GetUsersWithUserRole()
