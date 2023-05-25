@@ -7,6 +7,7 @@ using ElectroShop.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -172,7 +173,29 @@ namespace ElectroShop.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userManager.Users.ToListAsync();
 
+            var userDTOs = new List<UserDTO>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+
+                var userDTO = new UserDTO
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Roles = roles.ToList()
+                };
+
+                userDTOs.Add(userDTO);
+            }
+
+            return Ok(userDTOs);
+        }
 
         [HttpGet("usersWithUserRole")]
         public IActionResult GetUsersWithUserRole()
