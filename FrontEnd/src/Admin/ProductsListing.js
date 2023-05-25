@@ -35,54 +35,49 @@ const ProductsListing = () => {
             console.log(err.message);
         })
     }, [])
-    return (
-        <div className="container">
-            <div className="card">
-                <div className="card-title">
-                    <h2>Products Listing</h2>
-                </div>
-                <div className="card-body">
-                    <div className="divbtn">
-                        <Link to="/products/create" className="btn btn-success">Add New (+)</Link>
-                    </div>
-                    <table className="table table-bordered">
-                        <thead className="bg-dark text-black">
-                            <tr>
-                                <td>ID</td>
-                                <td>Name</td>
-                                <td>Description</td>
-                                <td>Price</td>
-                                <td>Stock</td>
-                                <td>Image</td>
-                                <td>Category</td>
-                            </tr>
-                        </thead>
-                        <tbody>
 
-                            {productsdata &&
-                                productsdata.map(item => (
-                                    <tr key={item.id}>
-                                        <td>{item.id}</td>
-                                        <td>{item.name}</td>
-                                        <td>{item.description}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.stock}</td>
-                                        <td>{item.imageURL}</td>
-                                        <td>{item.categoryName}</td>
-                                        <td><a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a>
-                                            <a onClick={() => { Removefunction(item.id) }} className="btn btn-danger">Remove</a>
+    const buttonStyles = `px-4 py-2 rounded-md text-white bg-emerald-800	`;
+
+    return (
+        <>
+         <button className={buttonStyles} color="blue">
+                        <Link to="/products/create">Add New </Link>
+                    </button>
+        <table className="min-w-full border-collapse">
+      
+      <thead>
+        <tr>
+          <th className="py-2 px-4 border-b w-1/6">ID</th>
+          <th className="py-2 px-4 border-b w-1/6">Name</th>
+          <th className="py-2 px-4 border-b w-1/6">Description</th>
+          <th className="py-2 px-4 border-b w-1/6">Price</th>
+          <th className="py-2 px-4 border-b w-1/6">Stock</th>
+          <th className="py-2 px-4 border-b w-1/6">Image</th>
+          <th className="py-2 px-4 border-b w-1/6">Category</th>
+
+        </tr>
+      </thead>
+      <tbody>
+      {productsdata &&
+                                productsdata.map(products => (
+                                    <tr key={products.id}>
+                                        <td className="w-1/6">{products.id}</td>
+                                        <td className="w-1/6">{products.name}</td>
+                                        <td className="w-1/6">{products.description}</td>
+                                        <td className="w-1/6">{products.price}</td>
+                                        <td className="w-1/6">{products.stock}</td>
+                                        <td className="w-1/6">{products.imageURL}</td>
+                                        <td className="w-1/6">{products.categoryName}</td>
+                                        <td className="w-1/6"><a onClick={() => { LoadEdit(products.id) }} className="btn btn-success">Edit</a>
+                                            <a onClick={() => { Removefunction(products.id) }} className="btn btn-danger">Remove</a>
                                             
                                         </td>
                                     </tr>
                                 ))
                             }
-
-                        </tbody>
-
-                    </table>
-                </div>
-            </div>
-        </div>
+      </tbody>
+    </table>
+    </>
     );
 }
 
