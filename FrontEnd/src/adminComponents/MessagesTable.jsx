@@ -9,7 +9,7 @@ const MessageTable = () => {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('https://api.example.com/messages'); // Replace with your API endpoint
+      const response = await fetch('https://localhost:7099/api/Contacts'); // Replace with your API endpoint
       const data = await response.json();
       setMessages(data);
     } catch (error) {
