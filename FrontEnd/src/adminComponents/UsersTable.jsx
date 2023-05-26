@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
 const UserTable = () => {
-  const [products, setproducts] = useState([]);
+  const [users, setusers] = useState([]);
 
   useEffect(() => {
-    fetchproducts();
+    fetchusers();
   }, []);
 
-  const fetchproducts = async () => {
+  const fetchusers = async () => {
     try {
-      const response = await fetch('https://fakestoreapi.com/products'); // Replace with your API endpoint
+      const response = await fetch('https://localhost:7099/api/Account'); // Replace with your API endpoint
       const data = await response.json();
-      setproducts(data);
+      setusers(data);
     } catch (error) {
       console.log('Error fetching users:', error);
     }
@@ -23,18 +23,16 @@ const UserTable = () => {
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">ID</th>
-            <th className="py-2 px-4 border-b">Name</th>
             <th className="py-2 px-4 border-b">Email</th>
             <th className="py-2 px-4 border-b">Role</th>
           </tr>
         </thead>
         <tbody>
-          {products.map(products => (
-            <tr key={products.id}>
-              <td className="py-2 px-4 border-b">{products.id}</td>
-              <td className="py-2 px-4 border-b">{products.title}</td>
-              <td className="py-2 px-4 border-b">{products.price}</td>
-              <td className="py-2 px-4 border-b">{products.category}</td>
+          {users.map(users => (
+            <tr key={users.id}>
+              <td className="py-2 px-4 border-b">{users.id}</td>
+              <td className="py-2 px-4 border-b">{users.email}</td>
+              <td className="py-2 px-4 border-b">{users.role}</td>
             </tr>
           ))}
         </tbody>
