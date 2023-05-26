@@ -1,49 +1,48 @@
-
-import React, { useState } from 'react';
-import axios from 'axios';
-
+import React, {useState} from "react"
+import Axios from "axios"
 
 //https://localhost:7099/api/Contacts api per me kriju mesazh
 const Contact = () => {
+  const url = "https://localhost:7099/api/Contacts"
+  const [data, setData] = useState({
+      name: "",
+      email: "",
+      phone: "",
+      message: ""
+  })
 
+  function submit(e){
+   e.preventDefault();
+   Axios.post(url,{
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      message: data.message
+   })
+   .then(res=>{
+      console.log(res.data)
+   })
+  }
 
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Perform final validation checks on formData if needed
-
-    // Make an API request to send the message data to the backend
-    axios.post('https://localhost:7099/api/Contacts', formData)
-      .then((response) => {
-        // Handle the response if needed (e.g., display a success message)
-        console.log(response.data);
-      })
-      .catch((error) => {
-        // Handle any errors that occur during the request
-        console.error(error);
-      });
-  };
+  function handle(e){
+   const newdata = {...data}
+   newdata[e.target.id] = e.target.value
+   setData(newdata)
+   console.log(newdata)
+  }
   return (
     <div className="max-w-md mx-auto py-12">
       <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
-      <form  onSubmit={handleSubmit}>
+      <form onSubmit={(e)=> submit(e)}>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="name" >
             Name
           </label>
           <input
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
             type="text"
             placeholder="Enter your name"
-            value={formData.name} onChange={handleInputChange}
+            onChange={(e)=>handle(e)} id="name" value={data.name}
           />
         </div>
         <div className="mb-4">
@@ -52,10 +51,10 @@ const Contact = () => {
           </label>
           <input
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="email"
+           
             type="email"
             placeholder="Enter your email"
-            value={formData.email} onChange={handleInputChange}
+            onChange={(e)=>handle(e)} id="email" value={data.email}
           />
         </div>
         <div className="mb-4">
@@ -64,10 +63,10 @@ const Contact = () => {
           </label>
           <input
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="number"
+            
             type="number"
             placeholder="Enter your number"
-            value={formData.phone} onChange={handleInputChange}
+            onChange={(e)=>handle(e)} id="phone" value={data.phone}
           />
         </div>
         <div className="mb-4">
@@ -76,10 +75,10 @@ const Contact = () => {
           </label>
           <textarea
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="message"
+           
             rows="5"
             placeholder="Enter your message"
-            value={formData.message} onChange={handleInputChange}
+            onChange={(e)=>handle(e)} id="message" value={data.message}
           ></textarea>
         </div>
         <button
