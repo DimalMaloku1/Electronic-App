@@ -36,11 +36,14 @@ const ProductsListing = () => {
         })
     }, [])
 
-    const buttonStyles = `px-4 py-2 rounded-md text-white bg-emerald-800	`;
+    const buttonStylesAdd = `px-4 py-2 rounded-md text-white bg-emerald-800`;
+    const buttonStylesEdit = `px-4 py-2 rounded-md text-white bg-yellow-400	`;
+    const buttonStylesRemove = `px-4 py-2 rounded-md text-white bg-rose-600	`;
+
 
     return (
         <>
-         <button className={buttonStyles} color="blue">
+         <button className={buttonStylesAdd} color="blue">
                         <Link to="/products/create">Add New </Link>
                     </button>
         <table className="min-w-full border-collapse">
@@ -68,8 +71,9 @@ const ProductsListing = () => {
                                         <td className="w-1/6">{products.stock}</td>
                                         <td className="w-1/6">{products.imageURL}</td>
                                         <td className="w-1/6">{products.categoryName}</td>
-                                        <td className="w-1/6"><a onClick={() => { LoadEdit(products.id) }} className="btn btn-success">Edit</a>
-                                            <a onClick={() => { Removefunction(products.id) }} className="btn btn-danger">Remove</a>
+                                        <td className="w-1/6"><button onClick={() => { LoadEdit(products.id) }} className={buttonStylesEdit} color="yellow">Edit</button>
+                                                               <button onClick={() => { Removefunction(products.id) }} className={buttonStylesRemove} color="red">Remove</button>
+                                            
                                             
                                         </td>
                                     </tr>
