@@ -25,14 +25,6 @@ using MongoDB.Bson.Serialization.Serializers;
         [BsonElement("imageURL")]
         public string ImageURL { get; set; }
 
-        [BsonElement("isFeatured")]
-        [BsonSerializer(typeof(BooleanSerializer))]
-        public bool isFeatured { get; set; }
-
-        [BsonElement("categoryId")]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string CategoryId { get; set; }
-
         [BsonElement("categoryName")]
         public string[] CategoryName { get; set; }
     
