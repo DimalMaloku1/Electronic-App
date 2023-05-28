@@ -10,6 +10,7 @@ const ProductsCreate = () => {
     const[price,pricechange]=useState("");
     const[stock,stockchange]=useState("");
     const[imageURL,imageURLchange]=useState("");
+    //const[categoryName,categoryNamechange]=useState("");
     const[validation,valchange]=useState(false);
 
 
