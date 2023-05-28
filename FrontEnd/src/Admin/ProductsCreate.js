@@ -10,7 +10,6 @@ const ProductsCreate = () => {
     const[price,pricechange]=useState("");
     const[stock,stockchange]=useState("");
     const[imageURL,imageURLchange]=useState("");
-    const[categoryName,categoryNamechange]=useState("");
     const[validation,valchange]=useState(false);
 
 
@@ -18,7 +17,7 @@ const ProductsCreate = () => {
 
     const handlesubmit=(e)=>{
       e.preventDefault();
-      const productsdata={name,description,price,stock,imageURL,categoryName};
+      const productsdata={name,description,price,stock,imageURL};
       
 
       fetch("https://localhost:7099/api/Products",{
@@ -27,7 +26,7 @@ const ProductsCreate = () => {
         body:JSON.stringify(productsdata)
       }).then((res)=>{
         alert('Saved successfully.')
-        navigate('/productslisting');
+        navigate('/adminproducts');
       }).catch((err)=>{
         console.log(err.message)
       })
@@ -95,11 +94,7 @@ const ProductsCreate = () => {
                                     </div>
 
                                     <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>Category</label>
-                                            <input required value={categoryName} onMouseDown={e=>valchange(true)} onChange={e=>categoryNamechange(e.target.value)} className="form-control"></input>
-                                        {categoryName.length==0 && validation && <span className="text-danger">Enter the name</span>}
-                                        </div>
+                                       
                                     </div>
                                     <div className="col-lg-12">
                                         <div className="form-group">
