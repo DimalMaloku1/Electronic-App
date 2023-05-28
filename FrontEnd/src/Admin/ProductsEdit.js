@@ -48,7 +48,7 @@ const ProductsEdit = () => {
         body:JSON.stringify(productsdata)
       }).then((res)=>{
         alert('Saved successfully.')
-        navigate('/productslisting');
+        navigate('/adminproducts');
       }).catch((err)=>{
         console.log(err.message)
       })
