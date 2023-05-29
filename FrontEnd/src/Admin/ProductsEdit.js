@@ -2,58 +2,57 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import './Products.css'
 
-
 const ProductsEdit = () => {
     const { productsid } = useParams();
 
-    //const [empdata, empdatachange] = useState({});
-
     useEffect(() => {
-        fetch("https://localhost:7099/api/Products/" + productsid).then((res) => {
-            return res.json();
-        }).then((resp) => {
-            idchange(resp.id);
-            namechange(resp.name);
-            descriptionchange(resp.description);
-            pricechange(resp.price);
-            stockchange(resp.stock);
-            imageURLchange(resp.imageURL);
-            categoryNamechange(resp.categoryName);
-        }).catch((err) => {
-            console.log(err.message);
-        })
+        fetch("https://localhost:7099/api/Products/" + productsid)
+            .then((res) => res.json())
+            .then((resp) => {
+                idchange(resp.id);
+                namechange(resp.name);
+                descriptionchange(resp.description);
+                pricechange(resp.price);
+                stockchange(resp.stock);
+                imageURLchange(resp.imageURL);
+                setCategoryName(resp.categoryName); // Update categoryName state with an array
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
     }, []);
 
-    const[id,idchange]=useState("");
-    const[name,namechange]=useState("");
-    const[description,descriptionchange]=useState("");
-    const[price,pricechange]=useState("");
-    const[stock,stockchange]=useState("");
-    const[imageURL,imageURLchange]=useState("");
-    const[categoryName,categoryNamechange]=useState("");
-    const[validation,valchange]=useState(false);
-
+    const [id, idchange] = useState("");
+    const [name, namechange] = useState("");
+    const [description, descriptionchange] = useState("");
+    const [price, pricechange] = useState("");
+    const [stock, stockchange] = useState("");
+    const [imageURL, imageURLchange] = useState("");
+    const [categoryName, setCategoryName] = useState([]); // Update categoryName state as an array
+    const [validation, valchange] = useState(false);
 
 
     const navigate=useNavigate();
 
-    const handlesubmit=(e)=>{
-      e.preventDefault();
-      const productsdata={id,name,description,price,stock,imageURL,categoryName};
+    const handlesubmit = (e) => {
+        e.preventDefault();
+        const productsdata = { id, name, description, price, stock, imageURL, categoryName };
+
       
 
-      fetch("https://localhost:7099/api/Products/"+productsid,{
-        method:"PUT",
-        headers:{"content-type":"application/json"},
-        body:JSON.stringify(productsdata)
-      }).then((res)=>{
-        alert('Saved successfully.')
-        navigate('/adminproducts');
-      }).catch((err)=>{
-        console.log(err.message)
-      })
-
-    }
+        fetch("https://localhost:7099/api/Products/" + productsid, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(productsdata)
+        })
+            .then((res) => {
+                alert('Saved successfully.')
+                navigate('/adminproducts');
+            })
+            .catch((err) => {
+                console.log(err.message)
+            });
+    };
     return ( 
         <div>
 
@@ -112,14 +111,24 @@ const ProductsEdit = () => {
                                     {imageURL.length==0 && validation && <span className="text-danger">Enter the imageURL</span>}
                                     </div>
                                 </div>
-
                                 <div className="col-lg-12">
-                                    <div className="form-group">
-                                        <label>Category</label>
-                                        <input required value={categoryName} onMouseDown={e=>valchange(true)} onChange={e=>categoryNamechange(e.target.value)} className="form-control"></input>
-                                    {categoryName.length==0 && validation && <span className="text-danger">Enter the category name</span>}
+                                        <div className="form-group">
+                                            <label>Category</label>
+                                            <select
+                                                multiple
+                                                value={categoryName}
+                                                onChange={(e) => setCategoryName(Array.from(e.target.selectedOptions, option => option.value))}
+                                                className="form-control"
+                                            >
+                                                <option value="accessories">accessories</option>
+                                                <option value="gaming">gaming</option>
+                                                <option value="laptop">laptop</option>
+                                                <option value="smartphone">smartphone</option>
+                                                {/* Add more options as needed */}
+                                            </select>
+                                            {categoryName.length === 0 && validation && <span className="text-danger">Enter the category name</span>}
+                                        </div>
                                     </div>
-                                </div>
 
                                 <div className="col-lg-12">
                                     <div className="form-group">
