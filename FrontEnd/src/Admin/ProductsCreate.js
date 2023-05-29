@@ -10,6 +10,7 @@ const ProductsCreate = () => {
     const[price,pricechange]=useState("");
     const[stock,stockchange]=useState("");
     const[imageURL,imageURLchange]=useState("");
+    const [categoryName, setCategoryName] = useState([]);
     //const[categoryName,categoryNamechange]=useState("");
     const[validation,valchange]=useState(false);
 
@@ -18,7 +19,7 @@ const ProductsCreate = () => {
 
     const handlesubmit=(e)=>{
       e.preventDefault();
-      const productsdata={name,description,price,stock,imageURL};
+      const productsdata={name,description,price,stock,imageURL,categoryName};
       
 
       fetch("https://localhost:7099/api/Products",{
@@ -93,6 +94,25 @@ const ProductsCreate = () => {
                                         {imageURL.length==0 && validation && <span className="text-danger">Enter the name</span>}
                                         </div>
                                     </div>
+
+                                    <div className="col-lg-12">
+                                   <div className="form-group">
+                              <label>Category Name</label>
+                                  <select
+                                   multiple
+                                  value={categoryName}
+                                 onChange={(e) => setCategoryName(Array.from(e.target.selectedOptions, option => option.value))}
+                                className="form-control"
+                                                 >
+                             <option value="accessories">accessories</option>
+                             <option value="gaming">gaming</option>
+                             <option value="laptop">laptop</option>
+                             <option value="smartphone">smartphone</option>
+                             
+      {/* Add more options as needed */}
+    </select>
+  </div>
+</div>
 
                                     <div className="col-lg-12">
                                        
