@@ -11,7 +11,6 @@ const ProductsCreate = () => {
     const[stock,stockchange]=useState("");
     const[imageURL,imageURLchange]=useState("");
     const [categoryName, setCategoryName] = useState([]);
-    //const[categoryName,categoryNamechange]=useState("");
     const[validation,valchange]=useState(false);
 
 
