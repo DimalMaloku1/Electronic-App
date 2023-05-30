@@ -56,7 +56,10 @@ const Header = () => {
         </Link>
         <Link to={'/login'} className="inline-flex items-center text-white bg-sky-600	 border-0 py-2 px-4 focus:outline-none hover:bg-teal-300	 rounded text-base mt-4 md:mt-0 ml-10 ">Login
         </Link>
-       
+       <button className='inline-flex items-center text-white bg-red-600	 border-0 py-2 px-4 focus:outline-none hover:bg-red-300	 rounded text-base mt-4 md:mt-0 ml-10'>LogOut</button>
+       <span className="bg-blue-500 text-white px-2 py-1 rounded mr-px-5	">
+      Current User:
+    </span>
       </div>
     </header>
   )
