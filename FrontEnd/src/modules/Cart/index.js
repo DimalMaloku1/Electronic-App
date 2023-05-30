@@ -113,6 +113,16 @@ const Cart = () => {
             <label className="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
             <select className="block p-2 text-gray-600 w-full text-sm">
               <option>Standard shipping - $10.00</option>
+              <option>Fast shipping - $50.00</option>
+            </select>
+          </div>
+          <div>
+            <label className="font-medium inline-block mt-2  text-sm uppercase">Choose The Country</label>
+            <select className="block p-3 text-gray-600 w-full text-sm">
+              <option>Albania</option>
+              <option>Kosovo</option>
+              <option>North Macedonia</option>
+
             </select>
           </div>
           <div className="py-10">
