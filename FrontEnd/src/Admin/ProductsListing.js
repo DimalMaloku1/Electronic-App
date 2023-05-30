@@ -23,9 +23,6 @@ const ProductsListing = () => {
         }
     }
 
-
-
-
     useEffect(() => {
         fetch("https://localhost:7099/api/Products").then((res) => {
             return res.json();
@@ -36,52 +33,73 @@ const ProductsListing = () => {
         })
     }, [])
 
-    const buttonStylesAdd = `px-4 py-2 rounded-md text-white bg-emerald-800`;
-    const buttonStylesEdit = `px-4 py-2 rounded-md text-white bg-yellow-400	`;
-    const buttonStylesRemove = `px-4 py-2 rounded-md text-white bg-rose-600	`;
-
-
     return (
-        <>
-         <button className={buttonStylesAdd} color="blue">
-                        <Link to="/products/create">Add New </Link>
-                    </button>
-        <table className="min-w-full border-collapse">
-      
-      <thead>
-        <tr>
-          <th className="py-2 px-4 border-b w-1/6">ID</th>
-          <th className="py-2 px-4 border-b w-1/6">Name</th>
-          <th className="py-2 px-4 border-b w-1/6">Description</th>
-          <th className="py-2 px-4 border-b w-1/6">Price</th>
-          <th className="py-2 px-4 border-b w-1/6">Stock</th>
-          <th className="py-2 px-4 border-b w-1/6">Image</th>
-          <th className="py-2 px-4 border-b w-1/6">Category</th>
-
-        </tr>
-      </thead>
-      <tbody>
-      {productsdata &&
+        <div className="overflow-x-auto">
+        <div className="mb-4 flex justify-start p-2">
+          <button
+            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
+            <Link to="/products/create">Add New </Link>
+          </button>
+        </div>
+        <table className="min-w-full bg-white border border-gray-300">
+        <thead>
+          <tr>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              ID
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Name
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Description
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Price
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Stock
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Image
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Category
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+        {productsdata &&
                                 productsdata.map(products => (
-                                    <tr key={products.id}>
-                                        <td className="w-1/6">{products.id}</td>
-                                        <td className="w-1/6">{products.name}</td>
-                                        <td className="w-1/6">{products.description}</td>
-                                        <td className="w-1/6">{products.price}</td>
-                                        <td className="w-1/6">{products.stock}</td>
-                                        <td className="w-1/6">{products.imageURL}</td>
-                                        <td className="w-1/6">{products.categoryName}</td>
-                                        <td className="w-1/6"><button onClick={() => { LoadEdit(products.id) }} className={buttonStylesEdit} color="yellow">Edit</button>
-                                                               <button onClick={() => { Removefunction(products.id) }} className={buttonStylesRemove} color="red">Remove</button>
-                                            
-                                            
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-      </tbody>
-    </table>
-    </>
+            <tr key={products.id} className="bg-white">
+              <td className="py-4 px-6 border-b border-gray-300">{products.id}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{products.name}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{products.description}</td>
+              <td className="py-4 px-6 border-b border-gray-300">${products.price}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{products.stock}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{products.imageURL}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{products.categoryName}</td>
+              <td className="py-4 px-6 border-b border-gray-300">
+                <button
+                  className="px-4 py-2 mr-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+                  onClick={() => { LoadEdit(products.id) }}
+                >
+                  Edit
+                </button>
+                <button
+                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                  onClick={() => { Removefunction(products.id) }}
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
     );
 }
 
