@@ -66,10 +66,12 @@ import {
             },
             {
               label: "Log Out",
-              key: "/logout",
+              key: "/",
               icon: <LogoutOutlined />,
             },
+            
           ]}
+          
         ></Menu>
       </div>
     );
