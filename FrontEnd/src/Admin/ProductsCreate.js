@@ -35,105 +35,122 @@ const ProductsCreate = () => {
     }
 
     return (
-        <div>
-
-            <div className="row">
-                <div className="offset-lg-3 col-lg-6">
-                    <form className="container" onSubmit={handlesubmit}>
-
-                        <div className="card" style={{"textAlign":"left"}}>
-                            <div className="card-title">
-                                <h2>Products Create</h2>
-                            </div>
-                            <div className="card-body">
-
-                                <div className="row">
-
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>ID</label>
-                                            <input value={id} disabled="disabled" className="form-control"></input>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>Name</label>
-                                            <input required value={name} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} className="form-control"></input>
-                                        {name.length==0 && validation && <span className="text-danger">Enter the name</span>}
-                                        </div>
-                                    </div>
-
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>Description</label>
-                                            <input required value={description} onMouseDown={e=>valchange(true)} onChange={e=>descriptionchange(e.target.value)} className="form-control"></input>
-                                        {description.length==0 && validation && <span className="text-danger">Enter the name</span>}
-                                        </div>
-                                    </div>
-
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>Price</label>
-                                            <input value={price} onChange={e=>pricechange(e.target.value)} className="form-control"></input>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>Stock</label>
-                                            <input value={stock} onChange={e=>stockchange(e.target.value)} className="form-control"></input>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>Image URL</label>
-                                            <input required value={imageURL} onMouseDown={e=>valchange(true)} onChange={e=>imageURLchange(e.target.value)} className="form-control"></input>
-                                        {imageURL.length==0 && validation && <span className="text-danger">Enter the name</span>}
-                                        </div>
-                                    </div>
-
-                                    <div className="col-lg-12">
-                                   <div className="form-group">
-                              <label>Category Name</label>
-                                  <select
-                                   multiple
-                                  value={categoryName}
-                                 onChange={(e) => setCategoryName(Array.from(e.target.selectedOptions, option => option.value))}
-                                className="form-control"
-                                                 >
-                             <option value="accessories">accessories</option>
-                             <option value="gaming">gaming</option>
-                             <option value="laptop">laptop</option>
-                             <option value="smartphone">smartphone</option>
-                             
-      {/* Add more options as needed */}
-    </select>
-  </div>
-</div>
-
-                                    <div className="col-lg-12">
-                                       
-                                    </div>
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                           <button className="btn btn-success" type="submit">Save</button>
-                                           <Link to="/adminproducts" className="btn btn-danger">Back</Link>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
+        <div className="max-w-lg mx-auto pt-6 pl-1 pr-1">
+             <div className="text-center mb-8">
+        <h2 className="text-2xl font-bold">Add New Product</h2>
+      </div>
+      <form  onSubmit={handlesubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        
+        <div className="mb-4">
+          <label
+            
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ID
+          </label>
+          <input
+            value={id} disabled="disabled"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
         </div>
+
+
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Name
+          </label>
+          <input
+            required value={name} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          {name.length==0 && validation && <span className="text-danger">Enter The Name</span>}
+        </div>
+
+
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Description
+          </label>
+          <input
+            required value={description} onMouseDown={e=>valchange(true)} onChange={e=>descriptionchange(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          {description.length==0 && validation && <span className="text-danger">Enter The Description</span>}
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="price"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Price
+          </label>
+          <input
+            value={price} onChange={e=>pricechange(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+                    {price.length==0 && validation && <span className="text-danger">Enter the Price Number</span>}
+
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Stock
+          </label>
+          <input
+             value={stock} onChange={e=>stockchange(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+                              {price.length==0 && validation && <span className="text-danger">Enter the Stock Number</span>}
+
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Image URL
+          </label>
+          <input
+            required value={imageURL} onMouseDown={e=>valchange(true)} onChange={e=>imageURLchange(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          {imageURL.length==0 && validation && <span className="text-danger">Enter the Image Url</span>}
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Category Name
+          </label>
+          <select
+            multiple
+            value={categoryName}
+           onChange={(e) => setCategoryName(Array.from(e.target.selectedOptions, option => option.value))}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="accessories">Accessories</option>
+                             <option value="gaming">Gaming</option>
+                             <option value="laptop">Laptop</option>
+                             <option value="smartphone">Smartphone</option>
+          </select>
+        </div>
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Submit
+          </button>
+          <Link to="/adminproducts" className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Back</Link>
+
+          
+        </div>
+      </form>
+    </div>
     );
 }
 
