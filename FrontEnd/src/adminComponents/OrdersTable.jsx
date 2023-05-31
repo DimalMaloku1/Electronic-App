@@ -1,40 +1,143 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const OrderTable = () => {
-  const [orders, setorders] = useState([]);
+  const orders = [
+    {
+      email: 'example1@example.com',
+      products: [
+        { name: 'Product 1', price: 10, quantity: 2 },
+        { name: 'Product 2', price: 15, quantity: 1 },
+      ],
+      totalPrice: 35,
+    },
+    {
+      email: 'example2@example.com',
+      products: [
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+        
+      ],
+      totalPrice: 86,
+    },
+    {
+      email: 'example2@example.com',
+      products: [
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+      ],
+      totalPrice: 86,
+    },
+    {
+      email: 'example2@example.com',
+      products: [
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+      ],
+      totalPrice: 86,
+    },
+    {
+      email: 'example2@example.com',
+      products: [
+        { name: 'Product 3', price: 20, quantity: 3 },
+      ],
+      totalPrice: 86,
+    },
+    {
+      email: 'example2@example.com',
+      products: [
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+      ],
+      totalPrice: 86,
+    },
+    {
+      email: 'example2@example.com',
+      products: [
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+      ],
+      totalPrice: 86,
+    },
+    {
+      email: 'example2@example.com',
+      products: [
+        { name: 'Product 3', price: 20, quantity: 3 },
+        { name: 'Product 4', price: 12, quantity: 2 },
+        { name: 'Product 4', price: 12, quantity: 2 },
 
-  useEffect(() => {
-    fetchorders();
-  }, []);
+      ],
+      totalPrice: 86,
+    },
+    // Add more orders as needed
+  ];
 
-  const fetchorders = async () => {
-    try {
-      const response = await fetch('https://fakestoreapi.com/products'); // Replace with your API endpoint
-      const data = await response.json();
-      setorders(data);
-    } catch (error) {
-      console.log('Error fetching users:', error);
-    }
+  const handleConfirm = (email) => {
+    // Handle confirm button click for the given email
+    console.log(`Confirmed order for email: ${email}`);
+  };
+
+  const handleRefuse = (email) => {
+    // Handle refuse button click for the given email
+    console.log(`Refused order for email: ${email}`);
   };
 
   return (
-    <div className="max-w-1x1 mx-1 p-1">
-      <table className="w-full bg-white">
+    <div className="overflow-x-auto">
+      <table className="min-w-full bg-white border border-gray-300">
         <thead>
           <tr>
-            <th className="py-2 px-4 border-b">ID</th>
-            <th className="py-2 px-4 border-b">Name</th>
-            <th className="py-2 px-4 border-b">Email</th>
-            <th className="py-2 px-4 border-b">Role</th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Email
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Products
+            </th>
+           
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Total Price
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Actions
+            </th>
           </tr>
         </thead>
         <tbody>
-          {orders.map(orders => (
-            <tr key={orders.id}>
-              <td className="py-2 px-4 border-b">{orders.id}</td>
-              <td className="py-2 px-4 border-b">{orders.title}</td>
-              <td className="py-2 px-4 border-b">{orders.price}</td>
-              <td className="py-2 px-4 border-b">{orders.category}</td>
+          {orders.map((order, index) => (
+            <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+              <td className="py-4 px-6 border-b border-gray-300">{order.email}</td>
+              <td className="py-4 px-6 border-b border-gray-300">
+                <ol className="list-disc ml-4">
+                  {order.products.map((product, productIndex) => (
+                    <li key={productIndex}>
+                      {product.name} (${product.price}) - Qty: {product.quantity}
+                    </li>
+                  ))}
+                </ol>
+              </td>
+              <td className="py-4 px-6 border-b border-gray-300">${order.totalPrice}</td>
+              
+              <td className="py-4 px-6 border-b border-gray-300">
+                <button
+                  className="px-4 py-2 mr-2 bg-green-500 hover:bg-green-600 text-white rounded"
+                  onClick={() => handleConfirm(order.email)}
+                >
+                  Confirm
+                </button>
+                <button
+                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                  onClick={() => handleRefuse(order.email)}
+                >
+                  Refuse
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
