@@ -22,9 +22,6 @@ const CategoryTable = () => {
         }
     }
 
-
-
-
     useEffect(() => {
         fetch("https://localhost:7099/api/Categories").then((res) => {
             return res.json();
@@ -35,44 +32,51 @@ const CategoryTable = () => {
         })
     }, [])
 
-    const buttonStylesAdd = `px-4 py-2 rounded-md text-white bg-emerald-800`;
-    const buttonStylesEdit = `px-4 py-2 rounded-md text-white bg-yellow-400	`;
-    const buttonStylesRemove = `px-4 py-2 rounded-md text-white bg-rose-600	`;
-
-
+    
     return (
-        <>
-         <button className={buttonStylesAdd} color="blue">
-                        <Link to="/categories/create">Add New </Link>
-                    </button>
-        <table className="min-w-full border-collapse">
-      
-      <thead>
-        <tr>
-          <th className="py-2 px-4 border-b w-1/6">ID</th>
-          <th className="py-2 px-4 border-b w-1/6">Category Name</th>
-          
-
-        </tr>
-      </thead>
-      <tbody>
-      {categoriesdata &&
-                                categoriesdata.map(categories => (
-                                    <tr key={categories.id}>
-                                        <td className="w-1/6">{categories.id}</td>
-                                        <td className="w-1/6">{categories.name}</td>
-                                       
-                                        <td className="w-1/6"><button onClick={() => { LoadEdit(categories.id) }} className={buttonStylesEdit} color="yellow">Edit</button>
-                                                               <button onClick={() => { Removefunction(categories.id) }} className={buttonStylesRemove} color="red">Remove</button>
-                                            
-                                            
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-      </tbody>
-    </table>
-    </>
+        <div className="overflow-x-auto">
+        <div className="mb-4 flex justify-start p-2">
+      </div>
+      <div className="mb-4 flex justify-start">
+        <Link to="/categories/create" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Add New Category
+          </Link>
+      </div>
+      <table className="w-full bg-white border border-gray-300">
+        <thead>
+          <tr>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              ID
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Category Name
+            </th>
+            <th className="py-3 px-6 bg-gray-100"></th>
+          </tr>
+        </thead>
+        <tbody>
+        {categoriesdata &&
+          categoriesdata.map(categories => (
+              <tr key={categories.id} className="bg-white">
+              <td className="py-4 px-6 border-b border-gray-300">{categories.id}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{categories.name}</td>
+              <td className="py-4 px-6 border-b border-gray-300">
+                <button 
+                onClick={() => { LoadEdit(categories.id) }} 
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                  Edit
+                </button>
+                <button 
+                onClick={() => { Removefunction(categories.id) }}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-2">
+                  Remove
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
     );
 }
 
