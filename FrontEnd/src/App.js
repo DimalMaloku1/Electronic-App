@@ -13,6 +13,7 @@ import AboutUs from './modules/AboutUs/AboutUs';
 import Contact from './modules/Contact/Contact';
 import Login from './modules/LoginRegister/Login'
 import Register from './modules/LoginRegister/Register'
+import UserPage from './modules/UserAccount';
 
 // Admin Navigation from here
 import Adminproducts from './Admin/Adminproducts'
@@ -41,6 +42,7 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/userpage" element = {<UserPage/>} />
 
         
         <Route path="/adminreference" element={<AdminReference/>} />
