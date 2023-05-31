@@ -50,10 +50,20 @@ const Cart = () => {
 
   //Checkout fillon prej ktu
   const handleCheckout = () => {
+    //const totalQuantity = carts.reduce((acc, item) => acc + item.quantity, 0);
+
     const checkoutData = {
-      items: carts,
+      products: carts.map((item) => ({
+        //id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+      })),
       totalPrice: total.toFixed(2),
+      //totalQuantity: totalQuantity
+
     };
+    console.log("cart data ", checkoutData)
     // Send the checkout data to the admin page
     fetch('/admin/checkout', {
       method: 'POST',
@@ -77,6 +87,7 @@ const Cart = () => {
         // Handle the error
       });
   };
+  
   if(carts.length === 0) {
     return <div className=' h-[55vh] flex justify-center items-center text-4xl '>Cart is Empty</div>
   }
