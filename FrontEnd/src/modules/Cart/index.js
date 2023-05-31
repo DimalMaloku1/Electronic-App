@@ -5,12 +5,14 @@ const Cart = () => {
   const navigate = useNavigate()
   const [total, setTotal] = useState(0)
   const carts = JSON.parse(localStorage.getItem('cart')) || []
+
   useEffect(() => {
     const total = carts.reduce((acc, item) => {
       return acc + (item.price * item.quantity)
     }, 0)
     setTotal(total)
   }, [carts])
+
   const handleInc = (id) => {
     const updatedCart = carts.map(item => {
       if(item.id === id) {
@@ -24,6 +26,7 @@ const Cart = () => {
     localStorage.setItem('cart', JSON.stringify(updatedCart))
     navigate('/cart')
   }
+
   const handleDec = (id) => {
     const updatedCart = carts.map(item => {
       if(item.id === id) {
@@ -37,11 +40,43 @@ const Cart = () => {
     localStorage.setItem('cart', JSON.stringify(updatedCart))
     navigate('/cart')
   }
+  
   const removeProduct = (id) => {
     const updatedCart = carts.filter(item => item.id !== id)
     localStorage.setItem('cart', JSON.stringify(updatedCart))
     navigate('/cart')
   }
+
+
+  //Checkout fillon prej ktu
+  const handleCheckout = () => {
+    const checkoutData = {
+      items: carts,
+      totalPrice: total.toFixed(2),
+    };
+    // Send the checkout data to the admin page
+    fetch('/admin/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(checkoutData),
+    })
+      .then((response) => {
+        // Handle the response from the admin page
+        if (response.ok) {
+          // Clear the cart
+          localStorage.removeItem('cart');
+          navigate('/checkout-success');
+        } else {
+          throw new Error('Checkout failed');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle the error
+      });
+  };
   if(carts.length === 0) {
     return <div className=' h-[55vh] flex justify-center items-center text-4xl '>Cart is Empty</div>
   }
@@ -123,7 +158,7 @@ const Cart = () => {
               <span>Total cost</span>
               <span>${(total + 10).toFixed(2)}</span>
             </div>
-            <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+            <button onClick={handleCheckout} className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
           </div>
         </div>
       </div>
