@@ -18,26 +18,39 @@ const MessageTable = () => {
   };
 
   return (
-    <table className="min-w-full border-collapse">
-      <thead>
-        <tr>
-          <th className="py-2 px-1 border-b">Name</th>
-          <th className="py-2 px-1 border-b">Email</th>
-          <th className="py-2 px-1 border-b">Phone</th>
-          <th className="py-2 px-1 border-b">Message</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div className="overflow-x-hidden">
+    <div className="w-full overflow-x-hidden">
+      <table className="w-full bg-white border border-gray-300">
+        <thead>
+          <tr>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Name
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Email
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Phone
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Message
+            </th>
+          </tr>
+        </thead>
+        <tbody>
         {messages.map(message => (
-          <tr key={message.id}>
-            <td className="py-2 px-1 border-b">{message.name}</td>
-            <td className="py-2 px-1 border-b">{message.email}</td>
-            <td className="py-2 px-1 border-b">{message.phone}</td>
-            <td className="py-2 px-1 border-b">{message.message}</td>
+          <tr key={message.id} className="bg-white">
+            <td className="py-4 px-6 sm:break-words border-b border-gray-300">{message.name}</td>
+            <td className="py-4 px-6 sm:break-words border-b border-gray-300">{message.email}</td>
+            <td className="py-4 px-6 sm:break-words border-b border-gray-300">{message.phone}</td>
+            <td className="py-4 px-6 sm:break-words border-b border-gray-300">{message.message}</td>
           </tr>
         ))}
       </tbody>
-    </table>
+      </table>
+    </div>
+    </div>
+
   );
 };
 
