@@ -29,8 +29,8 @@ The website's secure payment gateway and efficient shipping methods ensure that 
                 <circle cx="9" cy="7" r="4"></circle>
                 <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
               </svg>
-              <h2 className="title-font font-medium text-3xl text-gray-900">1.3K</h2>
-              <p className="leading-relaxed">Users</p>
+              <h2 className="title-font font-medium text-3xl text-gray-900">24/7</h2>
+              <p className="leading-relaxed">Available</p>
             </div>
           </div>
           <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
@@ -39,7 +39,7 @@ The website's secure payment gateway and efficient shipping methods ensure that 
                 <path d="M3 18v-6a9 9 0 0118 0v6"></path>
                 <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
               </svg>
-              <h2 className="title-font font-medium text-3xl text-gray-900">74</h2>
+              <h2 className="title-font font-medium text-3xl text-gray-900">20+</h2>
               <p className="leading-relaxed">Products</p>
             </div>
           </div>
