@@ -26,6 +26,10 @@ import AdminReference from './Admin/AdminReference'
 import ProductsListing from './Admin/ProductsListing';
 import ProductsEdit from './Admin/ProductsEdit';
 import ProductsCreate from './Admin/ProductsCreate';
+import CategoryTable from './adminComponents/CategoryTable';
+import CategoriesCreate from './Admin/CategoriesCreate'
+import CategoriesEdit from './Admin/CategoriesEdit'
+
 
 function App() {
   return (
@@ -56,6 +60,10 @@ function App() {
         <Route path='/productslisting' element={<ProductsListing />}></Route>
         <Route path='/products/create' element={<ProductsCreate />}></Route>
         <Route path='/products/edit/:productsid' element={<ProductsEdit />}></Route>
+
+        <Route path='/categories' element={<CategoryTable />}></Route>
+        <Route path='/categories/create' element={<CategoriesCreate />}></Route>
+        <Route path='/categories/edit/:categoriesid' element={<CategoriesEdit />}></Route>
 
         <Route path="*" element={<div>404</div>} />
 
