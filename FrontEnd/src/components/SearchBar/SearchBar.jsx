@@ -22,8 +22,7 @@ const SearchBar = ({ handleSearch }) => {
           setSearchTerm('');
           handleSearch('');
         }}
-        className="ml-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-      >
+        className="ml-2 px-4 py-2 bg-blue-100 text-gwhiteray-700 rounded-lg hover:bg-blue-300 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors duration-300"      >
         Clear
       </button>
     </div>
