@@ -1,5 +1,6 @@
 import React from 'react'
 import BannerImg from '../../assets/BannerImg.png'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
@@ -11,8 +12,12 @@ const Hero = () => {
           </h1>
           <p className="mb-8 leading-relaxed">Electronic E-Commerce is an online platform that offers a wide range of electronic products and accessories for customers around the world. This e-commerce website has a user-friendly interface that allows customers to easily navigate and search for their desired products. Customers can shop for laptops, mobile phones, cameras, smartwatches, headphones, and other electronic gadgets from well-known brands. The website offers various payment options and shipping methods to ensure a seamless shopping experience for its customers. Electronic E-Commerce also provides excellent customer service and support, ensuring that all customer inquiries are addressed in a timely and professional manner. Overall, Electronic E-Commerce is a reliable and convenient platform for all electronic enthusiasts looking to purchase their desired products online.</p>
           <div className="flex justify-center">
-            <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Show All Products</button>
-            <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Contact Us</button>
+            <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" >
+              <Link to='/products'>Show All Products</Link>
+              </button>
+            <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+                          <Link to='/contact'>Contact Us</Link>
+            </button>
           </div>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
