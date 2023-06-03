@@ -1,162 +1,54 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const MostSold = () => {
-  // Sample data for the chart
-  const data = {
-    labels: ['January', 'February', 'March', 'April', 'May','June','July','August','September','October','November','December'],
-   
-    datasets: [
-      {
-        label: 'Apple iPhone 14 Pro',
-        backgroundColor: 'rgba(75,192,192,0.2)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderWidth: 1,
-        data: [101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      },
-      {
-        label: 'MacBook Pro 16',
-        backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1,
-        data: [0, 227, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      },
-      // Add more datasets for other products
-      {
-        label: 'Razer DeathAdder V2',
-        backgroundColor: 'rgba(54,162,235,0.2)',
-        borderColor: 'rgba(54,162,235,1)',
-        borderWidth: 1,
-        data: [0, 0, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      },
-      {
-        label: 'Apple iPhone 14 Pro',
-        backgroundColor: 'rgba(255,205,86,0.2)',
-        borderColor: 'rgba(255,205,86,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 155, 0, 0, 0, 0, 0, 0, 0, 0]
-      },
-      // Add more datasets for other products
-      {
-        label: 'Nikon D3500',
-        backgroundColor: 'rgba(153,102,255,0.2)',
-        borderColor: 'rgba(153,102,255,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 0, 250, 0, 0, 0, 0, 0, 0, 0]
-      },
-      {
-        label: 'Apple Watch Series 8',
-        backgroundColor: 'rgba(255,159,64,0.2)',
-        borderColor: 'rgba(255,159,64,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 0, 0, 290, 0, 0, 0, 0, 0, 0]
-      },
-      {
-        label: 'MacBook Pro 16',
-        backgroundColor: 'rgba(255,34,232,0.2)',
-        borderColor: 'rgba(255,159,64,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 0, 0, 0, 210, 0, 0, 0, 0, 0]
-      },
-      {
-        label: 'Alienware 500Hz Gaming Monitor',
-        backgroundColor: 'rgba(150,250,250,0.2)',
-        borderColor: 'rgba(255,159,64,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 0, 0, 0, 0, 160, 0, 0, 0, 0]
-      },
-      {
-        label: 'SteelSeries Arctis 7',
-        backgroundColor: 'rgba(11,299,55,0.2)',
-        borderColor: 'rgba(255,159,64,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 200, 0, 0, 0]
-      },
-      {
-        label: 'Asus Zenbook Pro Duo 14',
-        backgroundColor: 'rgba(105,190,44,0.2)',
-        borderColor: 'rgba(255,159,64,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 0, 0]
-      },
-      {
-        label: 'OnePlus Nord N20 5G',
-        backgroundColor: 'rgba(55,100,264,0.2)',
-        borderColor: 'rgba(255,159,64,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 0]
-      },
-      {
-        label: 'Samsung Galaxy A54 5G',
-        backgroundColor: 'rgba(215,259,64,0.2)',
-        borderColor: 'rgba(255,159,64,1)',
-        borderWidth: 1,
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200]
-      },
-      // Add more datasets for other products
-    ]
-  };
+  // Dummy data for demonstration
+  const techSalesData = [
+    { month: 'January', product: 'Apple iPhone 14 Pro', sales: 200 },
+    { month: 'February', product: 'MacBook Pro 16', sales: 270 },
+    { month: 'March', product: 'Razer DeathAdder V2', sales: 180 },
+    { month: 'April', product: 'Apple iPhone 14 Pro', sales: 120 },
+    { month: 'May', product: 'Nikon D3500', sales: 250 },
+    { month: 'June', product: 'Apple Watch Series 8', sales: 130 },
+    { month: 'July', product: 'MacBook Pro 16', sales: 300 },
+    { month: 'August', product: 'Alienware 500Hz Gaming Monitor', sales: 220 },
+    { month: 'September', product: 'SteelSeries Arctis 7', sales: 300 },
+    { month: 'October', product: 'Asus Zenbook Pro Duo 14', sales: 350 },
+    { month: 'November', product: 'OnePlus Nord N20 5G', sales: 280 },
+    { month: 'December', product: 'Samsung Galaxy A54 5G', sales: 240 },
+  ];
 
-  // Chart options
-  const options = {
-    scales: {
-      x: {
-        stacked: true
-      },
-      y: {
-        stacked: true
-      }
-    },
-    plugins: {
-      legend: {
-        display: false
-      },
-      tooltip: {
-        callbacks: {
-          label: context => {
-            const datasetLabel = data.datasets[context.datasetIndex].label;
-            const value = context.parsed.y;
-            return `${datasetLabel}: ${value}`;
-          }
-        }
-      }
-    },
-    // Custom chart logic
-    animation: {
-      onComplete: context => {
-        const chartInstance = context.chart;
-        const { datasets } = chartInstance.config.data;
+  const uniqueMonths = Array.from(new Set(techSalesData.map(item => item.month)));
 
-        datasets.forEach((dataset, datasetIndex) => {
-          const maxIndex = dataset.data.reduce(
-            (maxIndex, currentValue, currentIndex, array) => {
-              if (currentValue > array[maxIndex]) {
-                return currentIndex;
-              } else {
-                return maxIndex;
-              }
-            },
-            0
-          );
+  const filteredData = uniqueMonths.map(month => {
+    const monthData = techSalesData.find(item => item.month === month);
+    return { month: monthData.month, product: monthData.product, sales: monthData.sales };
+  });
 
-          dataset.data = dataset.data.map((value, index) => {
-            if (index === maxIndex) {
-              return value;
-            } else {
-              return null;
-            }
-          });
-        });
-
-        chartInstance.update();
-      }
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{data.product}</p>
+          <p className="value">Sales: {data.sales}</p>
+        </div>
+      );
     }
+    return null;
   };
 
   return (
-    <div style={{ width: '800px', height: '400px' }}>
-      <h2>Most Sold Product for Each Month</h2>
-      <Bar data={data} options={options} />
+    <div>
+      <h2>Most Sold Product by Month And Its Total Sales</h2>
+      <BarChart width={800} height={400} data={filteredData}>
+        <CartesianGrid strokeDasharray="1 1" />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <Tooltip content={<CustomTooltip />} />
+        <Legend />
+        <Bar dataKey="sales" fill="rgba(197, 211, 75, 0.5)" />
+      </BarChart>
     </div>
   );
 };
