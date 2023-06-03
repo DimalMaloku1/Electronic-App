@@ -1,38 +1,34 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const StackedBarChart = () => {
-  // Sample data for the chart
-  const data = {
-    labels: ['January', 'February', 'March', 'April', 'May','June','July','August','September','October','November','December'],
-    datasets: [
-      {
-        label: 'Sold Products',
-        backgroundColor: 'rgba(75,192,192,0.2)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderWidth: 1,
-        data: [165, 259, 380, 481, 516,680,897,967]
-      },
-      
-    ]
-  };
-
-  // Chart options
-  const options = {
-    scales: {
-      x: {
-        stacked: true
-      },
-      y: {
-        stacked: true
-      }
-    }
-  };
+  // Dummy data for demonstration
+  const salesData = [
+    { month: 'January', sales: 500 },
+    { month: 'February', sales: 750 },
+    { month: 'March', sales: 300 },
+    { month: 'April', sales: 900 },
+    { month: 'May', sales: 600 },
+    { month: 'June', sales: 1200 },
+    { month: 'July', sales: 800 },
+    { month: 'August', sales: 400 },
+    { month: 'September', sales: 1100 },
+    { month: 'October', sales: 950 },
+    { month: 'November', sales: 700 },
+    { month: 'December', sales: 1000 },
+  ];
 
   return (
-    <div style={{ width: '800px', height: '400px' }}>
+    <div>
       <h2>Sales From January To May 2023 Chart</h2>
-      <Bar data={data} options={options} />
+      <BarChart width={800} height={400} data={salesData}>
+        <CartesianGrid strokeDasharray="1 1" />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="sales" fill="rgba(50, 100, 255, 0.5)" />
+      </BarChart>
     </div>
   );
 };
