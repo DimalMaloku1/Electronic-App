@@ -48,7 +48,7 @@ const StatisticsLayout = () => {
     </div>
     <StackedBarChart/>
     <br></br>
-    <MostSold />
+   <MostSold />
     
   </div>
   
