@@ -1,44 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.Serializers;
+using System.Collections.Generic;
 
-namespace ElectroShop.Models
+namespace Electroshop.Models
 {
-    public class Cart
+    public class CheckoutItem
+    {
+        [BsonElement("name")]
+        public string Name { get; set; }
+        [BsonElement("price")]
+        public decimal Price { get; set; }
+        [BsonElement("quantity")]
+        public int Quantity { get; set; }
+    }
+
+    public class CheckoutData
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        [BsonElement("userId")]
-        public string UserId { get; set; }
+        [BsonElement("products")]
+        public List<CheckoutItem> Products { get; set; }
 
-        [BsonElement("items")]
-        public List<CartItem> Items { get; set; }
-
-        [BsonElement("created_at")]
-        public DateTime CreatedAt { get; set; }
-
-        [BsonElement("total")]
-        [BsonRepresentation(BsonType.Decimal128)]
-        public double Total { get; internal set; }
+        [BsonElement("totalPrice")]
+        public decimal TotalPrice { get; set; }
     }
-
-    public class CartItem
-    {
-        [BsonElement("productId")]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string ProductId { get; set; }
-
-        [BsonElement("quantity")]
-        [BsonSerializer(typeof(Int32Serializer))]
-        public int Quantity { get; set; }
-
-        [BsonElement("price")]
-        [BsonRepresentation(BsonType.Decimal128)]
-        public double Price { get; set; }
-    }
-
 }
