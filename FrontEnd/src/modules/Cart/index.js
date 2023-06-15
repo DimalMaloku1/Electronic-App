@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -65,7 +66,7 @@ const Cart = () => {
     };
     console.log("cart data ", checkoutData)
     // Send the checkout data to the admin page
-    fetch('/admin/checkout', {
+    fetch('https://localhost:7099/api/Checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
