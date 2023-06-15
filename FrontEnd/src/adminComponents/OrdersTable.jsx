@@ -1,92 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const OrderTable = () => {
-  const orders = [
-    {
-      email: 'example1@example.com',
-      products: [
-        { name: 'Product 1', price: 10, quantity: 2 },
-        { name: 'Product 2', price: 15, quantity: 1 },
-      ],
-      totalPrice: 35,
-    },
-    {
-      email: 'example2@example.com',
-      products: [
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-        
-      ],
-      totalPrice: 86,
-    },
-    {
-      email: 'example2@example.com',
-      products: [
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-      ],
-      totalPrice: 86,
-    },
-    {
-      email: 'example2@example.com',
-      products: [
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-      ],
-      totalPrice: 86,
-    },
-    {
-      email: 'example2@example.com',
-      products: [
-        { name: 'Product 3', price: 20, quantity: 3 },
-      ],
-      totalPrice: 86,
-    },
-    {
-      email: 'example2@example.com',
-      products: [
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-      ],
-      totalPrice: 86,
-    },
-    {
-      email: 'example2@example.com',
-      products: [
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-      ],
-      totalPrice: 86,
-    },
-    {
-      email: 'example2@example.com',
-      products: [
-        { name: 'Product 3', price: 20, quantity: 3 },
-        { name: 'Product 4', price: 12, quantity: 2 },
-        { name: 'Product 4', price: 12, quantity: 2 },
+  const [orders, setOrders] = useState([]);
 
-      ],
-      totalPrice: 86,
-    },
-    // Add more orders as needed
-  ];
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
+    try {
+      const response = await fetch('https://localhost:7099/api/Checkout'); // Replace with your actual API endpoint
+      const data = await response.json();
+      setOrders(data);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
 
   const handleConfirm = (email) => {
-    // Handle confirm button click for the given email
-    console.log(`Confirmed order for email: ${email}`);
+    // Handle confirmation logic
+    console.log(`Confirmed order for ${email}`);
   };
 
   const handleRefuse = (email) => {
-    // Handle refuse button click for the given email
-    console.log(`Refused order for email: ${email}`);
+    // Handle refusal logic
+    console.log(`Refused order for ${email}`);
   };
 
   return (
@@ -100,7 +38,6 @@ const OrderTable = () => {
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
               Products
             </th>
-           
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
               Total Price
             </th>
@@ -123,7 +60,6 @@ const OrderTable = () => {
                 </ol>
               </td>
               <td className="py-4 px-6 border-b border-gray-300">${order.totalPrice}</td>
-              
               <td className="py-4 px-6 border-b border-gray-300">
                 <button
                   className="px-4 py-2 mr-2 bg-green-500 hover:bg-green-600 text-white rounded"
