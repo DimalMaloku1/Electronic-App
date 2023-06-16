@@ -3,15 +3,15 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import './Products.css'
 
 const CategoriesEdit = () => {
-    const { productsid } = useParams();
+    const { categoriesid } = useParams();
 
     useEffect(() => {
-        fetch("https://localhost:7099/api/Categories/" + id)
+        fetch("https://localhost:7099/api/Categories/" + categoriesid)
             .then((res) => res.json())
             .then((resp) => {
                 idchange(resp.id);
                 namechange(resp.name);
-               
+                
             })
             .catch((err) => {
                 console.log(err.message);
@@ -20,26 +20,24 @@ const CategoriesEdit = () => {
 
     const [id, idchange] = useState("");
     const [name, namechange] = useState("");
-    
     const [validation, valchange] = useState(false);
-
-
+   
     const navigate=useNavigate();
 
     const handlesubmit = (e) => {
         e.preventDefault();
-        const productsdata = { id, name };
+        const categoriesdata = { id, name, };
 
       
 
-        fetch("https://localhost:7099/api/Categories/" + id, {
+        fetch("https://localhost:7099/api/Categories/" + categoriesid, {
             method: "PUT",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify(productsdata)
+            body: JSON.stringify(categoriesdata)
         })
             .then((res) => {
                 alert('Saved successfully.')
-                navigate('/adminproducts');
+                navigate('/categories');
             })
             .catch((err) => {
                 console.log(err.message)
