@@ -53,9 +53,30 @@ const Cart = () => {
   const handleCheckout = () => {
     //const totalQuantity = carts.reduce((acc, item) => acc + item.quantity, 0);
 
+    const address = document.getElementById('address').value;
+    const country = document.getElementById('country').value;
+    const creditcard = document.getElementById('creditcard').value;
+  
+    if (!address.trim()) {
+      alert('Please enter a street address');
+      return;
+    }
+  
+    if (!country.trim()) {
+      alert('Please enter a country');
+      return;
+    }
+    if (!creditcard.trim() || creditcard.trim().length < 10) {
+      alert('Enter a valid credit card number with at least 10 digits');
+      return;
+    }
+
     const checkoutData = {
+      address: address,
+      country: country,
       products: carts.map((item) => ({
         //id: item.id,
+        
         name: item.name,
         price: item.price,
         quantity: item.quantity,
@@ -78,7 +99,7 @@ const Cart = () => {
         if (response.ok) {
           // Clear the cart
           localStorage.removeItem('cart');
-          navigate('/checkout-success');
+          navigate('/');
         } else {
           throw new Error('Checkout failed');
         }
@@ -142,29 +163,23 @@ const Cart = () => {
         <div id="summary" className="w-1/4 px-8 py-10">
           <h1 className="font-semibold text-2xl border-b pb-8">Order Summary</h1>
           <div className="flex justify-between mt-10 mb-5">
-            <span className="font-semibold text-sm uppercase">Items {carts?.length}</span>
-            <span className="font-semibold text-sm">{total?.toFixed(2)}$</span>
+            <span className="font-semibold text-sm uppercase">Items {carts?.length}</span> 
           </div>
-          <div>
-            <label className="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
-            <select className="block p-2 text-gray-600 w-full text-sm">
-              <option>Standard shipping - $10.00</option>
-              <option>Fast shipping - $50.00</option>
-            </select>
-          </div>
-          <div>
-            <label className="font-medium inline-block mt-2  text-sm uppercase">Choose The Country</label>
-            <select className="block p-3 text-gray-600 w-full text-sm">
-              <option>Albania</option>
-              <option>Kosovo</option>
-              <option>North Macedonia</option>
-            </select>
-          </div>
+         
           <div className="py-10">
-            <label for="promo" className="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
-            <input type="text" id="promo" placeholder="Enter your code" className="p-2 text-sm w-full" />
+  <label htmlFor="address" className="font-semibold inline-block mb-3 text-sm uppercase">Street Address</label>
+  <input type="text" id="address" placeholder="Enter your address" className="p-2 text-sm w-full" />
+</div>
+<div className="py-10">
+  <label htmlFor="country" className="font-semibold inline-block mb-3 text-sm uppercase">Country</label>
+  <input type="text" id="country" placeholder="Enter your country" className="p-2 text-sm w-full" />
+</div>
+
+          <div className="py-10">
+            <label for="promo" className="font-semibold inline-block mb-3 text-sm uppercase">Credit Card Number</label>
+            <input type="number" id="creditcard" placeholder="Enter your credit card number" className="p-2 text-sm w-full" />
           </div>
-          <button className="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Apply</button>
+          
           <div className="border-t mt-8">
             <div className="flex font-semibold justify-between py-6 text-sm uppercase">
               <span>Total cost</span>
