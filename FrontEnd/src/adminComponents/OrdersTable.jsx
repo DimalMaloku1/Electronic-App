@@ -36,6 +36,12 @@ const OrderTable = () => {
               Email
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Address
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+              Country
+            </th>
+            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
               Products
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
@@ -50,6 +56,8 @@ const OrderTable = () => {
           {orders.map((order, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
               <td className="py-4 px-6 border-b border-gray-300">{order.email}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{order.address}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{order.country}</td>
               <td className="py-4 px-6 border-b border-gray-300">
                 <ol className="list-disc ml-4">
                   {order.products.map((product, productIndex) => (
