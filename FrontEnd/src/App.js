@@ -14,6 +14,7 @@ import Contact from './modules/Contact/Contact';
 import Login from './modules/LoginRegister/Login'
 import Register from './modules/LoginRegister/Register'
 import UserPage from './modules/UserAccount';
+import Checkoutsuccess from './components/Checkoutsuccess';
 
 // Admin Navigation from here
 import Adminproducts from './Admin/Adminproducts'
@@ -56,6 +57,7 @@ function App() {
         <Route path="/messages" element={<Messages/>} />
         <Route path="/orders" element={<Orders/>} />
         <Route path="/users" element={<Users/>} />
+        <Route path='/checkoutsuccess' element={<Checkoutsuccess />}/>
 
         <Route path='/productslisting' element={<ProductsListing />}></Route>
         <Route path='/products/create' element={<ProductsCreate />}></Route>
