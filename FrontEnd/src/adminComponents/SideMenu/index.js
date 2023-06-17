@@ -64,11 +64,7 @@ import {
               key: "/categories",
               icon:<DropboxOutlined />,
             },
-            {
-              label: "Log Out",
-              key: "/",
-              icon: <LogoutOutlined />,
-            },
+           
             
           ]}
           
