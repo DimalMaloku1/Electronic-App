@@ -39,6 +39,7 @@ namespace Electroshop.Controllers
         {
             try
             {
+
                 checkoutData.Id = ObjectId.GenerateNewId().ToString(); // Generate default ObjectId
 
                 decimal totalPrice = 0;

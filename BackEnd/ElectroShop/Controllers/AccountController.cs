@@ -68,7 +68,7 @@ namespace ElectroShop.Controllers
             return Ok();
         }
 
-
+        
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO model)
         {

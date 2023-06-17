@@ -12,6 +12,7 @@ namespace ElectroShop.Controllers
     public class ProductStatsController : ControllerBase
     {
         private readonly IMongoCollection<Product> _products;
+        
 
         public ProductStatsController(IMongoClient client)
         {

@@ -51,7 +51,7 @@ namespace ElectroShop.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Category>> Post([FromBody] Category category)
         {
