@@ -1,65 +1,74 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './Products.css'
+import "./Products.css";
 
 const CategoriesCreate = () => {
+  const [id, idchange] = useState("");
+  const [name, namechange] = useState("");
+  const [validation, valchange] = useState(false);
+  const navigate = useNavigate();
 
-    const[id,idchange]=useState("");
-    const[name,namechange]=useState("");
-    const[validation,valchange]=useState(false);
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    const categoriesdata = { id, name };
 
-    const navigate=useNavigate();
-
-    const handlesubmit=(e)=>{
-      e.preventDefault();
-      const categoriesdata={id,name};
-      
-
-      fetch("https://localhost:7099/api/Categories",{
-        method:"POST",
-        headers:{"content-type":"application/json"},
-        body:JSON.stringify(categoriesdata)
-      }).then((res)=>{
-        alert('Saved successfully.')
-        navigate('/categories');
-      }).catch((err)=>{
-        console.log(err.message)
+    fetch("https://localhost:7099/api/Categories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwttoken")}`,
+      },
+      body: JSON.stringify(categoriesdata),
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert("Saved successfully.");
+          navigate("/categories");
+        } else if (res.status === 401) {
+          // Unauthorized, handle accordingly
+        } else {
+          // Handle other error statuses
+        }
       })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
-    }
-
-    return (
-        <div className="max-w-lg mx-auto pt-6 pl-1 pr-1">
-             <div className="text-center mb-8">
+  return (
+    <div className="max-w-lg mx-auto pt-6 pl-1 pr-1">
+      <div className="text-center mb-8">
         <h2 className="text-2xl font-bold">Add New Category</h2>
       </div>
-      <form  onSubmit={handlesubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        
+      <form
+        onSubmit={handlesubmit}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
         <div className="mb-4">
-          <label
-            
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             ID
           </label>
           <input
-            value={id} disabled="disabled"
+            value={id}
+            disabled="disabled"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
-
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Name
           </label>
           <input
-            required value={name} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)}
+            required
+            value={name}
+            onMouseDown={(e) => valchange(true)}
+            onChange={(e) => namechange(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-          {name.length==0 && validation && <span className="text-danger">Enter The Category Name</span>}
+          {name.length === 0 && validation && (
+            <span className="text-danger">Enter The Category Name</span>
+          )}
         </div>
         <div className="flex items-center justify-between">
           <button
@@ -68,11 +77,16 @@ const CategoriesCreate = () => {
           >
             Submit
           </button>
-          <Link to="/categories" className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Back</Link>
+          <Link
+            to="/categories"
+            className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Back
+          </Link>
         </div>
       </form>
     </div>
-    );
-}
+  );
+};
 
 export default CategoriesCreate;
