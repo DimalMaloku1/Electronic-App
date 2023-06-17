@@ -10,18 +10,30 @@ const CategoryTable = () => {
         navigate("/categories/edit/" + id);
     }
     const Removefunction = (id) => {
-        if (window.confirm('Do you want to remove?')) {
-            fetch("https://localhost:7099/api/Categories/" + id, {
-                method: "DELETE"
-            }).then((res) => {
-                alert('Removed successfully.')
-                window.location.reload();
-            }).catch((err) => {
-                console.log(err.message)
-            })
-        }
-    }
-
+      if (window.confirm("Do you want to remove?")) {
+        fetch("https://localhost:7099/api/Categories/" + id, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("jwttoken")}`,
+          },
+        })
+          .then((res) => {
+            if (res.ok) {
+              alert("Removed successfully.");
+              window.location.reload();
+            } else if (res.status === 401) {
+              // Unauthorized, handle accordingly
+            } else {
+              // Handle other error statuses
+            }
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      }
+    };
+    
     useEffect(() => {
         fetch("https://localhost:7099/api/Categories").then((res) => {
             return res.json();
