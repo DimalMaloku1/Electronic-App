@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Electroshop.Models;
 
@@ -39,7 +40,6 @@ namespace Electroshop.Controllers
         {
             try
             {
-
                 checkoutData.Id = ObjectId.GenerateNewId().ToString(); // Generate default ObjectId
 
                 decimal totalPrice = 0;
@@ -52,6 +52,23 @@ namespace Electroshop.Controllers
                 await _checkoutDataCollection.InsertOneAsync(checkoutData);
 
                 return Ok(checkoutData);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
+        [HttpGet("totalOrders")]
+        public async Task<IActionResult> TotalOrders()
+        {
+            try
+            {
+                var checkouts = await _checkoutDataCollection.Find(_ => true).ToListAsync();
+
+                var totalOrders = checkouts.Count;
+
+                return Ok(totalOrders);
             }
             catch (Exception ex)
             {
