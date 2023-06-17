@@ -11,17 +11,36 @@ const ProductsListing = () => {
         navigate("/products/edit/" + id);
     }
     const Removefunction = (id) => {
-        if (window.confirm('Do you want to remove?')) {
-            fetch("https://localhost:7099/api/Products/" + id, {
-                method: "DELETE"
-            }).then((res) => {
-                alert('Removed successfully.')
-                window.location.reload();
-            }).catch((err) => {
-                console.log(err.message)
-            })
+      if (window.confirm('Do you want to remove?')) {
+        const token = localStorage.getItem("jwttoken");
+    
+        if (!token) {
+          // Handle case where JWT token is missing
+          return;
         }
-    }
+    
+        fetch(`https://localhost:7099/api/Products/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+          .then((res) => {
+            if (res.ok) {
+              alert('Removed successfully.');
+              window.location.reload();
+            } else if (res.status === 401) {
+              // Handle case where JWT token is invalid or expired
+            } else {
+              // Handle other error statuses
+            }
+          })
+          .catch((err) => {
+            console.log(err.message)
+          });
+      }
+    };
+    
 
     useEffect(() => {
         fetch("https://localhost:7099/api/Products").then((res) => {
