@@ -27,8 +27,18 @@ const navigations = [
     path: '/dashboard'
   }
 ]
+const handleLogout = () => {
+  // Remove the JWT token from local storage
+  localStorage.removeItem('jwttoken');
 
+  // Remove the username from local storage
+  localStorage.removeItem('username');
+
+  // Redirect to the home page
+  window.location.href = '/';
+}
 const Header = () => {
+  
   return (
     <header className="text-gray-600 body-font shadow-lg">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -89,7 +99,7 @@ const Header = () => {
         >
           Login
         </Link>
-        <button className='inline-flex items-center text-white bg-red-600 border-0 py-2 px-4 focus:outline-none hover:bg-red-300 rounded text-base mt-4 md:mt-0 ml-10'>
+        <button className='inline-flex items-center text-white bg-red-600 border-0 py-2 px-4 focus:outline-none hover:bg-red-300 rounded text-base mt-4 md:mt-0 ml-10' onClick={handleLogout}>
           Logout
         </button>
       </div>
