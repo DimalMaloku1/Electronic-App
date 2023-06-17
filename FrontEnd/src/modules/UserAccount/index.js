@@ -1,12 +1,39 @@
-import React from 'react';
-import userpfp from '../../assets/userpfp.png'
+import React, { useEffect, useState } from 'react';
+import userpfp from '../../assets/userpfp.png';
+import { Link, useNavigate } from "react-router-dom";
+
 
 const UserPage = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Retrieve user data from local storage
+    const storedUser = localStorage.getItem('username');
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
+  if (!user) {
+    // Render loading or redirect if user is not logged in
+    return    <div className="flex items-center justify-center h-screen">
+    <div className="bg-white p-8 rounded-lg shadow-md text-center">
+      <p className="text-3xl mb-4">Sign In To See Your Account Data...</p>
+      <Link
+        to="/login"
+        className="inline-block bg-blue-200 hover:bg-blue-300 text-blue-800 font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+      >
+        Sign In
+      </Link>
+    </div>
+  </div>
+  
+  }
+
   // User data
-  const user = {
+  const userData = {
     image: 'path/to/user/image.jpg',
-    name: 'John Doe',
-    email: 'john.doe@example.com',
+
     purchaseHistory: [
       { id: 1, item: 'Product A', date: '2022-01-01', amount: 10, price: 5 },
       { id: 2, item: 'Product B', date: '2022-02-05', amount: 20, price: 8 },
@@ -15,7 +42,7 @@ const UserPage = () => {
   };
 
   // Calculate total amount spent
-  const totalAmountSpent = user.purchaseHistory.reduce(
+  const totalAmountSpent = userData.purchaseHistory.reduce(
     (total, purchase) => total + purchase.amount,
     0
   );
@@ -29,14 +56,14 @@ const UserPage = () => {
           className="w-32 h-32 rounded-full mb-4 md:mr-8"
         />
         <div className="text-center md:text-left">
-          <h2 className="text-2xl font-bold">{user.name}</h2>
-          <p className="text-gray-500">{user.email}</p>
+          <h2 className="text-2xl font-bold">{user}</h2>
+          <p className="text-gray-500">{user}</p>
         </div>
       </div>
 
       <h3 className="text-xl font-semibold mt-8">Purchase History</h3>
       <ul className="mt-4">
-        {user.purchaseHistory.map((purchase) => (
+        {userData.purchaseHistory.map((purchase) => (
           <li
             key={purchase.id}
             className="flex flex-col md:flex-row items-center justify-between py-2 border-b border-gray-300"
