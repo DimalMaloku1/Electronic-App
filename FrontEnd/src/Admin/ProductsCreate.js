@@ -16,24 +16,40 @@ const ProductsCreate = () => {
 
     const navigate=useNavigate();
 
-    const handlesubmit=(e)=>{
+    const handlesubmit = (e) => {
       e.preventDefault();
-      const productsdata={name,description,price,stock,imageURL,categoryName};
-      
-
-      fetch("https://localhost:7099/api/Products",{
-        method:"POST",
-        headers:{"content-type":"application/json"},
-        body:JSON.stringify(productsdata)
-      }).then((res)=>{
-        alert('Saved successfully.')
-        navigate('/adminproducts');
-      }).catch((err)=>{
-        console.log(err.message)
+      const productsdata = { name, description, price, stock, imageURL, categoryName };
+    
+      const token = localStorage.getItem("jwttoken");
+    
+      if (!token) {
+        // Handle case where JWT token is missing
+        return;
+      }
+    
+      fetch("https://localhost:7099/api/Products", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(productsdata)
       })
-
-    }
-
+        .then((res) => {
+          if (res.ok) {
+            alert('Saved successfully.');
+            navigate('/adminproducts');
+          } else if (res.status === 401) {
+            // Handle case where JWT token is invalid or expired
+          } else {
+            // Handle other error statuses
+          }
+        })
+        .catch((err) => {
+          console.log(err.message)
+        });
+    };
+    
     return (
         <div className="max-w-lg mx-auto pt-6 pl-1 pr-1">
              <div className="text-center mb-8">
