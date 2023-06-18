@@ -52,32 +52,38 @@ namespace Electroshop.Controllers
                 checkoutData.TotalPrice = totalPrice;
 
                 // Check if the user is authenticated
-                if (User.Identity.IsAuthenticated)
+                if (!User.Identity.IsAuthenticated)
                 {
-                    string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-                    string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-                    string userRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
-
-                    // Set the user's information in the checkout data
-                    checkoutData.User = new UserDTO
-                    {
-                        Id = userId,
-                        Email = userEmail,
-                        Role = userRole
-                    };
+                    return BadRequest("User is not authenticated. Unable to process the checkout.");
                 }
+
+                string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+                // Set the user's email in the checkout data
+                checkoutData.Email = userEmail;
+
+               
 
                 await _checkoutDataCollection.InsertOneAsync(checkoutData);
 
-                return Ok(checkoutData);
+                // Create an anonymous object for the response
+                var response = new
+                {
+                    email = checkoutData.Email,
+                    id = checkoutData.Id,
+                    totalPrice = checkoutData.TotalPrice,
+                    products = checkoutData.Products,
+                    address = checkoutData.Address,
+                    country = checkoutData.Country
+                };
+
+                return Ok(response);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
-
-
 
 
 
@@ -97,6 +103,7 @@ namespace Electroshop.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
+
 
     }
 }
