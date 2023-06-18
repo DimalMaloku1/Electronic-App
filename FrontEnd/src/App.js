@@ -35,7 +35,7 @@ import CategoriesEdit from './Admin/CategoriesEdit'
 function App() {
   return (
     <div>
-      <Header/>
+     
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/products/:id" element={<Product/>} />

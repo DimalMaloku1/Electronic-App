@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+import Header from '../../components/Header'
 const WishList = () => {
   const navigate = useNavigate()
   const [total, setTotal] = useState(0)
@@ -20,10 +20,13 @@ const WishList = () => {
   }
 
   if(wishlists.length === 0) {
-    return <div className=' h-[55vh] flex justify-center items-center text-4xl '>Wishlist is Empty</div>
+    return <><Header/><div className=' h-[55vh] flex justify-center items-center text-4xl '>Wishlist is Empty</div>
+    </>
   }
 
   return (
+    <>
+    <Header/>
     <div className="container mx-auto mt-10">
       <div className="flex shadow-md my-10">
         <div className="w-3/4 bg-white px-10 py-10">
@@ -67,6 +70,7 @@ const WishList = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

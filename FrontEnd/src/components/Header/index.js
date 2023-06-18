@@ -21,11 +21,8 @@ const navigations = [
   {
     name: 'My Account',
     path: '/userpage'
-  },
-  {
-    name: 'AdminTesting',
-    path: '/dashboard'
   }
+  
 ]
 const handleLogout = () => {
   // Remove the JWT token from local storage

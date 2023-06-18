@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import userpfp from '../../assets/userpfp.png';
 import { Link, useNavigate } from "react-router-dom";
-
+import Header from '../../components/Header';
 
 const UserPage = () => {
   const [user, setUser] = useState(null);
@@ -16,7 +16,8 @@ const UserPage = () => {
 
   if (!user) {
     // Render loading or redirect if user is not logged in
-    return    <div className="flex items-center justify-center h-screen">
+    return    <><Header/>
+    <div className="flex items-center justify-center h-screen">
     <div className="bg-white p-8 rounded-lg shadow-md text-center">
       <p className="text-3xl mb-4">Sign In To See Your Account Data...</p>
       <Link
@@ -27,7 +28,7 @@ const UserPage = () => {
       </Link>
     </div>
   </div>
-  
+  </>
   }
 
   // User data
@@ -48,6 +49,8 @@ const UserPage = () => {
   );
 
   return (
+    <>
+    <Header/>
     <div className="container mx-auto p-4">
       <div className="flex flex-col md:flex-row items-center">
         <img
@@ -85,6 +88,7 @@ const UserPage = () => {
         <p className="text-gray-500">Total amount spent: ${totalAmountSpent}</p>
       </div>
     </div>
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import Products from '../../components/ProductCard'
 import Stats from '../../components/StatCard'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import Slider from '../../components/Slider'
-
+import Header from '../../components/Header'
 const Home = () => {
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -50,6 +50,7 @@ const Home = () => {
   
   return (
     <>
+    <Header/>
       <Hero />
       <Slider/>
       <Categories/>

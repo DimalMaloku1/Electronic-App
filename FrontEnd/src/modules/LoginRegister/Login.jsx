@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import Header from "../../components/Header";
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -20,28 +20,33 @@ const Login = () => {
       };
 
       fetch("https://localhost:7099/api/Account/login", {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(credentials)
-})
-.then((res) => {
-    if (!res.ok) {
-        throw new Error('Login failed');
-    }
-    return res.json();
-})
-.then((data) => {
-    const { token, role } = data;
-    toast.success('Success');
-    localStorage.setItem('jwttoken', token); // Store token in local storage
-    localStorage.setItem('username', username); // Store username in local storage
-    localStorage.setItem('role', role); // Store role in local storage
-    navigate('/');
-})
-.catch((err) => {
-    toast.error('Login Failed due to: ' + err.message);
-});
-
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials)
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error('Login failed');
+          }
+          return res.json();
+        })
+        .then((data) => {
+          const { token, role } = data;
+          toast.success('Success');
+          localStorage.setItem('jwttoken', token);
+          localStorage.setItem('username', username);
+          localStorage.setItem('role', role);
+          if (role === 'User') {
+            navigate('/');
+          } else if (role === 'Admin') {
+            navigate('/dashboard');
+          } else {
+            // Handle other roles or scenarios
+          }
+        })
+        .catch((err) => {
+          toast.error('Login Failed due to: ' + err.message);
+        });
     }
   };
 
@@ -57,24 +62,26 @@ const Login = () => {
     }
     return result;
   };
- 
-  const token = localStorage.getItem('jwttoken'); // Retrieve the token from storage
 
-fetch('https://localhost:7099/api/Account', {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}` // Set the Authorization header with the token
-  }
-})
-  .then(response => {
-    // Handle the response
+  const token = localStorage.getItem('jwttoken');
+
+  fetch('https://localhost:7099/api/Account', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
   })
-  .catch(error => {
-    // Handle errors
-  });
+    .then(response => {
+      // Handle the response
+    })
+    .catch(error => {
+      // Handle errors
+    });
 
   return (
+    <>
+    <Header/>
     <div className="flex justify-center items-center h-screen">
       <form onSubmit={handleLogin} className="bg-white p-10 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-5">Login</h2>
@@ -112,6 +119,7 @@ fetch('https://localhost:7099/api/Account', {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

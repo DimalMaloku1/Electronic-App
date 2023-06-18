@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import Header from "../../components/Header";
 const Register = () => {
   const [password, passwordchange] = useState("");
   const [email, emailchange] = useState("");
@@ -54,6 +54,8 @@ const Register = () => {
       }
   }
   return (
+    <>
+    <Header/>
     <div className="flex justify-center items-center h-screen">
       <form onSubmit={handlesubmit} className="bg-white p-10 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-5">Create an account</h2>
@@ -88,6 +90,7 @@ const Register = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

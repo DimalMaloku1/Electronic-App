@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-
+import Header from '../../components/Header';
 const Product = () => {
   const { id } = useParams();
   const navigate = useNavigate()
@@ -72,6 +72,8 @@ const Product = () => {
   if(!Object.keys(product).length > 0) return <div>Loading.....</div>
   
   return (
+    <>
+    <Header/>
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -136,6 +138,7 @@ const Product = () => {
         </div>
       </div>
     </section>
+    </>
   )
 }
 

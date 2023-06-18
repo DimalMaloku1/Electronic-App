@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-
+import Header from "../../components/Header";
 const Contact = () => {
   const url = "https://localhost:7099/api/Contacts";
   const [data, setData] = useState({
@@ -48,6 +48,7 @@ const Contact = () => {
 
   return (
     <div>
+      <Header/>
       <section className="text-gray-700 body-font relative">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">

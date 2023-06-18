@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ProductCard from '../../components/ProductCard'
-
+import Header from '../../components/Header'
 const CategoryProducts = () => {
   const { name } = useParams()
   const [products, setProducts] = useState([])
@@ -18,7 +18,10 @@ const CategoryProducts = () => {
   if (products.length === 0) return <div>Loading.....</div>
 
   return (
+    <>
+    <Header/>
     <ProductCard products={products} />
+    </>
   )
 }
 

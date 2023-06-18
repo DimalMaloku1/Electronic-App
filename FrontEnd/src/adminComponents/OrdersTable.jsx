@@ -17,16 +17,6 @@ const OrderTable = () => {
     }
   };
 
-  const handleConfirm = (email) => {
-    // Handle confirmation logic
-    console.log(`Confirmed order for ${email}`);
-  };
-
-  const handleRefuse = (email) => {
-    // Handle refusal logic
-    console.log(`Refused order for ${email}`);
-  };
-
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white border border-gray-300">
@@ -47,15 +37,15 @@ const OrderTable = () => {
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
               Total Price
             </th>
-            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Actions
-            </th>
           </tr>
         </thead>
         <tbody>
           {orders.map((order, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-              <td className="py-4 px-6 border-b border-gray-300">{order.email}</td>
+             <td className="py-4 px-6 border-b border-gray-300">
+  {order.user && order.user.email ? order.user.email : 'N/A'}
+</td>
+
               <td className="py-4 px-6 border-b border-gray-300">{order.address}</td>
               <td className="py-4 px-6 border-b border-gray-300">{order.country}</td>
               <td className="py-4 px-6 border-b border-gray-300">
@@ -68,20 +58,6 @@ const OrderTable = () => {
                 </ol>
               </td>
               <td className="py-4 px-6 border-b border-gray-300">${order.totalPrice}</td>
-              <td className="py-4 px-6 border-b border-gray-300">
-                <button
-                  className="px-4 py-2 mr-2 bg-green-500 hover:bg-green-600 text-white rounded"
-                  onClick={() => handleConfirm(order.email)}
-                >
-                  Confirm
-                </button>
-                <button
-                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
-                  onClick={() => handleRefuse(order.email)}
-                >
-                  Refuse
-                </button>
-              </td>
             </tr>
           ))}
         </tbody>

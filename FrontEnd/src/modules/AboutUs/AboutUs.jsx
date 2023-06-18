@@ -1,8 +1,9 @@
 import React from 'react';
-
+import Header from '../../components/Header';
 const About = () => {
   return (
   <>
+  <Header/>
     <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl leading-9 font-extrabold text-gray-900 sm:text-4xl sm:leading-10 mb-6">
         About Us
