@@ -10,6 +10,8 @@ function AppHeader() {
     // Remove the username from local storage
     localStorage.removeItem('username');
   
+    localStorage.removeItem('role');
+
     // Redirect to the home page
     window.location.href = '/';
   }
