@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Electroshop.Models
 {
@@ -43,6 +44,8 @@ namespace Electroshop.Models
 
         [BsonElement("country")]
         public string Country { get; set; }
-        public UserDTO User { get; internal set; }
+
+        [BsonElement("email")] 
+        public string Email { get;  set; }
     }
 }
