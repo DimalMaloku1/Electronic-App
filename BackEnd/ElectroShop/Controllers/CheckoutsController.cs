@@ -5,6 +5,8 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Electroshop.Models;
+using ElectroShop.DTO;
+using System.Security.Claims;
 
 namespace Electroshop.Controllers
 {
@@ -49,6 +51,22 @@ namespace Electroshop.Controllers
                 }
                 checkoutData.TotalPrice = totalPrice;
 
+                // Check if the user is authenticated
+                if (User.Identity.IsAuthenticated)
+                {
+                    string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                    string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+                    string userRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+
+                    // Set the user's information in the checkout data
+                    checkoutData.User = new UserDTO
+                    {
+                        Id = userId,
+                        Email = userEmail,
+                        Role = userRole
+                    };
+                }
+
                 await _checkoutDataCollection.InsertOneAsync(checkoutData);
 
                 return Ok(checkoutData);
@@ -58,6 +76,10 @@ namespace Electroshop.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
+
+
+
+
 
         [HttpGet("totalOrders")]
         public async Task<IActionResult> TotalOrders()
