@@ -216,5 +216,32 @@ namespace ElectroShop.Controllers
 
             return Ok(userDTOs);
         }
+        [HttpDelete("deleteUser")]
+        
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return BadRequest("User not found");
+            }
+
+            // Check if the user has the "User" role
+            if (!await _userManager.IsInRoleAsync(user, "User"))
+            {
+                return BadRequest("Only users with the 'User' role can be deleted");
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            return Ok();
+        }
+
     }
 }
