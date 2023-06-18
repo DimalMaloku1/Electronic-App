@@ -68,7 +68,7 @@ namespace ElectroShop.Controllers
             return Ok();
         }
 
-        
+
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO model)
         {
@@ -83,7 +83,9 @@ namespace ElectroShop.Controllers
 
             var token = await GenerateJwtTokenAsync(user);
 
-            return Ok(new { Token = token });
+            var userRole = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+
+            return Ok(new { Token = token, Role = userRole });
         }
 
 

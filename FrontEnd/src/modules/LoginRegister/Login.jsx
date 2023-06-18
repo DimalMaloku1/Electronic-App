@@ -20,27 +20,28 @@ const Login = () => {
       };
 
       fetch("https://localhost:7099/api/Account/login", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials)
-      })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error('Login failed');
-          }
-          return res.json();
-        })
-        .then((data) => {
-          const { token } = data;
-          toast.success('Success');
-          localStorage.setItem('jwttoken', token); // Store token in local storage
-          localStorage.setItem('username', username); // Store username in local storage
-          navigate('/');
-          
-        })
-        .catch((err) => {
-          toast.error('Login Failed due to: ' + err.message);
-        });
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(credentials)
+})
+.then((res) => {
+    if (!res.ok) {
+        throw new Error('Login failed');
+    }
+    return res.json();
+})
+.then((data) => {
+    const { token, role } = data;
+    toast.success('Success');
+    localStorage.setItem('jwttoken', token); // Store token in local storage
+    localStorage.setItem('username', username); // Store username in local storage
+    localStorage.setItem('role', role); // Store role in local storage
+    navigate('/');
+})
+.catch((err) => {
+    toast.error('Login Failed due to: ' + err.message);
+});
+
     }
   };
 
