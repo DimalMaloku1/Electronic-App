@@ -56,6 +56,8 @@ const Cart = () => {
     const address = document.getElementById('address').value;
     const country = document.getElementById('country').value;
     const creditcard = document.getElementById('creditcard').value;
+    const username = localStorage.getItem('username'); // Retrieve the user's name from localStorage
+
   
     if (!address.trim()) {
       alert('Please enter a street address');
@@ -71,6 +73,11 @@ const Cart = () => {
       return;
     }
 
+     // Check if the user is logged in
+  if (!username) {
+    alert('Please log in to proceed with the checkout');
+    return;
+  }
     const checkoutData = {
       address: address,
       country: country,
@@ -83,6 +90,7 @@ const Cart = () => {
       })),
       totalPrice: total.toFixed(2),
       //totalQuantity: totalQuantity
+      userName: username // Include the user's name in the checkoutData object
 
     };
     console.log("cart data ", checkoutData)
