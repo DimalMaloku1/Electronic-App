@@ -33,6 +33,8 @@ const handleLogout = () => {
 
   localStorage.removeItem('role');
 
+  localStorage.removeItem('cart');
+
   // Redirect to the home page
   window.location.href = '/';
 }

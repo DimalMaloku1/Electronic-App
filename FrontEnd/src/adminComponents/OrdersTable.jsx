@@ -43,7 +43,7 @@ const OrderTable = () => {
           {orders.map((order, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
              <td className="py-4 px-6 border-b border-gray-300">
-  {order.user && order.user.email ? order.user.email : 'N/A'}
+  {order.email && order.email ? order.email : 'N/A'}
 </td>
 
               <td className="py-4 px-6 border-b border-gray-300">{order.address}</td>

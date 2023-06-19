@@ -56,7 +56,7 @@ const Cart = () => {
     const address = document.getElementById('address').value;
     const country = document.getElementById('country').value;
     const creditcard = document.getElementById('creditcard').value;
-    const username = localStorage.getItem('username'); // Retrieve the user's name from localStorage
+    const email = localStorage.getItem('username'); // Retrieve the user's name from localStorage
 
   
     if (!address.trim()) {
@@ -74,13 +74,15 @@ const Cart = () => {
     }
 
      // Check if the user is logged in
-  if (!username) {
+  if (!email) {
     alert('Please log in to proceed with the checkout');
     return;
   }
     const checkoutData = {
       address: address,
       country: country,
+      email: email, // Include the user's name in the checkoutData object
+
       products: carts.map((item) => ({
         //id: item.id,
         
@@ -90,8 +92,7 @@ const Cart = () => {
       })),
       totalPrice: total.toFixed(2),
       //totalQuantity: totalQuantity
-      userName: username // Include the user's name in the checkoutData object
-
+      
     };
     console.log("cart data ", checkoutData)
     // Send the checkout data to the admin page
