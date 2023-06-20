@@ -51,39 +51,19 @@ namespace Electroshop.Controllers
                 }
                 checkoutData.TotalPrice = totalPrice;
 
-                // Check if the user is authenticated
-                if (!User.Identity.IsAuthenticated)
-                {
-                    return BadRequest("User is not authenticated. Unable to process the checkout.");
-                }
-
-                string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-
-                // Set the user's email in the checkout data
-                checkoutData.Email = userEmail;
-
                
 
                 await _checkoutDataCollection.InsertOneAsync(checkoutData);
 
-                // Create an anonymous object for the response
-                var response = new
-                {
-                    email = checkoutData.Email,
-                    id = checkoutData.Id,
-                    totalPrice = checkoutData.TotalPrice,
-                    products = checkoutData.Products,
-                    address = checkoutData.Address,
-                    country = checkoutData.Country
-                };
-
-                return Ok(response);
+                return Ok(checkoutData);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
+
+
 
 
 
@@ -103,7 +83,6 @@ namespace Electroshop.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
-
 
     }
 }
