@@ -6,15 +6,14 @@ import Header from '../../components/Header';
 const UserPage = () => {
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
- 
 
   useEffect(() => {
     // Retrieve user data from local storage
     const storedUser = localStorage.getItem('username');
     if (storedUser) {
       setUser(storedUser);
-    } 
-  });
+    }
+  }, []);
 
   useEffect(() => {
     // Fetch user data from the API
@@ -82,18 +81,27 @@ const UserPage = () => {
             {userData.map((purchase) => (
               <li
                 key={purchase.id}
-                className="flex flex-col md:flex-row items-center justify-between py-2 border-b border-gray-300"
+                className="py-2 border-b border-gray-300"
               >
-                <div className="mb-2 md:mb-0 space-x-5">
-                  <span className="font-semibold">{purchase.products[0].name}</span>
-                  <span className="text-gray-500">
-                    Price: ${purchase.products[0].price}
-                  </span>
+                <div>
+                  <p className="text-gray-500">Date: {purchase.date}</p>
                 </div>
-                <div className="text-gray-500 space-x-5">
-                  <span>Quantity: {purchase.products[0].quantity}</span>
-                  <span>{purchase.date}</span>
-                </div>
+                {purchase.products.map((product) => (
+                  <div
+                    key={product.id}
+                    className="flex items-center justify-between"
+                  >
+                    <div className="mb-2 md:mb-0 space-x-5">
+                      <span className="font-semibold">{product.name}</span>
+                      <span className="text-gray-500">
+                        Price: ${product.price}
+                      </span>
+                    </div>
+                    <div className="text-gray-500 space-x-5">
+                      <span>Quantity: {product.quantity}</span>
+                    </div>
+                  </div>
+                ))}
               </li>
             ))}
           </ul>

@@ -56,7 +56,7 @@ const Cart = () => {
     const address = document.getElementById('address').value;
     const country = document.getElementById('country').value;
     const creditcard = document.getElementById('creditcard').value;
-    const email = localStorage.getItem('username'); // Retrieve the user's name from localStorage
+    const email = document.getElementById('email').value; // Retrieve the user's name from localStorage
 
   
     if (!address.trim()) {
@@ -74,7 +74,7 @@ const Cart = () => {
     }
 
      // Check if the user is logged in
-  if (!email) {
+  if (!email.trim()) {
     alert('Please log in to proceed with the checkout');
     return;
   }
@@ -187,7 +187,10 @@ const Cart = () => {
   <label htmlFor="country" className="font-semibold inline-block mb-3 text-sm uppercase">Country</label>
   <input type="text" id="country" placeholder="Enter your country" className="p-2 text-sm w-full" />
 </div>
-
+<div className="py-10">
+  <label htmlFor="email" className="font-semibold inline-block mb-3 text-sm uppercase">Email</label>
+  <input type="text" id="email" placeholder="Enter your email" className="p-2 text-sm w-full" />
+</div>
           <div className="py-10">
             <label for="promo" className="font-semibold inline-block mb-3 text-sm uppercase">Credit Card Number</label>
             <input type="number" id="creditcard" placeholder="Enter your credit card number" className="p-2 text-sm w-full" />
@@ -196,7 +199,13 @@ const Cart = () => {
           <div className="border-t mt-8">
             <div className="flex font-semibold justify-between py-6 text-sm uppercase">
               <span>Total cost</span>
-              <span>${(total + 10).toFixed(2)}</span>
+             
+              <span>${(total + 10).toFixed(2)}</span><br></br>
+            </div>
+            <div className="flex font-semibold justify-between py-6 text-sm uppercase">
+              
+              <span>+ 10$ Shipping</span>
+              
             </div>
             <button onClick={handleCheckout} className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
           </div>
