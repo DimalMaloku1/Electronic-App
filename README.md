@@ -1,7 +1,7 @@
 # Welcome to Electronic-App: Your Ultimate Tech Wonderland 🚀
 
 <p align="center">
-  <img src="file:///C:/Users/OnLine/Desktop/Downloads/LOGO%20(2).png" alt="Electronic-App Logo" width="200"/>
+  <img src="blob:https://www.imgtools.co/ec8c2ac6-e505-480f-aa78-6e30d4fa5170" alt="Electronic-App Logo" width="200"/>
 </p>
 
 ## Introduction
