@@ -54,4 +54,3 @@ Loved your experience with Electronic-App? Share the love with your friends and 
 
 ---
 
-Feel free to customize the content according to your application's actual features, branding, and goals. Make sure to add appropriate images, logos, and formatting to make your README.md visually appealing and engaging. Good luck with your project! 🎉
