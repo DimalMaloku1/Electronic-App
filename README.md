@@ -1,9 +1,5 @@
 # Welcome to Electronic-App: Your Ultimate Tech Wonderland 🚀
 
-<p align="center">
-  <img src="blob:https://www.imgtools.co/ec8c2ac6-e505-480f-aa78-6e30d4fa5170" width="200"/>
-</p>
-
 ## Introduction
 
 Electronic-App is not just another ordinary e-commerce application; it's an electrifying tech paradise that connects you to the latest and greatest tech products from all around the world! Say goodbye to the hassle of physical stores and immerse yourself in a digital realm where innovation meets convenience.
