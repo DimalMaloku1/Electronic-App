@@ -54,10 +54,10 @@ If you're a tech enthusiast or a developer, we'd love to have you on board! Feel
 
 ## Contributors and Owners 👥👨‍💻👩‍💻
 
-- Andi Zogaj : Frontend Developer
-- Dimal Maloku : Backend Developer
+- AndiZogaj22 : Frontend Developer (React.js|Nodejs|HTML|CSS|JavaScript)
+- DimalMaloku1 : Backend Developer (ASP.NET {Web Api|MVC} |MSSQL)
 
-  
+
 ## Feedback 📝🤝🗣️
 
 We thrive on feedback! If you have any suggestions, encounter issues, or want to shower us with praise, don't hesitate to get in touch. Your input drives us to continuously improve and provide the ultimate tech shopping experience.
