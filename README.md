@@ -55,7 +55,7 @@ If you're a tech enthusiast or a developer, we'd love to have you on board! Feel
 ## Contributors and Owners 👥👨‍💻💻
 
 - AndiZogaj22 : Frontend Developer (React.js | Nodejs | HTML | CSS | JavaScript)
-- DimalMaloku1 : Backend Developer (ASP.NET {Web Api | MVC} | MSSQL)
+- DimalMaloku1 : Backend Developer (ASP.NET {Web Api | MVC} | MSSQL | React.js)
 
 
 ## Feedback 📝🤝🗣️
