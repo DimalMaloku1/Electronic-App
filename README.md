@@ -52,7 +52,7 @@ Getting started with Electronic-App is a piece of cake:
 If you're a tech enthusiast or a developer, we'd love to have you on board! Feel free to fork this repository and contribute your ideas, bug fixes, or new features. Together, let's elevate Electronic-App to new heights!
 
 
-## Contributors and Owners 👥👨‍💻👩‍💻
+## Contributors and Owners 👥👨‍💻💻
 
 - AndiZogaj22 : Frontend Developer (React.js | Nodejs | HTML | CSS | JavaScript)
 - DimalMaloku1 : Backend Developer (ASP.NET {Web Api | MVC} | MSSQL)
