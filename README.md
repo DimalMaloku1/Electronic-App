@@ -1,5 +1,3 @@
-Absolutely! Let's include the contributors and owners of the Electronic-App project:
-
 # Welcome to Electronic-App: Your Ultimate Tech Wonderland 🚀
 
 
