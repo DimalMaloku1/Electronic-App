@@ -656,3 +656,8 @@ C:\Users\OnLine\Desktop\New folder\Electronic-App\BackEnd\ElectroShop\obj\Debug\
 C:\Users\OnLine\Desktop\New folder\Electronic-App\BackEnd\ElectroShop\obj\Debug\net6.0\ElectroShop.pdb
 C:\Users\OnLine\Desktop\New folder\Electronic-App\BackEnd\ElectroShop\obj\Debug\net6.0\ElectroShop.genruntimeconfig.cache
 C:\Users\OnLine\Desktop\New folder\Electronic-App\BackEnd\ElectroShop\obj\Debug\net6.0\ref\ElectroShop.dll
+C:\Users\OnLine\Desktop\Electronic-App\BackEnd\ElectroShop\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\OnLine\Desktop\Electronic-App\BackEnd\ElectroShop\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\OnLine\Desktop\Electronic-App\BackEnd\ElectroShop\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\OnLine\Desktop\Electronic-App\BackEnd\ElectroShop\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\OnLine\Desktop\Electronic-App\BackEnd\ElectroShop\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

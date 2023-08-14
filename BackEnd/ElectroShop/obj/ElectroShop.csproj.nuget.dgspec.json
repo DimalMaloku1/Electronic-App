@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {}
+    "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {
+    "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
+        "projectUniqueName": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
         "projectName": "ElectroShop",
-        "projectPath": "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\obj\\",
+        "projectPath": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
+        "packagesPath": "C:\\Users\\OnLine\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\OnLine\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.4, )"
@@ -49,6 +53,10 @@
               "version": "[6.0.4, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[6.0.4, )"
             },
@@ -105,7 +113,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.316\\RuntimeIdentifierGraph.json"
         }
       }
     }
