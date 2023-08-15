@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {}
+    "C:\\Users\\PULSE Electronics\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {
+    "C:\\Users\\PULSE Electronics\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
+        "projectUniqueName": "C:\\Users\\PULSE Electronics\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
         "projectName": "ElectroShop",
-        "projectPath": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
-        "packagesPath": "C:\\Users\\OnLine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OnLine\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\obj\\",
+        "projectPath": "C:\\Users\\PULSE Electronics\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
+        "packagesPath": "C:\\Users\\PULSE Electronics\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PULSE Electronics\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\OnLine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PULSE Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,6 +86,14 @@
               "target": "Package",
               "version": "[2.19.1, )"
             },
+            "NSwag.Annotations": {
+              "target": "Package",
+              "version": "[13.20.0, )"
+            },
+            "OpenAI": {
+              "target": "Package",
+              "version": "[1.7.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -113,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.316\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
