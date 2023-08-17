@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './Products.css'
 
 const CustomerListing = () => {
     const [customersdata, customersdatachange] = useState(null);
@@ -8,7 +7,7 @@ const CustomerListing = () => {
 
     
     const LoadEdit = (id) => {
-        navigate("/customers/edit/" + id);
+        navigate("/customer/edit/" + id);
     }
     const Removefunction = (id) => {
       if (window.confirm('Do you want to remove?')) {
@@ -57,7 +56,7 @@ const CustomerListing = () => {
         <div className="mb-4 flex justify-start p-2">
           <button
             className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
-            <Link to="/customers/create">Add New </Link>
+            <Link to="/customer/create">Add New </Link>
           </button>
         </div>
         <table className="min-w-full bg-white border border-gray-300">

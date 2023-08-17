@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import './Products.css'
 
 const AdressesEdit = () => {
     const { adressesid } = useParams();
@@ -56,7 +55,7 @@ const AdressesEdit = () => {
         .then((res) => {
           if (res.ok) {
             alert('Saved successfully.');
-            navigate('/adminadresses');
+            navigate('/dashboard');
           } else if (res.status === 401) {
             // Handle case where JWT token is invalid or expired
           } else {

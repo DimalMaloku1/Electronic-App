@@ -64,7 +64,16 @@ import {
               key: "/categories",
               icon:<DropboxOutlined />,
             },
-           
+            {
+              label: "Lab2 Adresses",
+              key: "/adresseslisting",
+              icon:<DropboxOutlined />,
+            },
+            {
+              label: "Lab2 Customers",
+              key: "/customerlisting",
+              icon:<DropboxOutlined />,
+            },
             
           ]}
           

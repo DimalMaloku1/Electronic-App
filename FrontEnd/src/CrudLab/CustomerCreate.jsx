@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './Products.css'
 
 const CustomerCreate = () => {
 
@@ -38,7 +37,7 @@ const CustomerCreate = () => {
         .then((res) => {
           if (res.ok) {
             alert('Saved successfully.');
-            navigate('/admincustomers');
+            navigate('/dashboard');
           } else if (res.status === 401) {
             // Handle case where JWT token is invalid or expired
           } else {
