@@ -31,6 +31,14 @@ import CategoryTable from './adminComponents/CategoryTable';
 import CategoriesCreate from './Admin/CategoriesCreate'
 import CategoriesEdit from './Admin/CategoriesEdit'
 
+//LAB Crud
+import AdressesCreate from './CrudLab/AdressesCreate'
+import AdressesEdit from './CrudLab/AdressesEdit'
+import AdressesListing from './CrudLab/AdressesListing'
+import CustomerListing from './CrudLab/CustomerListing';
+import CustomerEdit from './CrudLab/CustomerEdit';
+
+
 
 function App() {
   return (
@@ -66,6 +74,14 @@ function App() {
         <Route path='/categories' element={<CategoryTable />}></Route>
         <Route path='/categories/create' element={<CategoriesCreate />}></Route>
         <Route path='/categories/edit/:categoriesid' element={<CategoriesEdit />}></Route>
+
+        <Route path='/adresseslisting' element={<AdressesListing />}></Route>
+        <Route path='/adresses/create' element={<AdressesCreate />}></Route>
+        <Route path='/adresses/edit/:adressesid' element={<AdressesEdit />}></Route>
+        
+        <Route path='/customerlisting' element={<CustomerListing/>}></Route>
+        <Route path='/customer/create' element={<CustomerEdit />}></Route>
+        <Route path='/customer/edit/:customerid' element={<CustomerEdit />}></Route>
 
         <Route path="*" element={<div>404</div>} />
 
