@@ -35,6 +35,7 @@ namespace ElectroShop.Controllers
             .Include(_ => _.CustomerAddresses).Where(_ => _.Id == id).FirstOrDefaultAsync();
             return Ok(customerbyId);
         }
+
         [HttpPost]
         public async Task<IActionResult> Post(CustomerDto customerPayload)
         {
@@ -43,14 +44,40 @@ namespace ElectroShop.Controllers
             await _myWorldDbContext.SaveChangesAsync();
             return Created($"/{newCustomer.Id}", newCustomer);
         }
-        [HttpPut]
-        public async Task<IActionResult> Put(CustomerDto customerPayload)
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, CustomerDto customerPayload)
         {
-            var updateCustomer = _mapper.Map<Customer>(customerPayload);
-            _myWorldDbContext.Customer.Update(updateCustomer);
-            await _myWorldDbContext.SaveChangesAsync();
-            return Ok(updateCustomer);
+            if (id != customerPayload.Id)
+            {
+                return BadRequest("ID mismatch between URL and payload.");
+            }
+
+            var existingCustomer = await _myWorldDbContext.Customer.FindAsync(id);
+
+            if (existingCustomer == null)
+            {
+                return NotFound();
+            }
+
+            existingCustomer.FirstName = customerPayload.FirstName;
+            existingCustomer.LastName = customerPayload.LastName;
+            existingCustomer.Phone = customerPayload.Phone;
+
+            try
+            {
+                _myWorldDbContext.Entry(existingCustomer).State = EntityState.Modified;
+                await _myWorldDbContext.SaveChangesAsync();
+                return Ok(existingCustomer);
+            }
+            catch (Exception)
+            {
+                // Handle exceptions (e.g., database update errors)
+                return StatusCode(StatusCodes.Status500InternalServerError, "Failed to update customer.");
+            }
         }
+
+
         [Route("{id}")]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
