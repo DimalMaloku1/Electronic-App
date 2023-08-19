@@ -6,7 +6,8 @@ import {
     UserOutlined,
     MessageOutlined,
     LogoutOutlined,
-    DropboxOutlined
+    DropboxOutlined,
+    LikeOutlined 
   } from "@ant-design/icons";
   import { Menu } from "antd";
   import { useEffect, useState } from "react";
@@ -65,6 +66,12 @@ import {
               icon:<DropboxOutlined />,
             },
             {
+              label: "Product Reviews",
+              key: "/reviewslayout",
+              icon:<LikeOutlined />,
+            },
+            
+            {
               label: "Lab2 Addresses",
               key: "/adresseslayout",
               icon:<DropboxOutlined />,
@@ -74,6 +81,7 @@ import {
               key: "/customerlayout",
               icon:<DropboxOutlined />,
             },
+            
             
           ]}
           

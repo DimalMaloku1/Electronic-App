@@ -40,7 +40,8 @@ import CustomerEdit from './CrudLab/CustomerEdit';
 import CustomerCreate from './CrudLab/CustomerCreate';
 import CustomerLayout from './CrudLab/CustomerLayout'
 import AdressesLayout from './CrudLab/AddressLayout';
-
+import ReviewLayout from './adminComponents/AdminReview/ReviewLayout';
+import ReviewListing from './adminComponents/AdminReview/ReviewListing';
 function App() {
   return (
     <div>
@@ -85,6 +86,10 @@ function App() {
         <Route path='/customerlisting' element={<CustomerListing/>}></Route>
         <Route path='/customer/create' element={<CustomerCreate />}></Route>
         <Route path='/customer/edit/:customerid' element={<CustomerEdit />}></Route>
+        
+
+        <Route path='/reviewslayout' element={<ReviewLayout/>}></Route>
+        <Route path='/reviewslisting' element={<ReviewListing/>}></Route>
 
         <Route path="*" element={<div>404</div>} />
 

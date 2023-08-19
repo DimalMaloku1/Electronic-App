@@ -6,6 +6,10 @@ const Product = () => {
   const { id } = useParams();
   const navigate = useNavigate()
   const [product, setProduct] = useState({})
+  const [rating, setRating] = useState(0);
+  const [reviewText, setReviewText] = useState("");
+  const [reviewRating, setReviewRating] = useState(0);
+  
   console.log(id, 'id', product)
 
 //https://localhost:7099 per fetch
@@ -72,6 +76,54 @@ const Product = () => {
 
   if(!Object.keys(product).length > 0) return <div>Loading.....</div>
   
+
+  
+// Define a function to render the star rating component based on the reviewRating state
+const renderStars = () => {
+  const stars = [1, 2, 3, 4, 5].map((value) => (
+    <span
+      key={value}
+      className={`cursor-pointer text-5xl ${
+        value <= reviewRating ? 'text-yellow-400' : 'text-gray-300'
+      }`}
+      onClick={() => setReviewRating(value)}
+    >
+      ★
+    </span>
+  ));
+  return stars;
+};
+  
+  const submitReview = async () => {
+    const reviewData = {
+      productId: id,
+      reviewText,
+      rating: reviewRating,
+    };
+  
+    try {
+      const response = await fetch("https://localhost:7099/api/Reviews/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reviewData),
+      });
+  
+      if (response.ok) {
+        setReviewText("");
+        setReviewRating(0);
+        alert("Review submitted successfully!");
+      } else {
+        alert("Failed to submit review. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting review:", error);
+      alert("An error occurred while submitting the review.");
+    }
+  };
+  
+  
   return (
     <>
     <Header/>
@@ -83,8 +135,13 @@ const Product = () => {
               <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">{product?.categoryName}</h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product?.name}</h1>
               <div className="flex mb-4">
-                <span className="flex items-center">
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+              
+              <div class="flex items-center flex-col ">
+              <span class="text-gray-600 mt-2 ">Average Rating</span>
+
+  <div class="flex items-center pt-1 pb-5">
+
+  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                   </svg>
                   <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -99,9 +156,10 @@ const Product = () => {
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                   </svg>
-                  <span className="text-gray-600 ml-3">4 Reviews</span>
-                </span>
-                <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+  </div>
+</div>
+
+       <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
                   <a className="text-gray-500">
                     <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                       <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -135,6 +193,35 @@ const Product = () => {
                   </svg>
                 </button>
               </div>
+              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"> 
+              </div>
+
+              <div className="text-center">
+              <span className="text-gray-900 text-2xl title-font font-large pt-5">Rate</span>
+                <h1 className="text-gray-900 text-1xl title-font font-medium mt-3">{product?.name}</h1>
+                <div className="my-4">{renderStars()}</div>
+
+<textarea
+  id="message"
+  rows="6"
+  className="block mx-auto p-2.5 w-2/3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+  placeholder="Write your thoughts here..."
+  value={reviewText}
+  onChange={(e) => setReviewText(e.target.value)}
+></textarea>
+
+<div className="pt-5">
+  <button
+    className="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none"
+    onClick={submitReview}
+  >
+    Send Review
+  </button>
+</div>
+
+    </div>
+
+
             </div>
         </div>
       </div>

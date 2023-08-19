@@ -21,7 +21,8 @@ const navigations = [
   {
     name: 'My Account',
     path: '/userpage'
-  }
+  },
+  
   
 ]
 const handleLogout = () => {
