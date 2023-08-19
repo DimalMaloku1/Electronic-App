@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ElectroShop.Controllers
 {
-    
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class ReviewsController : ControllerBase
@@ -26,6 +26,78 @@ namespace ElectroShop.Controllers
             _productsCollection = database.GetCollection<Product>("products");
         }
 
+        
+
+        [HttpGet]
+        public async Task<ActionResult<List<Review>>> GetAllReviews()
+        {
+            try
+            {
+                var reviews = await _reviewsCollection.Find(_ => true)
+                    .ToListAsync();
+
+                // Load the associated products for each review
+                foreach (var review in reviews)
+                {
+                    review.Product = await _productsCollection.Find(p => p.Id == review.ProductId)
+                        .FirstOrDefaultAsync();
+                }
+
+                return Ok(reviews);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
+
+        [HttpGet("{Id}")]
+        public async Task<ActionResult<Review>> GetReview(string reviewId)
+        {
+            try
+            {
+                var reviewFilter = Builders<Review>.Filter.Eq(r => r.Id, reviewId);
+                var review = await _reviewsCollection.Find(reviewFilter).FirstOrDefaultAsync();
+
+                if (review == null)
+                {
+                    return NotFound();
+                }
+
+                // Load the associated product for the review
+                review.Product = await _productsCollection.Find(p => p.Id == review.ProductId)
+                    .FirstOrDefaultAsync();
+
+                return Ok(review);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
+
+        [HttpGet("product/{productId}")]
+        public async Task<ActionResult<IEnumerable<Review>>> GetReviewsForProduct(string productId)
+        {
+            try
+            {
+                var productFilter = Builders<Product>.Filter.Eq(p => p.Id, productId);
+                var existingProduct = await _productsCollection.Find(productFilter).FirstOrDefaultAsync();
+                if (existingProduct == null)
+                    return NotFound("Product not found");
+
+                var reviewFilter = Builders<Review>.Filter.Eq(r => r.ProductId, productId);
+                var reviews = await _reviewsCollection.Find(reviewFilter).ToListAsync();
+
+                return Ok(reviews);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
         [HttpPost("submit")]
         public async Task<IActionResult> SubmitReview(Review review)
         {
@@ -56,45 +128,20 @@ namespace ElectroShop.Controllers
             }
         }
 
-
-
-        [HttpGet]
-public async Task<ActionResult<List<Review>>> GetAllReviewsWithProducts()
-{
-    try
-    {
-        var reviews = await _reviewsCollection.Find(_ => true).ToListAsync();
-
-        foreach (var review in reviews)
-        {
-            var product = await _productsCollection.Find(p => p.Id == review.ProductId).FirstOrDefaultAsync();
-            review.Product = product;
-        }
-
-        return Ok(reviews);
-    }
-    catch (Exception ex)
-    {
-        return StatusCode(500, $"Internal server error: {ex}");
-    }
-}
-
-
-
-        [HttpGet("product/{productId}")]
-        public async Task<ActionResult<IEnumerable<Review>>> GetReviewsForProduct(string productId)
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteReview(string Id)
         {
             try
             {
-                var productFilter = Builders<Product>.Filter.Eq(p => p.Id, productId);
-                var existingProduct = await _productsCollection.Find(productFilter).FirstOrDefaultAsync();
-                if (existingProduct == null)
-                    return NotFound("Product not found");
+                var reviewFilter = Builders<Review>.Filter.Eq(r => r.Id, Id);
+                var review = await _reviewsCollection.FindOneAndDeleteAsync(reviewFilter);
 
-                var reviewFilter = Builders<Review>.Filter.Eq(r => r.ProductId, productId);
-                var reviews = await _reviewsCollection.Find(reviewFilter).ToListAsync();
+                if (review == null)
+                {
+                    return NotFound();
+                }
 
-                return Ok(reviews);
+                return Ok($"Review {Id} deleted successfully.");
             }
             catch (Exception ex)
             {
@@ -102,6 +149,5 @@ public async Task<ActionResult<List<Review>>> GetAllReviewsWithProducts()
             }
         }
 
-        // Additional endpoints for review management can be added here
     }
 }
