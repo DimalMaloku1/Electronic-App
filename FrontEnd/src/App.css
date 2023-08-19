@@ -36,4 +36,12 @@
       transform: rotate(360deg);
     }
   }
+  .active .transition-transform {
+    transition: transform 0.2s ease-in-out;
+    transform: rotate(90deg);
+  }
+  .bg-vanilla {
+    background-color: #f8f8f8f3; /* Replace with the desired vanilla color */
+  }
   
+ 

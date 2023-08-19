@@ -18,7 +18,7 @@ const AdressesListing = () => {
           return;
         }
     
-        fetch(`https://localhost:7099/api/CustomerAdresses/${id}`, {
+        fetch(`https://localhost:7099/api/CustomerAddresses/${id}`, {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${token}`
@@ -53,17 +53,22 @@ const AdressesListing = () => {
 
     return (
         <div className="overflow-x-auto">
-        <div className="mb-4 flex justify-start p-2">
-          <button
-            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
-            <Link to="/adresses/create">Add New </Link>
-          </button>
+        <div className="mb-4 flex justify-between p-2">
+        <button className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
+          <Link to="/adresses/create">Add New</Link>
+        </button>
+        <Link
+          to="/adminproducts"
+          className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Back
+        </Link>
         </div>
         <table className="min-w-full bg-white border border-gray-300">
         <thead>
           <tr>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Adress ID
+              Address ID
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
               City
@@ -101,6 +106,7 @@ const AdressesListing = () => {
                 >
                   Remove
                 </button>
+             
               </td>
             </tr>
           ))}

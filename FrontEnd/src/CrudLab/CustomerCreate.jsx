@@ -1,157 +1,82 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const CustomerCreate = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [validation, setValidation] = useState(false);
 
-    const[id,idchange]=useState("");
-    const[name,namechange]=useState("");
-    const[description,descriptionchange]=useState("");
-    const[price,pricechange]=useState("");
-    const[stock,stockchange]=useState("");
-    const[imageURL,imageURLchange]=useState("");
-    const [categoryName, setCategoryName] = useState([]);
-    const[validation,valchange]=useState(false);
+  const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const addressPayload = { firstName, lastName, phone };
 
-    const navigate=useNavigate();
+    const token = localStorage.getItem("jwttoken");
 
-    const handlesubmit = (e) => {
-      e.preventDefault();
-      const customersdata = { name, description, price, stock, imageURL, categoryName };
-    
-      const token = localStorage.getItem("jwttoken");
-    
-      if (!token) {
-        // Handle case where JWT token is missing
-        return;
-      }
-    
-      fetch("https://localhost:7099/api/Products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify(customersdata)
+    if (!token) {
+      return;
+    }
+
+    fetch("https://localhost:7099/api/Customer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(addressPayload),
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert("Saved successfully.");
+          navigate("/customerlisting");
+        } else if (res.status === 401) {
+          // Handle case where JWT token is invalid or expired
+        } else {
+          // Handle other error statuses
+        }
       })
-        .then((res) => {
-          if (res.ok) {
-            alert('Saved successfully.');
-            navigate('/dashboard');
-          } else if (res.status === 401) {
-            // Handle case where JWT token is invalid or expired
-          } else {
-            // Handle other error statuses
-          }
-        })
-        .catch((err) => {
-          console.log(err.message)
-        });
-    };
-    
-    return (
-        <div className="max-w-lg mx-auto pt-6 pl-1 pr-1">
-             <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold">Add New customer</h2>
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  return (
+    <div className="max-w-lg mx-auto pt-6 pl-1 pr-1">
+      <div className="text-center mb-8">
+        <h2 className="text-2xl font-bold">Add New Customer</h2>
       </div>
-      <form  onSubmit={handlesubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        
+      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
-          <label
-            
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            ID
-          </label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">FirstName</label>
           <input
-            value={id} disabled="disabled"
+            required
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+          {firstName.length === 0 && validation && <span className="text-danger">Enter the FirstName</span>}
         </div>
-
-
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Name
-          </label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">LastName</label>
           <input
-            required value={name} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)}
+            required
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-          {name.length==0 && validation && <span className="text-danger">Enter The Name</span>}
+          {lastName.length === 0 && validation && <span className="text-danger">Enter the LastName</span>}
         </div>
-
-
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Description
-          </label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">Phone</label>
           <input
-            required value={description} onMouseDown={e=>valchange(true)} onChange={e=>descriptionchange(e.target.value)}
+            required
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-          {description.length==0 && validation && <span className="text-danger">Enter The Description</span>}
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="price"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Price
-          </label>
-          <input
-            value={price} onChange={e=>pricechange(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-                    {price.length==0 && validation && <span className="text-danger">Enter the Price Number</span>}
-
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Stock
-          </label>
-          <input
-             value={stock} onChange={e=>stockchange(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-                              {price.length==0 && validation && <span className="text-danger">Enter the Stock Number</span>}
-
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Image URL
-          </label>
-          <input
-            required value={imageURL} onMouseDown={e=>valchange(true)} onChange={e=>imageURLchange(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-          {imageURL.length==0 && validation && <span className="text-danger">Enter the Image Url</span>}
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Category Name
-          </label>
-          <select
-            multiple
-            value={categoryName}
-           onChange={(e) => setCategoryName(Array.from(e.target.selectedOptions, option => option.value))}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          >
-            <option value="accessories">Accessories</option>
-                             <option value="gaming">Gaming</option>
-                             <option value="laptop">Laptop</option>
-                             <option value="smartphone">Smartphone</option>
-          </select>
+          {phone.length === 0 && validation && <span className="text-danger">Enter the Phone</span>}
         </div>
         <div className="flex items-center justify-between">
           <button
@@ -160,13 +85,16 @@ const CustomerCreate = () => {
           >
             Submit
           </button>
-          <Link to="/admincustomers" className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Back</Link>
-
-          
+          <Link
+            to="/customerlisting"
+            className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Back
+          </Link>
         </div>
       </form>
     </div>
-    );
-}
+  );
+};
 
 export default CustomerCreate;

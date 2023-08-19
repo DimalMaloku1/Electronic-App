@@ -65,7 +65,7 @@ import {
               icon:<DropboxOutlined />,
             },
             {
-              label: "Lab2 Adresses",
+              label: "Lab2 Addresses",
               key: "/adresseslisting",
               icon:<DropboxOutlined />,
             },

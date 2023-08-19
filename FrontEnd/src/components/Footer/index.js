@@ -47,7 +47,7 @@ const Footer = () => {
               href="/products/644fc0c67f1b9e4814e34958"
               className="text-gray-500 hover:text-indigo-500"
             >
-              I Phone 14 Pro
+              iPhone 14 Pro
             </a>
             <br />
             <a

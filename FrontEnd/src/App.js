@@ -37,6 +37,7 @@ import AdressesEdit from './CrudLab/AdressesEdit'
 import AdressesListing from './CrudLab/AdressesListing'
 import CustomerListing from './CrudLab/CustomerListing';
 import CustomerEdit from './CrudLab/CustomerEdit';
+import CustomerCreate from './CrudLab/CustomerCreate';
 
 
 
@@ -80,7 +81,7 @@ function App() {
         <Route path='/adresses/edit/:adressesid' element={<AdressesEdit />}></Route>
         
         <Route path='/customerlisting' element={<CustomerListing/>}></Route>
-        <Route path='/customer/create' element={<CustomerEdit />}></Route>
+        <Route path='/customer/create' element={<CustomerCreate />}></Route>
         <Route path='/customer/edit/:customerid' element={<CustomerEdit />}></Route>
 
         <Route path="*" element={<div>404</div>} />

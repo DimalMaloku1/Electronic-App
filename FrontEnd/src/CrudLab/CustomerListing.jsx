@@ -18,7 +18,7 @@ const CustomerListing = () => {
           return;
         }
     
-        fetch(`https://localhost:7099/api/Products/${id}`, {
+        fetch(`https://localhost:7099/api/Customer/${id}`, {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${token}`
@@ -42,7 +42,7 @@ const CustomerListing = () => {
     
 
     useEffect(() => {
-        fetch("https://localhost:7099/api/Products").then((res) => {
+        fetch("https://localhost:7099/api/Customer").then((res) => {
             return res.json();
         }).then((resp) => {
           customersdatachange(resp);
@@ -53,11 +53,16 @@ const CustomerListing = () => {
 
     return (
         <div className="overflow-x-auto">
-        <div className="mb-4 flex justify-start p-2">
-          <button
-            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
-            <Link to="/customer/create">Add New </Link>
-          </button>
+        <div className="mb-4 flex justify-between p-2">
+        <button className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
+          <Link to="/customer/create">Add New</Link>
+        </button>
+        <Link
+          to="/adminproducts"
+          className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Back
+        </Link>
         </div>
         <table className="min-w-full bg-white border border-gray-300">
         <thead>
@@ -66,22 +71,13 @@ const CustomerListing = () => {
               ID
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Name
+              FirstName
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Description
+              LastName
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Price
-            </th>
-            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Stock
-            </th>
-            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Image
-            </th>
-            <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              Category
+             Phone
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
               Actions
@@ -93,12 +89,9 @@ const CustomerListing = () => {
                               customersdata.map(customers => (
             <tr key={customers.id} className="bg-white">
               <td className="py-4 px-6 border-b border-gray-300">{customers.id}</td>
-              <td className="py-4 px-6 border-b border-gray-300">{customers.name}</td>
-              <td className="py-4 px-6 border-b border-gray-300">{customers.description}</td>
-              <td className="py-4 px-6 border-b border-gray-300">${customers.price}</td>
-              <td className="py-4 px-6 border-b border-gray-300">{customers.stock}</td>
-              <td className="py-4 px-6 border-b border-gray-300">{customers.imageURL}</td>
-              <td className="py-4 px-6 border-b border-gray-300">{customers.categoryName}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{customers.firstName}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{customers.lastName}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{customers.phone}</td>
               <td className="py-4 px-6 border-b border-gray-300">
                 <button
                   className="px-4 py-2 mr-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
