@@ -30,7 +30,7 @@ const CustomerCreate = () => {
       .then((res) => {
         if (res.ok) {
           alert("Saved successfully.");
-          navigate("/customerlisting");
+          navigate("/customerlayout");
         } else if (res.status === 401) {
           // Handle case where JWT token is invalid or expired
         } else {
@@ -86,7 +86,7 @@ const CustomerCreate = () => {
             Submit
           </button>
           <Link
-            to="/customerlisting"
+            to="/customerlayout"
             className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Back

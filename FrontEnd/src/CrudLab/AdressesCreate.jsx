@@ -41,7 +41,7 @@ const AdressesCreate = () => {
       .then((res) => {
         if (res.ok) {
           alert("Saved successfully.");
-          navigate("/adresseslisting");
+          navigate("/adresseslayout");
         } else if (res.status === 401) {
           // Handle case where JWT token is invalid or expired
         } else {
@@ -104,7 +104,7 @@ const AdressesCreate = () => {
             Submit
           </button>
           <Link
-            to="/adresseslisting"
+            to="/adresseslayout"
             className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Back

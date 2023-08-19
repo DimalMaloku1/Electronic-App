@@ -38,8 +38,8 @@ import AdressesListing from './CrudLab/AdressesListing'
 import CustomerListing from './CrudLab/CustomerListing';
 import CustomerEdit from './CrudLab/CustomerEdit';
 import CustomerCreate from './CrudLab/CustomerCreate';
-
-
+import CustomerLayout from './CrudLab/CustomerLayout'
+import AdressesLayout from './CrudLab/AddressLayout';
 
 function App() {
   return (
@@ -76,10 +76,12 @@ function App() {
         <Route path='/categories/create' element={<CategoriesCreate />}></Route>
         <Route path='/categories/edit/:categoriesid' element={<CategoriesEdit />}></Route>
 
+        <Route path='/adresseslayout' element={<AdressesLayout/>}></Route>
         <Route path='/adresseslisting' element={<AdressesListing />}></Route>
         <Route path='/adresses/create' element={<AdressesCreate />}></Route>
         <Route path='/adresses/edit/:adressesid' element={<AdressesEdit />}></Route>
         
+        <Route path='/customerlayout' element={<CustomerLayout/>}></Route>
         <Route path='/customerlisting' element={<CustomerListing/>}></Route>
         <Route path='/customer/create' element={<CustomerCreate />}></Route>
         <Route path='/customer/edit/:customerid' element={<CustomerEdit />}></Route>

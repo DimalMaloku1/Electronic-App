@@ -66,12 +66,12 @@ import {
             },
             {
               label: "Lab2 Addresses",
-              key: "/adresseslisting",
+              key: "/adresseslayout",
               icon:<DropboxOutlined />,
             },
             {
               label: "Lab2 Customers",
-              key: "/customerlisting",
+              key: "/customerlayout",
               icon:<DropboxOutlined />,
             },
             
