@@ -49,43 +49,39 @@ const Home = () => {
   };
   
   return (
-    <>
+    <div className="">
     <Header/>
       <Hero />
       <Slider/>
       <Categories/>
-      <div className="flex flex-col text-center w-full mt-20">
+      <div className="flex flex-col text-center w-full mt-20 ">
         <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">PRODUCTS</h2>
         <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">SEARCH YOUR CHOSEN PRODUCTS</h1>
         <SearchBar handleSearch={handleSearch} />
-
-        <div className="grid grid-cols-3 gap-4">
-        {/* Render product cards if filtered products exist */}
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <div key={product.id} className="bg-white p-6 rounded-lg shadow-lg">
-              <img
-                src={product.imageURL} // Assuming 'image' is the URL of the product image
-                alt={product.name}
-                className="w-full h-40 object-contain mb-4 rounded-lg"
-              />
-              <h3 className="text-lg font-bold mb-2">{product.name}</h3>
-              <p className="text-center">{product.description}</p>
-              <p className="mt-2">${product.price}</p>
-              <p className="mt-2">{product.categoryName}</p>
-              
-            </div>
-          ))
-        ) : (
-          <p>No products found.</p>
-        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  {/* Render product cards if filtered products exist */}
+  {filteredProducts.length > 0 ? (
+    filteredProducts.map((product) => (
+      <div key={product.id} className="bg-white p-4 rounded-lg shadow-lg">
+        <img
+          src={product.imageURL} // Assuming 'image' is the URL of the product image
+          alt={product.name}
+          className="w-full h-32 object-contain mb-2 rounded-lg"
+        />
+        <h3 className="text-md font-bold mb-1">{product.name}</h3>
+        <p className="mt-1 text-sm">${product.price}</p>
+        <p className="mt-1 text-sm">{product.categoryName}</p>
       </div>
-     
-     
+    ))
+  ) : (
+    <p>No products found.</p>
+  )}
+</div>
+
       </div>
      
       <Stats/>
-    </>
+    </div>
   )
 }
 

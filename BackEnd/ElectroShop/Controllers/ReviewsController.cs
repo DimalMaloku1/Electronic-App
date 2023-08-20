@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace ElectroShop.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class ReviewsController : ControllerBase
