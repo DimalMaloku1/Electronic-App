@@ -37,23 +37,39 @@ const ReviewListingWithStars = () => {
   };
 
   return (
-    <div className="p-4 grid grid-cols-4 gap-4">
-      <h2 className="text-2xl font-semibold mb-4 col-span-4">Reviews</h2>
-      {reviews.map((review) => (
-        <div key={review.id} className="bg-white p-8 text-center rounded-lg shadow-md">
-          <h3 className="text-xl font-semibold p-8">{review.product.name}</h3>
-          <p className="text-gray-600 pt-12 pb-12 bg-gray-200 rounded-lg"><span className="text-xl font-semibold">Feedback: </span>{review.reviewText}</p>
-          <p className="text-yellow-400 text-2xl font-semibold">
-            Rating: <StarRating rating={review.rating} />
-          </p>
-          <img
-            src={review.product.imageURL} // Assuming review.product.imageURL is the image URL
-            alt={review.productId} // Provide an appropriate alt text
-            className="w-full h-auto mt-4" // Adjust width, height, and margin as needed
-          />
+<div className="grid grid-cols-5 gap-4">
+  {reviews.map((review) => (
+    <div key={review.id} className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="relative group">
+        <img
+          src={review.product.imageURL}
+          alt={review.productId}
+          className="w-full h-48 object-cover transition-transform duration-300 transform scale-100 group-hover:scale-105"
+          // Set a fixed height (e.g., h-48) to ensure uniform size
+        />
+        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 flex items-center justify-center">
+          <p className="text-white text-lg font-semibold">{review.product.name}</p>
         </div>
-      ))}
+      </div>
+      <div className="px-6 py-4">
+        <h2 className="font-bold text-xl mb-2">{review.product.name}</h2>
+        <div className="h-32 overflow-y-auto">
+          
+          <p className="text-gray-700 text-base pb-8">
+            <span className="text-xl font-semibold">Feedback: </span>
+            {review.reviewText}
+          </p>
+        </div>
+      </div>
+      <div className="px-6 pt-2 pb-2">
+        <span className="inline-block p-12 px-3 py-1 text-xl font-semibold text-gray-700 mr-2 mb-2">
+          Rating: <StarRating rating={review.rating} />
+        </span>
+      </div>
     </div>
+  ))}
+</div>
+
   );
 };
 
