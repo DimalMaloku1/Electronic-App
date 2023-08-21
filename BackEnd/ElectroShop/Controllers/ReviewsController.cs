@@ -1,4 +1,4 @@
-﻿using ElectroShop.Data; // Make sure you include the necessary namespaces for your models and data
+﻿using ElectroShop.Data; 
 using ElectroShop.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -35,7 +35,7 @@ namespace ElectroShop.Controllers
                 var reviews = await _reviewsCollection.Find(_ => true)
                     .ToListAsync();
 
-                // Load the associated products for each review
+                
                 foreach (var review in reviews)
                 {
                     review.Product = await _productsCollection.Find(p => p.Id == review.ProductId)
@@ -64,7 +64,7 @@ namespace ElectroShop.Controllers
                     return NotFound();
                 }
 
-                // Load the associated product for the review
+                
                 review.Product = await _productsCollection.Find(p => p.Id == review.ProductId)
                     .FirstOrDefaultAsync();
 
@@ -105,7 +105,7 @@ namespace ElectroShop.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                // Check if the selected product (ProductId) exists before allowing the review
+               
                 var existingProduct = await _productsCollection.Find(p => p.Id == review.ProductId)
                                                                .FirstOrDefaultAsync();
                 if (existingProduct == null)
