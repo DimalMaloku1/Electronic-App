@@ -61,6 +61,11 @@ builder.Services.AddScoped<IMongoDatabase>(s =>
 });
 
 // Add MSSQL configuration
+builder.Services.AddDbContext<EmployeeDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 builder.Services.AddDbContext<MyWorldDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
