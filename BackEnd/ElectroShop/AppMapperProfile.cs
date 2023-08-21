@@ -10,6 +10,11 @@ public class AppMapperProfile : Profile
     {
         CreateMap<CustomerDto, Customer>();
         CreateMap<CustomerAddressesDto, CustomerAddresses>();
+        CreateMap<ConversationDTO, Conversation>();
+        CreateMap<MessageDTO, Message>();
+        CreateMap<EmployeeDto, Employee>();
+        CreateMap<EmployeeDetailsDto, EmployeeDetails>();
+        CreateMap<EmployeeDetails, EmployeeDetailsDto>();
     }
 }
 
