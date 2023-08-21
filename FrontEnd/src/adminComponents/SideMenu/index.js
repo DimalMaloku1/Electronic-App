@@ -81,7 +81,17 @@ import {
               key: "/customerlayout",
               icon:<DropboxOutlined />,
             },
-            
+
+            {
+              label: "Lab2 Employees",
+              key: "/employeeslisting",
+              icon: <DropboxOutlined />,
+            },
+            {
+              label: "Lab2 EmployeesDetails",
+              key: "/employeedetailslisting",
+              icon: <DropboxOutlined />,
+            },
             
           ]}
           
