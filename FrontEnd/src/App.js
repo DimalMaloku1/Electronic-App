@@ -46,6 +46,9 @@ import EmployeesListing from './CrudLab/EmployeesListing';
 import EmployeesCreate from './CrudLab/EmployeesCreate';
 import EmployeesEdit from './CrudLab/EmployeesEdit';
 import EmployeeDetailsListing from './CrudLab/EmployeeDetailsListing';
+import EmployeeDetailsCreate from './CrudLab/EmployeeDetailsCreate';
+import EmployeeDetailsEdit from './CrudLab/EmployeeDetailsEdit';
+
 function App() {
   return (
     <div>
@@ -94,7 +97,10 @@ function App() {
         <Route path='/employeeslisting' element={<EmployeesListing/>}></Route>
         <Route path='/employees/create' element={<EmployeesCreate/>}></Route>
         <Route path="/employees/edit/:employeesId" element={<EmployeesEdit />} />
+
+        <Route path='/employeedetails/create' element={<EmployeeDetailsCreate/>}></Route>
         <Route path='/employeedetailslisting' element={<EmployeeDetailsListing/>}></Route>
+        <Route path="/employeedetails/edit/:employeedetailsId" element={<EmployeeDetailsEdit/>} />
         
 
         <Route path='/reviewslayout' element={<ReviewLayout/>}></Route>
