@@ -80,44 +80,24 @@ namespace ElectroShop.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployeeDetails(int id, EmployeeDetailsDto employeeDetailsDto)
+        public IActionResult UpdateEmployeeDetails(int id, [FromBody] EmployeeDetailsDto updatedDetails)
         {
-            var employeeDetails = await _dbContext.EmployeeDetails
-                .Include(ed => ed.Employee)
-                .FirstOrDefaultAsync(details => details.EmployeeDetailsID == id);
+            // Find the existing employee details
+            var existingDetails = _dbContext.EmployeeDetails.Find(id);
 
-            if (employeeDetails == null)
+            if (existingDetails == null)
             {
                 return NotFound();
             }
 
-            // Check if the provided EmployeeID is valid
-            var existingEmployee = await _dbContext.Employee.FindAsync(employeeDetailsDto.EmployeeID);
-            if (existingEmployee == null)
-            {
-                return BadRequest("Invalid EmployeeID.");
-            }
+            // Only update Address and Phone
+            existingDetails.Address = updatedDetails.Address;
+            existingDetails.Phone = updatedDetails.Phone;
 
-            // Ensure the provided EmployeeID matches the employee associated with the details
-            if (employeeDetails.EmployeeID != employeeDetailsDto.EmployeeID)
-            {
-                return BadRequest("EmployeeID does not match the associated employee.");
-            }
+            // Save changes to the database
+            _dbContext.SaveChanges();
 
-            // Update the properties of the EmployeeDetails entity
-            employeeDetails.Address = employeeDetailsDto.Address;
-            employeeDetails.Phone = employeeDetailsDto.Phone;
-
-            try
-            {
-                await _dbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Failed to update the entity.");
-            }
-
-            return NoContent(); // Return a successful response without a body
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
