@@ -48,7 +48,8 @@ import EmployeesEdit from './CrudLab/EmployeesEdit';
 import EmployeeDetailsListing from './CrudLab/EmployeeDetailsListing';
 import EmployeeDetailsCreate from './CrudLab/EmployeeDetailsCreate';
 import EmployeeDetailsEdit from './CrudLab/EmployeeDetailsEdit';
-
+import EmployeesDetailsLayout from './CrudLab/EmployeeDetailsLayout';
+import EmployeesLayout from './CrudLab/EmployeesLayout';
 function App() {
   return (
     <div>
@@ -94,10 +95,12 @@ function App() {
         <Route path='/customer/create' element={<CustomerCreate />}></Route>
         <Route path='/customer/edit/:customerid' element={<CustomerEdit />}></Route>
 
+        <Route path='/employeeslayout' element={<EmployeesLayout/>}></Route>
         <Route path='/employeeslisting' element={<EmployeesListing/>}></Route>
         <Route path='/employees/create' element={<EmployeesCreate/>}></Route>
         <Route path="/employees/edit/:employeesId" element={<EmployeesEdit />} />
 
+        <Route path='/employeesdetailslayout' element={<EmployeesDetailsLayout/>}></Route>
         <Route path='/employeedetails/create' element={<EmployeeDetailsCreate/>}></Route>
         <Route path='/employeedetailslisting' element={<EmployeeDetailsListing/>}></Route>
         <Route path="/employeedetails/edit/:employeedetailsId" element={<EmployeeDetailsEdit/>} />

@@ -84,12 +84,12 @@ import {
 
             {
               label: "Lab2 Employees",
-              key: "/employeeslisting",
+              key: "/employeeslayout",
               icon: <DropboxOutlined />,
             },
             {
               label: "Lab2 EmployeesDetails",
-              key: "/employeedetailslisting",
+              key: "/employeesdetailslayout",
               icon: <DropboxOutlined />,
             },
             

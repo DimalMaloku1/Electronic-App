@@ -29,7 +29,7 @@ const EmployeesCreate = () => {
       .then((res) => {
         if (res.ok) {
           alert("Saved successfully.");
-          navigate("/employeeslisting");
+          navigate("/employeeslayout");
         } else if (res.status === 401) {
           // Handle case where JWT token is invalid or expired
         } else {
@@ -76,7 +76,7 @@ const EmployeesCreate = () => {
             Submit
           </button>
           <Link
-            to="/employeeslisting"
+            to="/employeeslayout"
             className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Back
