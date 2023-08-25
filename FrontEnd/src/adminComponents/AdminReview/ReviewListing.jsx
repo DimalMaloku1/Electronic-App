@@ -37,14 +37,14 @@ const ReviewListingWithStars = () => {
   };
 
   return (
-<div className="grid grid-cols-5 gap-4">
+<div className="grid grid-cols-5 gap-4 mt-5 mr-3 mb-5">
   {reviews.map((review) => (
     <div key={review.id} className="max-w-sm rounded overflow-hidden shadow-lg">
       <div className="relative group">
         <img
           src={review.product.imageURL}
           alt={review.productId}
-          className="w-full h-48 object-cover transition-transform duration-300 transform scale-100 group-hover:scale-105"
+          className="w-full h-60 object-cover transition-transform duration-300 transform scale-100 group-hover:scale-105"
           // Set a fixed height (e.g., h-48) to ensure uniform size
         />
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 flex items-center justify-center">
