@@ -22,9 +22,12 @@ const navigations = [
     name: 'My Account',
     path: '/userpage'
   },
-  
-  
-]
+    
+];
+const Header = () => {
+  const isLoggedIn = !!localStorage.getItem('jwttoken'); // Check if a JWT token is present
+  const username = localStorage.getItem('username'); // Get the username from local storage
+
 const handleLogout = () => {
   // Remove the JWT token from local storage
   localStorage.removeItem('jwttoken');
@@ -39,10 +42,10 @@ const handleLogout = () => {
   // Redirect to the home page
   window.location.href = '/';
 }
-const Header = () => {
+
   
   return (
-    <header className="text-gray-600 body-font shadow-lg">
+    <header className="text-gray-600 body-font shadow-lg w-full bg-white top-0 z-50">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link to={'/'} className="flex items-center text-gray-900 mb-4 md:mb-0">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
@@ -80,7 +83,7 @@ const Header = () => {
         </Link>
         <Link
           to={'/wishlist'}
-          className="inline-flex items-center text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-700 rounded text-base mt-4 md:mt-0 ml-4"
+          className="inline-flex items-center text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-700 rounded text-base mt-3 md:mt-0 ml-4 mr-3"
         >
           Wishlist
           <svg
@@ -95,18 +98,32 @@ const Header = () => {
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </Link>
-        <Link
-          to={'/login'}
+        {isLoggedIn ? (
+          <div className="">
+            <span className="mr-4 text-black text-lg">
+              <span className="animate-fade-in-out inline-block px-4 py-2 rounded-lg bg-indigo-600 text-white border border-indigo-600">
+                Hello,<span className="font-bold">{username}</span>
+              </span>
+            </span>
+            <button
+              className="inline-flex items-center text-white bg-red-600 border-0 py-2 px-4 focus:outline-none hover:bg-red-300 rounded text-base mt-4 md:mt-0"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link
+             to={'/login'}
           className="inline-flex items-center text-white bg-sky-600 border-0 py-2 px-4 focus:outline-none hover:bg-teal-300 rounded text-base mt-4 md:mt-0 ml-10"
-        >
-          Login
-        </Link>
-        <button className='inline-flex items-center text-white bg-red-600 border-0 py-2 px-4 focus:outline-none hover:bg-red-300 rounded text-base mt-4 md:mt-0 ml-10' onClick={handleLogout}>
-          Logout
-        </button>
+          >
+            Login
+          </Link>
+        )}
       </div>
     </header>
-  )
-}
+  );
+};
+
 
 export default Header
