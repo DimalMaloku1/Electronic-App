@@ -43,5 +43,26 @@
   .bg-vanilla {
     background-color: #f8f8f8f3; /* Replace with the desired vanilla color */
   }
+  @keyframes fade-in-out {
+    0%, 100% {
+      opacity: 0.08; /* Adjust the opacity values */
+    }
+    50% {
+      opacity: 1;
+    }
+  }
   
- 
+  .animate-fade-in-out {
+    animation: fade-in-out 3s ease-in-out infinite;
+  }
+
+
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+  }
+  
+  .fade-out {
+    opacity: 0;
+  }
+  
