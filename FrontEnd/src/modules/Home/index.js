@@ -11,6 +11,7 @@ import Header from '../../components/Header'
 const Home = () => {
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [sortOrder, setSortOrder] = useState('asc'); 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -26,20 +27,6 @@ const Home = () => {
 
 
   
-  //QIKY FUNKSION OST NESE NUK SEARCH NUK DALIN PRODUKTET DMTH OSHT ZBRAZT
-  /*const handleSearch = (searchTerm) => {
-    if (searchTerm.trim() === '') {
-      setFilteredProducts([]); // Clear the filtered products when the search term is empty
-    } else {
-      // Filter products based on the entered search term
-      const filtered = products.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    }
-  };
-  */
- //ME KET FUNKSTION PRODUKTET JAN ATY AMA FILTROHEN SA HER E SHKRUN EMRIN E TYNE
     const handleSearch = (searchTerm) => {
     // Filter products based on the entered search term
     const filtered = products.filter((product) =>
@@ -47,17 +34,55 @@ const Home = () => {
     );
     setFilteredProducts(filtered);
   };
+
+  
+  const handleSortChange = (event) => {
+    const newSortOrder = event.target.value;
+    setSortOrder(newSortOrder);
+
+    // Clone and sort the products based on price
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+      if (newSortOrder === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+
+    setFilteredProducts(sortedProducts);
+  };
   
   return (
     <div className="">
-    <Header/>
+      <Header />
       <Hero />
-      <Slider/>
-      <Categories/>
-      <div className="flex flex-col text-center w-full mt-20 ">
-        <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">PRODUCTS</h2>
-        <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">SEARCH YOUR CHOSEN PRODUCTS</h1>
-        <SearchBar handleSearch={handleSearch} />
+      <Slider />
+      <Categories />
+      <div className="flex flex-col items-center justify-center w-full mt-8">
+        <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-2">
+          PRODUCTS
+        </h2>
+        <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">
+          SEARCH YOUR CHOSEN PRODUCTS
+        </h1>
+        <div className="flex items-center space-x-8 mb-6 mt-1">
+          <div className="flex items-center">
+            <SearchBar handleSearch={handleSearch} />
+          </div>
+          <div className="relative group ml-auto mr-4 mb-6"> {/* Adjusted margin-top */}
+            <label className="text-sm font-medium text-gray-600 cursor-pointer text-lg">
+              Sort by Price:
+            </label>
+            <select
+              value={sortOrder}
+              onChange={handleSortChange}
+              className="border rounded-md px-3 py-2 text-sm bg-white appearance-none transition-colors duration-300 ease-in-out focus:outline-none focus:border-indigo-500 group-hover:border-indigo-500 group-hover:bg-indigo-100"
+            >
+              <option value="asc">Low to High</option>
+              <option value="desc">High to Low</option>
+            </select>
+          </div>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
   {/* Render product cards if filtered products exist */}
   {filteredProducts.length > 0 ? (
