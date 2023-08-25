@@ -7,7 +7,7 @@ import img5 from '../assets/img5.png';
 
 const Slider = () => {
   const images = [img1, img2, img3, img4, img5];
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(1);
 
   const goToPreviousImage = () => {
     setCurrentImageIndex((prevIndex) =>
