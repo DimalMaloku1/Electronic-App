@@ -18,7 +18,7 @@ const Login = () => {
         email: username,
         password: password
       };
-
+  
       fetch("https://localhost:7099/api/Account/login", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,10 +45,16 @@ const Login = () => {
           }
         })
         .catch((err) => {
-          toast.error('Login Failed due to: ' + err.message);
+          if (err.message === 'Login failed') {
+            // Alert for wrong credentials
+            alert('Invalid username or password. Please try again.');
+          } else {
+            toast.error('Login Failed due to: ' + err.message);
+          }
         });
     }
   };
+  
 
   const validate = () => {
     let result = true;
