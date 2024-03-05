@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using ElectroShop.Data;
 using ElectroShop.DTO;
 using ElectroShop.Models;

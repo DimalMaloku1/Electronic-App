@@ -15,6 +15,8 @@ public class AppMapperProfile : Profile
         CreateMap<EmployeeDto, Employee>();
         CreateMap<EmployeeDetailsDto, EmployeeDetails>();
         CreateMap<EmployeeDetails, EmployeeDetailsDto>();
+
+        CreateMap<AssetDto, Asset>();
+        CreateMap<AssetTypeDto, AssetType>();
     }
 }
-

@@ -1,17 +1,13 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
-using Microsoft.EntityFrameworkCore;
-using MongoDB.Driver;
 using ElectroShop.Data;
-using Microsoft.AspNetCore.Identity;
 using ElectroShop.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.IdentityModel.Tokens.Jwt;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 using Swashbuckle.AspNetCore.Filters;
-using ElectroShop;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +19,8 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 );
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => {
+builder.Services.AddSwaggerGen(options =>
+{
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
         Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
@@ -57,11 +54,16 @@ builder.Services.AddSingleton<IMongoClient>(s =>
 builder.Services.AddScoped<IMongoDatabase>(s =>
 {
     var client = s.GetService<IMongoClient>();
-    var databaseName = "ElectroShop"; // change this to your desired database name
+    var databaseName = "ElectroShop";
     return client.GetDatabase(databaseName);
 });
 
 // Add MSSQL configuration
+
+builder.Services.AddDbContext<AssetDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 builder.Services.AddDbContext<EmployeeDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

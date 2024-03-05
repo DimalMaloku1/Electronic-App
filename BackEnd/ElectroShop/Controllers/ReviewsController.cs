@@ -1,13 +1,7 @@
-﻿using ElectroShop.Data; 
-using ElectroShop.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+﻿using ElectroShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ElectroShop.Controllers
 {
@@ -25,7 +19,7 @@ namespace ElectroShop.Controllers
             _productsCollection = database.GetCollection<Product>("products");
         }
 
-        
+
 
         [HttpGet]
         public async Task<ActionResult<List<Review>>> GetAllReviews()
@@ -35,7 +29,7 @@ namespace ElectroShop.Controllers
                 var reviews = await _reviewsCollection.Find(_ => true)
                     .ToListAsync();
 
-                
+
                 foreach (var review in reviews)
                 {
                     review.Product = await _productsCollection.Find(p => p.Id == review.ProductId)
@@ -64,7 +58,7 @@ namespace ElectroShop.Controllers
                     return NotFound();
                 }
 
-                
+
                 review.Product = await _productsCollection.Find(p => p.Id == review.ProductId)
                     .FirstOrDefaultAsync();
 
@@ -105,7 +99,7 @@ namespace ElectroShop.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-               
+
                 var existingProduct = await _productsCollection.Find(p => p.Id == review.ProductId)
                                                                .FirstOrDefaultAsync();
                 if (existingProduct == null)
@@ -113,10 +107,7 @@ namespace ElectroShop.Controllers
                     return NotFound("Selected product not found");
                 }
 
-                // Generate a new ObjectId for the review
                 review.Id = ObjectId.GenerateNewId().ToString();
-
-                // Insert the review into the MongoDB collection
                 await _reviewsCollection.InsertOneAsync(review);
 
                 return Ok();
