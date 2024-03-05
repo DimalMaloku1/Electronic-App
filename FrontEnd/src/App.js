@@ -52,6 +52,9 @@ import EmployeesDetailsLayout from './CrudLab/EmployeeDetailsLayout';
 import EmployeesLayout from './CrudLab/EmployeesLayout';
 
 
+// Imports Krudat LAB 2 2024
+
+
 function App() {
   return (
     <div>
@@ -106,12 +109,11 @@ function App() {
         <Route path='/employeedetails/create' element={<EmployeeDetailsCreate/>}></Route>
         <Route path='/employeedetailslisting' element={<EmployeeDetailsListing/>}></Route>
         <Route path="/employeedetails/edit/:employeedetailsId" element={<EmployeeDetailsEdit/>} />
-        
 
         <Route path='/reviewslayout' element={<ReviewLayout/>}></Route>
         <Route path='/reviewslisting' element={<ReviewListing/>}></Route>
-
         <Route path="*" element={<div>404</div>} />
+
 
       </Routes>
       <Footer/>
