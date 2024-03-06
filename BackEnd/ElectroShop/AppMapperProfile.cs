@@ -18,5 +18,7 @@ public class AppMapperProfile : Profile
 
         CreateMap<AssetDto, Asset>();
         CreateMap<AssetTypeDto, AssetType>();
+        CreateMap<TeamDto, Team>();
+        CreateMap<PlayerDto, Player>();
     }
 }

@@ -92,6 +92,16 @@ import {
               key: "/employeesdetailslayout",
               icon: <DropboxOutlined />,
             },
+            {
+              label: "Lab2 Player",
+              key: "/playerslayout",
+              icon:<DropboxOutlined />,
+            },
+            {
+              label: "Lab2 Team",
+              key: "/teamlayout",
+              icon:<DropboxOutlined />,
+            },
             
           ]}
           

@@ -50,6 +50,15 @@ import EmployeeDetailsCreate from './CrudLab/EmployeeDetailsCreate';
 import EmployeeDetailsEdit from './CrudLab/EmployeeDetailsEdit';
 import EmployeesDetailsLayout from './CrudLab/EmployeeDetailsLayout';
 import EmployeesLayout from './CrudLab/EmployeesLayout';
+import PlayersCreate from './LAB2/PlayersCreate'
+import PlayersEdit from './LAB2/PlayersEdit'
+import PlayersListing from './LAB2/PlayersListing'
+import PlayersLayout from './LAB2/PlayersLayout';
+import TeamListing from './LAB2/TeamsListing';
+
+import TeamEdit from './LAB2/TeamsEdit';
+import TeamCreate from './LAB2/TeamsCreate';
+import TeamLayout from './LAB2/TeamsLayout'
 
 
 // Imports Krudat LAB 2 2024
@@ -113,7 +122,15 @@ function App() {
         <Route path='/reviewslayout' element={<ReviewLayout/>}></Route>
         <Route path='/reviewslisting' element={<ReviewListing/>}></Route>
         <Route path="*" element={<div>404</div>} />
+        <Route path='/playerslayout' element={<PlayersLayout/>}></Route>
+        <Route path='/playerslisting' element={<PlayersListing />}></Route>
+        <Route path='/players/create' element={<PlayersCreate />}></Route>
+        <Route path='/players/edit/:playersid' element={<PlayersEdit />}></Route>
 
+        <Route path='/teamlayout' element={<TeamLayout/>}></Route>
+        <Route path='/teamlisting' element={<TeamListing/>}></Route>
+        <Route path='/team/create' element={<TeamCreate />}></Route>
+        <Route path='/team/edit/:teamid' element={<TeamEdit />}></Route>
 
       </Routes>
       <Footer/>
