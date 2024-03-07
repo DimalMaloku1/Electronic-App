@@ -6,7 +6,7 @@ const BooksEdit = () => {
 
   const [bookId, setbookId] = useState("");
   const [title, setTitle] = useState("");
-  const [publicationyear, setPublicationyear] = useState("");
+  const [publicationYear, setPublicationYear] = useState("");
   const [authorId, setAuthorId] = useState("");
   const [validation, setValidation] = useState(false);
   const [authors, setAuthors] = useState([]);
@@ -20,7 +20,7 @@ const BooksEdit = () => {
       .then((resp) => {
         setbookId(resp.bookId);
         setTitle(resp.title);
-        setPublicationyear(resp.publicationyear);
+        setPublicationYear(resp.publicationYear);
         setAuthorId(resp.authorId);
       })
       .catch((err) => {
@@ -37,7 +37,7 @@ const BooksEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const booksPayload = { bookId, title, publicationyear, authorId };
+    const booksPayload = { bookId, title, publicationYear, authorId };
 
     const token = localStorage.getItem("jwttoken");
 
@@ -96,14 +96,14 @@ const BooksEdit = () => {
           {title.length === 0 && validation && <span className="text-danger">Enter the title</span>}
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">publicationyear</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">publicationYear</label>
           <input
             required
-            value={publicationyear}
-            onChange={(e) => setPublicationyear(e.target.value)}
+            value={publicationYear}
+            onChange={(e) => setPublicationYear(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-          {publicationyear.length === 0 && validation && <span className="text-danger">Enter the publicationyear</span>}
+          {publicationYear.length === 0 && validation && <span className="text-danger">Enter the publicationYear</span>}
         </div>
         <div className="mb-4 relative">
         <label className="block text-gray-700 text-sm font-bold mb-2">authorId </label>

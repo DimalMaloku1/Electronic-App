@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const AuthorsEdit = () => {
-    const { authorid } = useParams();
+    const { authorsid } = useParams();
     
     const [authorId, authorIdchange] = useState("");
     const [name, namechange] = useState("");
@@ -15,7 +15,7 @@ const AuthorsEdit = () => {
 
 
     useEffect(() => {
-        fetch("https://localhost:7099/api/Authors/" + authorid)
+        fetch("https://localhost:7099/api/Authors/" + authorsid)
             .then((res) => res.json())
             .then((resp) => {
               authorIdchange(resp.authorId);
@@ -40,7 +40,7 @@ const AuthorsEdit = () => {
         return;
       }
     
-      fetch(`https://localhost:7099/api/Authors/${authorid}`, {
+      fetch(`https://localhost:7099/api/Authors/${authorsid}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
