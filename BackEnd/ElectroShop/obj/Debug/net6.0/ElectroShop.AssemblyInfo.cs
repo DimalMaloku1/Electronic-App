@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ElectroShop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65efb380cf25e3dca9b899af154bcce7c8f31f63")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e7d71588b696a82d1e01f8134a8d81740933faa")]
 [assembly: System.Reflection.AssemblyProductAttribute("ElectroShop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ElectroShop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

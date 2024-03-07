@@ -102,6 +102,16 @@ import {
               key: "/teamlayout",
               icon:<DropboxOutlined />,
             },
+            {
+              label: "Lab2 Author",
+              key: "/authorslayout",
+              icon:<DropboxOutlined />,
+            },
+            {
+              label: "Lab2 Books",
+              key: "/bookslayout",
+              icon:<DropboxOutlined />,
+            },
             
           ]}
           

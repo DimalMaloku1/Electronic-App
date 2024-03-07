@@ -58,7 +58,17 @@ import TeamListing from './LAB2/TeamsListing';
 
 import TeamEdit from './LAB2/TeamsEdit';
 import TeamCreate from './LAB2/TeamsCreate';
-import TeamLayout from './LAB2/TeamsLayout'
+import TeamLayout from './LAB2/TeamsLayout';
+
+import AuthorsListing from './LAB2/AuthorsListing';
+import AuthorsEdit from './LAB2/AuthorsEdit';
+import AuthorsCreate from './LAB2/AuthorsCreate';
+import AuthorsLayout from './LAB2/AuthorsLayout'
+
+import BooksListing from './LAB2/BooksListing';
+import BooksEdit from './LAB2/BooksEdit';
+import BooksCreate from './LAB2/BooksCreate';
+import BooksLayout from './LAB2/BooksLayout'
 
 
 // Imports Krudat LAB 2 2024
@@ -131,6 +141,16 @@ function App() {
         <Route path='/teamlisting' element={<TeamListing/>}></Route>
         <Route path='/team/create' element={<TeamCreate />}></Route>
         <Route path='/team/edit/:teamid' element={<TeamEdit />}></Route>
+
+        <Route path='/authorslayout' element={<AuthorsLayout/>}></Route>
+        <Route path='/authorslisting' element={<AuthorsListing/>}></Route>
+        <Route path='/authors/create' element={<AuthorsCreate />}></Route>
+        <Route path='/authors/edit/:authorsid' element={<AuthorsEdit />}></Route>
+
+        <Route path='/bookslayout' element={<BooksLayout/>}></Route>
+        <Route path='/bookslisting' element={<BooksListing/>}></Route>
+        <Route path='/books/create' element={<BooksCreate />}></Route>
+        <Route path='/books/edit/:booksid' element={<BooksEdit />}></Route>
 
       </Routes>
       <Footer/>

@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const PlayersListing = () => {
-    const [playersdata,playersdatachange] = useState(null);
-    const [filterDate, setFilterDate] = useState("");
-
+const BooksListing = () => {
+    const [booksdata,booksdatachange] = useState(null);
     const navigate = useNavigate();
 
     
-    const LoadEdit = (playerId) => {
-        navigate("/players/edit/" + playerId);
+    const LoadEdit = (bookId) => {
+        navigate("/books/edit/" + bookId);
     }
-    const Removefunction = (playerId) => {
+    const Removefunction = (bookId) => {
       if (window.confirm('Do you want to remove?')) {
         const token = localStorage.getItem("jwttoken");
     
@@ -20,7 +18,7 @@ const PlayersListing = () => {
           return;
         }
     
-        fetch(`https://localhost:7099/api/Players/${playerId}`, {
+        fetch(`https://localhost:7099/api/Books/${bookId}`, {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${token}`
@@ -44,47 +42,21 @@ const PlayersListing = () => {
     
 
     useEffect(() => {
-        fetch("https://localhost:7099/api/Players").then((res) => {
+        fetch("https://localhost:7099/api/Books").then((res) => {
             return res.json();
         }).then((resp) => {
-            playersdatachange(resp);
+            booksdatachange(resp);
         }).catch((err) => {
             console.log(err.message);
         })
     }, [])
 
-    // Filter function based on asset productionDate
-  const handleFilterChange = (e) => {
-    setFilterDate(e.target.value);
-  };
-
-  // Filtered assets based on the input filter productionDate
-  const filteredPlayers =
-  playersdata &&
-  playersdata.filter((player) => {
-    const dateMatches =
-      filterDate === '' ||
-      (player.teamId && player.teamId.toString().startsWith(filterDate.toString()));
-    return dateMatches;
-  });
-
-
-
     return (
         <div className="overflow-x-auto">
         <div className="mb-4 flex justify-between p-2">
         <button className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
-          <Link to="/players/create">Add New</Link>
+          <Link to="/books/create">Add New</Link>
         </button>
-        <div style={{ minWidth: "200px", marginLeft: "70px" }}>
-          <input
-            type="text"
-            placeholder="Filter Products by Production Date"
-            value={filterDate}
-            onChange={handleFilterChange}
-            className="p-2 border border-gray-300 rounded"
-          />
-        </div>
         <Link
           to="/adminproducts"
           className="bg-yellow-300 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -96,16 +68,16 @@ const PlayersListing = () => {
         <thead>
           <tr>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              player ID
+              book ID
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              name
+              title
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              number
+              publication yaer
             </th>
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-              team ID
+              author ID
             </th>
             
             <th className="py-3 px-6 bg-gray-100 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
@@ -114,38 +86,34 @@ const PlayersListing = () => {
           </tr>
         </thead>
         <tbody>
-        {filteredPlayers &&
-  filteredPlayers.map((player) => (
-    <tr key={player.playerId} className="bg-white">
-      <td className="py-4 px-6 border-b border-gray-300">{player.playerId}</td>
-      <td className="py-4 px-6 border-b border-gray-300">{player.name}</td>
-      <td className="py-4 px-6 border-b border-gray-300">{player.number}</td>
-      <td className="py-4 px-6 border-b border-gray-300">{player.teamId}</td>
-      <td className="py-4 px-6 border-b border-gray-300">
-        <button
-          className="px-4 py-2 mr-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
-          onClick={() => {
-            LoadEdit(player.playerId);
-          }}
-        >
-          Edit
-        </button>
-        <button
-          className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
-          onClick={() => {
-            Removefunction(player.playerId);
-          }}
-        >
-          Remove
-        </button>
-      </td>
-    </tr>
-  ))}
-
+        {booksdata &&
+                                booksdata.map(books => (
+            <tr key={books.bookId} className="bg-white">
+              <td className="py-4 px-6 border-b border-gray-300">{books.bookId}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{books.title}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{books.publicationyear}</td>
+              <td className="py-4 px-6 border-b border-gray-300">{books.authorId}</td>
+              <td className="py-4 px-6 border-b border-gray-300">
+                <button
+                  className="px-4 py-2 mr-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+                  onClick={() => { LoadEdit(books.bookId) }}
+                >
+                  Edit
+                </button>
+                <button
+                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                  onClick={() => { Removefunction(books.bookId) }}
+                >
+                  Remove
+                </button>
+             
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
     );
 }
 
-export default PlayersListing;
+export default BooksListing;
