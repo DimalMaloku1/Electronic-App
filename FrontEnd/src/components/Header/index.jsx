@@ -11,10 +11,6 @@ const navigations = [
     path: '/products'
   },
   {
-    name: 'About Us',
-    path: '/aboutus'
-  },
-  {
     name: 'Contact Us',
     path: '/contact'
   },

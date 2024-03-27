@@ -1,36 +1,70 @@
-import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import React, { useRef, useEffect, useState } from 'react';
+import Chart from 'chart.js/auto';
 
-const StackedBarChart = () => {
-  // Dummy data for demonstration
-  const salesData = [
-    { month: 'January', sales: 500 },
-    { month: 'February', sales: 750 },
-    { month: 'March', sales: 300 },
-    { month: 'April', sales: 900 },
-    { month: 'May', sales: 600 },
-    { month: 'June', sales: 1200 },
-    { month: 'July', sales: 800 },
-    { month: 'August', sales: 400 },
-    { month: 'September', sales: 1100 },
-    { month: 'October', sales: 950 },
-    { month: 'November', sales: 700 },
-    { month: 'December', sales: 1000 },
-  ];
+export default function StackedBarChart() {
+  const chartRef = useRef(null);
+  const chartInstance = useRef(null);
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the API
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://localhost:7099/api/Account');
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    // If userData is not yet available, do nothing
+    if (!userData.length) return;
+
+    if (chartInstance.current) {
+      chartInstance.current.destroy();
+    }
+
+    const myChartRef = chartRef.current.getContext('2d');
+
+    // Count the number of users in each role
+    const roleCounts = userData.reduce((acc, user) => {
+      acc[user.role] = (acc[user.role] || 0) + 1;
+      return acc;
+    }, {});
+
+    chartInstance.current = new Chart(myChartRef, {
+      type: 'pie',
+      data: {
+        labels: Object.keys(roleCounts),
+        datasets: [
+          {
+            data: Object.values(roleCounts),
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)',
+              'rgb(255, 205, 86)',
+            ],
+          },
+        ],
+      },
+    });
+
+    return () => {
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
+    };
+  }, [userData]);
 
   return (
     <div>
-      <h2>Sales From January To May 2023 Chart</h2>
-      <BarChart width={800} height={400} data={salesData}>
-        <CartesianGrid strokeDasharray="1 1" />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="sales" fill="rgba(50, 100, 255, 0.5)" />
-      </BarChart>
+      <h1>Percentage of customers by role </h1>
+      <canvas ref={chartRef} style={{ width: '350px', height: '250px' }} />
     </div>
   );
-};
-
-export default StackedBarChart;
+}

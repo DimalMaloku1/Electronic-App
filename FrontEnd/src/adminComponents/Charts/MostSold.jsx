@@ -1,54 +1,93 @@
-import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import React, { useRef, useEffect, useState } from 'react';
+import Chart from 'chart.js/auto';
 
 const MostSold = () => {
-  // Dummy data for demonstration
-  const techSalesData = [
-    { month: 'January', product: 'Apple iPhone 14 Pro', sales: 200 },
-    { month: 'February', product: 'MacBook Pro 16', sales: 270 },
-    { month: 'March', product: 'Razer DeathAdder V2', sales: 180 },
-    { month: 'April', product: 'Apple iPhone 14 Pro', sales: 120 },
-    { month: 'May', product: 'Nikon D3500', sales: 250 },
-    { month: 'June', product: 'Apple Watch Series 8', sales: 130 },
-    { month: 'July', product: 'MacBook Pro 16', sales: 300 },
-    { month: 'August', product: 'Alienware 500Hz Gaming Monitor', sales: 220 },
-    { month: 'September', product: 'SteelSeries Arctis 7', sales: 300 },
-    { month: 'October', product: 'Asus Zenbook Pro Duo 14', sales: 350 },
-    { month: 'November', product: 'OnePlus Nord N20 5G', sales: 280 },
-    { month: 'December', product: 'Samsung Galaxy A54 5G', sales: 240 },
-  ];
+  const chartRef = useRef(null);
+  const chartInstance = useRef(null);
+  const [productData, setProductData] = useState([]);
 
-  const uniqueMonths = Array.from(new Set(techSalesData.map(item => item.month)));
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://localhost:7099/api/Checkout');
+        const data = await response.json();
+        const productQuantities = {};
+        data.forEach(entry => {
+          entry.products.forEach(product => {
+            productQuantities[product.name] = (productQuantities[product.name] || 0) + product.quantity;
+          });
+        });
+        const mostSoldProducts = Object.keys(productQuantities).map(name => ({
+          name,
+          quantity: productQuantities[name]
+        }));
+        setProductData(mostSoldProducts);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  const filteredData = uniqueMonths.map(month => {
-    const monthData = techSalesData.find(item => item.month === month);
-    return { month: monthData.month, product: monthData.product, sales: monthData.sales };
-  });
+    fetchData();
+  }, []);
 
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      const data = payload[0].payload;
-      return (
-        <div className="custom-tooltip">
-          <p className="label">{data.product}</p>
-          <p className="value">Sales: {data.sales}</p>
-        </div>
-      );
+  useEffect(() => {
+    if (!productData.length || !chartRef.current) return;
+
+    if (chartInstance.current) {
+      chartInstance.current.destroy();
     }
-    return null;
-  };
+
+    const myChartRef = chartRef.current.getContext('2d');
+
+    const labels = productData.map(product => product.name);
+    const data = productData.map(product => product.quantity);
+
+    chartInstance.current = new Chart(myChartRef, {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: [
+            'rgb(123, 200, 87)',
+            'rgb(180, 78, 200)',
+            'rgb(78, 156, 200)',
+            // Add more colors as needed
+          ],
+        }],
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        tooltips: {
+          enabled: true,
+          mode: 'index',
+          intersect: false,
+          callbacks: {
+            label: (tooltipItem, data) => {
+              const label = data.labels[tooltipItem.index];
+              const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+              return `${label}: ${value} sold`;
+            },
+          },
+        },
+      },
+    });
+
+    return () => {
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
+    };
+  }, [productData]);
 
   return (
     <div>
-      <h2>Most Sold Product by Month And Its Total Sales</h2>
-      <BarChart width={800} height={400} data={filteredData}>
-        <CartesianGrid strokeDasharray="1 1" />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <Tooltip content={<CustomTooltip />} />
-        <Legend />
-        <Bar dataKey="sales" fill="rgba(197, 211, 75, 0.5)" />
-      </BarChart>
+      <h1>Most sold products</h1>
+      <canvas ref={chartRef} style={{ width: '350px', height: '250px' }} />
     </div>
   );
 };
