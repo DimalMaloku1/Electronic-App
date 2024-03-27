@@ -71,48 +71,6 @@ import {
               icon:<LikeOutlined />,
             },
             
-            {
-              label: "Lab2 Addresses",
-              key: "/adresseslayout",
-              icon:<DropboxOutlined />,
-            },
-            {
-              label: "Lab2 Customers",
-              key: "/customerlayout",
-              icon:<DropboxOutlined />,
-            },
-
-            {
-              label: "Lab2 Employees",
-              key: "/employeeslayout",
-              icon: <DropboxOutlined />,
-            },
-            {
-              label: "Lab2 EmployeesDetails",
-              key: "/employeesdetailslayout",
-              icon: <DropboxOutlined />,
-            },
-            {
-              label: "Lab2 Player",
-              key: "/playerslayout",
-              icon:<DropboxOutlined />,
-            },
-            {
-              label: "Lab2 Team",
-              key: "/teamlayout",
-              icon:<DropboxOutlined />,
-            },
-            {
-              label: "Lab2 Author",
-              key: "/authorslayout",
-              icon:<DropboxOutlined />,
-            },
-            {
-              label: "Lab2 Books",
-              key: "/bookslayout",
-              icon:<DropboxOutlined />,
-            },
-            
           ]}
           
         ></Menu>

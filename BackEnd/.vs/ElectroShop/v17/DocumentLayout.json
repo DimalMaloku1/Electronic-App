@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|c:\\users\\andi\\desktop\\electronic-app\\backend\\electroshop\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|solutionrelative:electroshop\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|c:\\users\\andi\\desktop\\electronic-app\\backend\\electroshop\\dto\\authordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|solutionrelative:electroshop\\dto\\authordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|c:\\users\\andi\\desktop\\electronic-app\\backend\\electroshop\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|solutionrelative:electroshop\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|c:\\users\\andi\\desktop\\electronic-app\\backend\\electroshop\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|solutionrelative:electroshop\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|c:\\users\\andi\\desktop\\electronic-app\\backend\\electroshop\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|solutionrelative:electroshop\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|c:\\users\\andi\\desktop\\electronic-app\\backend\\electroshop\\dto\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|solutionrelative:electroshop\\dto\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|c:\\users\\andi\\desktop\\electronic-app\\backend\\electroshop\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00C75C9E-F592-44F1-9A60-B8C1F299B143}|ElectroShop\\ElectroShop.csproj|solutionrelative:electroshop\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Author.cs",
+              "DocumentMoniker": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Models\\Author.cs",
+              "RelativeDocumentMoniker": "ElectroShop\\Models\\Author.cs",
+              "ToolTip": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Models\\Author.cs",
+              "RelativeToolTip": "ElectroShop\\Models\\Author.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T13:08:06.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TeamsController.cs",
+              "DocumentMoniker": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Controllers\\TeamsController.cs",
+              "RelativeDocumentMoniker": "ElectroShop\\Controllers\\TeamsController.cs",
+              "ToolTip": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Controllers\\TeamsController.cs",
+              "RelativeToolTip": "ElectroShop\\Controllers\\TeamsController.cs",
+              "ViewState": "AQIAADAAAAAAlJmZmZkJwAoAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T13:08:06.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthorsController.cs",
+              "DocumentMoniker": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Controllers\\AuthorsController.cs",
+              "RelativeDocumentMoniker": "ElectroShop\\Controllers\\AuthorsController.cs",
+              "ToolTip": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Controllers\\AuthorsController.cs",
+              "RelativeToolTip": "ElectroShop\\Controllers\\AuthorsController.cs",
+              "ViewState": "AQIAADQAAAAAJDMzMzPxvzIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T13:08:06.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "ElectroShop\\Controllers\\BooksController.cs",
+              "ToolTip": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "ElectroShop\\Controllers\\BooksController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T13:08:06.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookDto.cs",
+              "DocumentMoniker": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\DTO\\BookDto.cs",
+              "RelativeDocumentMoniker": "ElectroShop\\DTO\\BookDto.cs",
+              "ToolTip": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\DTO\\BookDto.cs",
+              "RelativeToolTip": "ElectroShop\\DTO\\BookDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T13:08:06.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthorDto.cs",
+              "DocumentMoniker": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\DTO\\AuthorDto.cs",
+              "RelativeDocumentMoniker": "ElectroShop\\DTO\\AuthorDto.cs",
+              "ToolTip": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\DTO\\AuthorDto.cs",
+              "RelativeToolTip": "ElectroShop\\DTO\\AuthorDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T13:08:06.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "ElectroShop\\Models\\Book.cs",
+              "ToolTip": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\Models\\Book.cs",
+              "RelativeToolTip": "ElectroShop\\Models\\Book.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T13:08:06.734Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

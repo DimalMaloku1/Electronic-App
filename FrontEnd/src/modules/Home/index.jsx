@@ -70,7 +70,7 @@ const Home = () => {
             <SearchBar handleSearch={handleSearch} />
           </div>
           <div className="relative group ml-auto mr-4 mb-6"> {/* Adjusted margin-top */}
-            <label className="text-sm font-medium text-gray-600 cursor-pointer text-lg">
+            <label className="font-medium text-gray-600 cursor-pointer text-lg">
               Sort by Price:
             </label>
             <select

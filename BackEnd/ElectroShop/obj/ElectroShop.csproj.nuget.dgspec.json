@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {}
+    "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {
+    "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
+        "projectUniqueName": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
         "projectName": "ElectroShop",
-        "projectPath": "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\obj\\",
+        "projectPath": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\ElectroShop.csproj",
+        "packagesPath": "C:\\Users\\ANDI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANDI\\Desktop\\Electronic-App\\BackEnd\\ElectroShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ANDI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -109,7 +114,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -121,7 +127,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
