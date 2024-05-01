@@ -8,6 +8,12 @@ import Stats from '../../components/StatCard'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import Slider from '../../components/Slider'
 import Header from '../../components/Header'
+
+
+import AuthorListing from '../../Lab2Cruds/AuthorListing';
+import BlogPostListing from '../../Lab2Cruds/BlogPostListing';
+
+
 const Home = () => {
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -106,6 +112,22 @@ const Home = () => {
       </div>
      
       <Stats/>
+
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <div class="flex flex-col gap-8">
+      <div class=" p-4">
+        <AuthorListing />
+      </div>
+      <div class="p-4">
+        <BlogPostListing />
+      </div>
+    </div>
+
+  </div>
+
+
+
     </div>
   )
 }

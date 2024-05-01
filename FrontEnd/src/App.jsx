@@ -32,6 +32,14 @@ import CategoriesEdit from './Admin/CategoriesEdit'
 import ReviewLayout from './adminComponents/AdminReview/ReviewLayout'
 import ReviewListing from './adminComponents/AdminReview/ReviewListing'
 
+import AuthorListing from './Lab2Cruds/AuthorListing';
+import AuthorCreate from './Lab2Cruds/AuthorCreate';
+import AuthorEdit from './Lab2Cruds/AuthorEdit'
+
+import BlogPostListing from './Lab2Cruds/BlogPostListing';
+import BlogPostCreate from './Lab2Cruds/BlogPostCreate';
+import BlogPostEdit from './Lab2Cruds/BlogPostEdit'
+
 
 function App() {
   return (
@@ -71,6 +79,15 @@ function App() {
         <Route path='/reviewslisting' element={<ReviewListing/>}></Route>
         <Route path="*" element={<div>404</div>} />
        
+
+       <Route path="/authors" element={<AuthorListing />} />
+        <Route path="/authors/new" element={<AuthorCreate />} />
+        <Route path="/authors/edit/:id" element={<AuthorEdit />} />
+
+
+        <Route path="/blogposts" element={<BlogPostListing />} />
+        <Route path="/blogposts/new" element={<BlogPostCreate />} />
+        <Route path="/blogposts/edit/:id" element={<BlogPostEdit />} />
       </Routes>
       <Footer/>
     </div>
