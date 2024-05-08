@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 const BlogPostListing = () => {
   const [blogPosts, setBlogPosts] = useState([]);
 
+  const [titleFilter, settitleFilter] = useState('');
+  const [filteredBlogPosts, setFilteredBlogPosts] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,10 +30,33 @@ const BlogPostListing = () => {
     }
   };
 
+
+  //filter 
+  useEffect(() => {
+    if (titleFilter) {
+      const filtered = blogPosts.filter(blogPost => blogPost.title.includes(titleFilter));
+      setFilteredBlogPosts(filtered);
+    } else {
+      setFilteredBlogPosts(blogPosts);
+    }
+  }, [titleFilter, blogPosts]);
+
+  const handleFilter = (event) => {
+    settitleFilter(event.target.value);
+  };
+
+
   return (
     <div className="p-2">
       <h2 className="text-lg font-semibold mb-2">Blog Posts</h2>
       <div className="mb-2">
+        <input
+          type="text"
+          placeholder="Enter type to Filter"
+          value={titleFilter}
+          onChange={handleFilter}
+          className="border border-gray-300 rounded-md p-2"
+        />
         <Link to="/blogposts/new" className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
           New Blog Post
         </Link>
@@ -57,7 +83,7 @@ const BlogPostListing = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {blogPosts.map(blogPost => (
+            {filteredBlogPosts.map(blogPost => (
               <tr key={blogPost._id} className="hover:bg-gray-50">
                 <td className="px-2 py-1 whitespace-nowrap border border-gray-200">
                   <div className="text-sm text-gray-800">{blogPost._id}</div>
@@ -73,7 +99,7 @@ const BlogPostListing = () => {
                 </td>
                 <td className="px-2 py-1 whitespace-nowrap border border-gray-200">
                   <Link to={`/blogposts/edit/${blogPost._id}`} className="text-blue-600 hover:text-blue-800 mr-1">Edit</Link>
-                  <button className="text-red-600 hover:text-red-800" onClick={()=> handleDelete(blogPost._id)}>Delete</button>
+                  <button className="text-red-600 hover:text-red-800" onClick={() => handleDelete(blogPost._id)}>Delete</button>
                 </td>
               </tr>
             ))}
