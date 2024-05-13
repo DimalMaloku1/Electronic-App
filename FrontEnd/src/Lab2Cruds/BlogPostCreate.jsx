@@ -17,7 +17,7 @@ const BlogPostCreate = () => {
           setAuthorId(data[0]._id);
         }
       } catch (error) {
-        console.error('Error fetching blogposts:', error);
+        console.error('Error fetching authors:', error);
       }
     };
     fetchAuthors();
