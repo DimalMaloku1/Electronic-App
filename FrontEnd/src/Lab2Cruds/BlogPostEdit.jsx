@@ -17,7 +17,7 @@ const BlogPostEdit = () => {
         setContent(data.content);
         setAuthor(data.author);
       } catch (error) {
-        console.error('Error fetching blog post:', error);
+        console.error('Error fetching blogpost:', error);
       }
     };
     fetchBlogPost();
@@ -27,14 +27,14 @@ const BlogPostEdit = () => {
     try {
       await axios.put(`http://localhost:5000/api/blogposts/${id}`, { title, content, author }); // Adjust the URL based on your backend endpoint
     } catch (error) {
-      console.error('Error updating blog post:', error);
+      console.error('Error updating blogpost:', error);
     }
   };
   
 
   return (
     <div className="container">
-      <h2>Edit Blog Post</h2>
+      <h2>Edit BlogPost</h2>
       <form className="form">
 
         <div className="form-group">

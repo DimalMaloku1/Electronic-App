@@ -17,7 +17,7 @@ const BlogPostCreate = () => {
           setAuthorId(data[0]._id);
         }
       } catch (error) {
-        console.error('Error fetching authors:', error);
+        console.error('Error fetching blogposts:', error);
       }
     };
     fetchAuthors();
@@ -29,14 +29,14 @@ const BlogPostCreate = () => {
       await axios.post('http://localhost:5000/api/blogposts', { title, content, author: authorId }); // Adjust the URL based on your backend endpoint
       // Optionally, you can handle success or navigate to a different page
     } catch (error) {
-      console.error('Error creating blog post:', error);
+      console.error('Error creating blogpost:', error);
       // Optionally, you can show an error message to the user
     }
   };
 
   return (
     <div className="max-w-sm mx-auto">
-      <h2 className="text-lg font-semibold mb-4">Create Blog Post</h2>
+      <h2 className="text-lg font-semibold mb-4">Create BlogPost</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <input
           type="text"

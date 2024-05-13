@@ -5,6 +5,8 @@ import axios from 'axios';
 const AuthorListing = () => {
   const [authors, setAuthors] = useState([]);
 
+
+
   useEffect(() => {
     const fetchAuthors = async () => {
       try {
@@ -28,6 +30,8 @@ const AuthorListing = () => {
   };
   
 
+
+
   return (
     <div className="p-4">
       <div className="mb-4 flex justify-between items-center">
@@ -35,6 +39,7 @@ const AuthorListing = () => {
         <Link to="/authors/new" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
           New Author
         </Link>
+        
       </div>
       <table className="w-full border-collapse">
         <thead className="bg-gray-100">

@@ -14,7 +14,7 @@ const BlogPostListing = () => {
         const blogPostsResponse = await axios.get('http://localhost:5000/api/blogposts');
         setBlogPosts(blogPostsResponse.data);
       } catch (error) {
-        console.error('Error fetching blog posts:', error);
+        console.error('Error fetching blogposts:', error);
       }
     };
 
@@ -26,7 +26,7 @@ const BlogPostListing = () => {
       await axios.delete(`http://localhost:5000/api/blogposts/${blogPostId}`);
       setBlogPosts(blogPosts.filter(blogPost => blogPost._id !== blogPostId));
     } catch (error) {
-      console.error('Error deleting blog post:', error);
+      console.error('Error deleting blogpost:', error);
     }
   };
 
@@ -48,7 +48,7 @@ const BlogPostListing = () => {
 
   return (
     <div className="p-2">
-      <h2 className="text-lg font-semibold mb-2">Blog Posts</h2>
+      <h2 className="text-lg font-semibold mb-2">BlogPosts</h2>
       <div className="mb-2">
         <input
           type="text"
@@ -58,7 +58,7 @@ const BlogPostListing = () => {
           className="border border-gray-300 rounded-md p-2"
         />
         <Link to="/blogposts/new" className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
-          New Blog Post
+          New BlogPost
         </Link>
       </div>
       <div className="overflow-x-auto">
@@ -66,7 +66,7 @@ const BlogPostListing = () => {
           <thead className="bg-gray-100">
             <tr>
               <th className="px-2 py-1 text-sm font-medium text-gray-700 uppercase border border-gray-200">
-                Blog Post Id
+                BlogPost Id
               </th>
               <th className="px-2 py-1 text-sm font-medium text-gray-700 uppercase border border-gray-200">
                 Title
