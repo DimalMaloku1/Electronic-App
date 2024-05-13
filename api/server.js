@@ -29,22 +29,11 @@ mongoose.connect(connectionString, {
 const Author = require('./models/author');
 const BlogPost = require('./models/blogPost');
 
-const Department = require('./models/department');
-const Employee = require('./models/employee');
-
-
-const Publisher = require('./models/publisher');
-const Magazine = require('./models/magazine');
 
 // Routes
-app.use('/api/publishers', require('./routes/publisherRoutes'));
-app.use('/api/magazines', require('./routes/magazineRoutes'));
-
 app.use('/api/authors', require('./routes/authorRoutes'));
 app.use('/api/blogposts', require('./routes/blogPostRoutes'));
 
-app.use('/api/departments', require('./routes/departmentRoutes'));
-app.use('/api/employees', require('./routes/employeeRoutes'));
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
