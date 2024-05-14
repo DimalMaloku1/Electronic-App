@@ -33,29 +33,29 @@ const BlogPostEdit = () => {
   
 
   return (
-    <div className="container">
-      <h2>Edit BlogPost</h2>
-      <form className="form">
+    <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg max-w-lg">
+  <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Edit BlogPost</h2>
+  <form className="space-y-4">
 
-        <div className="form-group">
-          <label htmlFor="title">Title:</label>
-          <input type="text" id="title" className="form-control" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="content">Content:</label>
-          <textarea id="content" className="form-control" value={content} onChange={(e) => setContent(e.target.value)} />
-        </div>
-        
-        {/* If you want to allow editing the author as well */}
-        <div className="form-group">
-          <label htmlFor="author">Author:</label>
-          <input type="text" id="author" className="form-control" value={author} onChange={(e) => setAuthor(e.target.value)} />
-        </div>
-
-        <button type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
-      </form>
+    <div className="form-group">
+      <label htmlFor="title" className="block text-gray-700 font-medium mb-2">Title:</label>
+      <input type="text" id="title" className="form-control w-full px-4 py-2" value={title} onChange={(e) => setTitle(e.target.value)} />
     </div>
+
+    <div className="form-group">
+      <label htmlFor="content" className="block text-gray-700 font-medium mb-2">Content:</label>
+      <textarea id="content" className="form-control w-full px-4 py-2" value={content} onChange={(e) => setContent(e.target.value)} />
+    </div>
+    
+    <div className="form-group">
+      <label htmlFor="author" className="block text-gray-700 font-medium mb-2">Author:</label>
+      <input type="text" id="author" className="form-control w-full px-4 py-2" value={author} onChange={(e) => setAuthor(e.target.value)} />
+    </div>
+
+    <button type="button" className="btn btn-primary w-full py-2 px-4 bg-blue-500" onClick={handleSave}>Save</button>
+  </form>
+</div>
+
   );
 };
 

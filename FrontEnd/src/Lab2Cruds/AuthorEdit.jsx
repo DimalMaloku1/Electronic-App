@@ -30,23 +30,43 @@ const AuthorEdit = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Edit Author</h2>
-      <form className="form">
+    <div className="max-w-md mx-auto p-4">
+  <h2 className="text-xl font-bold mb-4">Edit Author</h2>
+  <form className="space-y-4">
 
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" className="form-control" value={name} onChange={(e) => setName(e.target.value)} />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        
-        <button type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
-      </form>
+    <div>
+      <label className="block text-sm font-medium mb-1" htmlFor="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        className="w-full border-gray-900 rounded-md shadow-sm"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
     </div>
+
+    <div>
+      <label className="block text-sm font-medium mb-1" htmlFor="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        className="w-full border-gray-900 rounded-md shadow-sm"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+    </div>
+
+    <button
+      type="button"
+      className="w-full bg-blue-500  text-white font-semibold py-2 rounded-md"
+      onClick={handleSave}
+    >
+      Save
+    </button>
+    
+  </form>
+</div>
+
   );
 };
 

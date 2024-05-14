@@ -3,7 +3,7 @@ const router = express.Router();
 const BlogPost = require('../models/blogPost');
 const Author = require('../models/author');
 
-// Get all blog posts
+// Get all blogposts
 router.get('/', async (req, res) => {
   try {
     const blogPosts = await BlogPost.find().populate('author');
@@ -13,12 +13,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get one blog post
+// Get one blogpost
 router.get('/:id', getBlogPost, (req, res) => {
   res.json(res.blogPost);
 });
 
-// Create a blog post
+// Create a blogpost
 router.post('/', async (req, res) => {
   const blogPost = new BlogPost({
     title: req.body.title,
@@ -33,10 +33,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update a blog post (PUT method)
+// Update a blogpost (PUT method)
 router.put('/:id', getBlogPost, async (req, res) => {
   try {
-    // Update the blog post fields
+
     if (req.body.title != null) {
       res.blogPost.title = req.body.title;
     }
@@ -44,10 +44,10 @@ router.put('/:id', getBlogPost, async (req, res) => {
       res.blogPost.content = req.body.content;
     }
     if (req.body.author != null) {
-      res.blogPost.author = req.body.author; // Update the author ID
+      res.blogPost.author = req.body.author; 
     }
 
-    // Save the updated blog post
+    // Save the updated blogpost
     const updatedBlogPost = await res.blogPost.save();
     res.json(updatedBlogPost);
   } catch (err) {
@@ -56,24 +56,24 @@ router.put('/:id', getBlogPost, async (req, res) => {
 });
 
 
-// Middleware function to get blog post by ID
+// Middleware function to get blogpost by ID
 async function getBlogPost(req, res, next) {
   try {
     const blogPost = await BlogPost.findById(req.params.id);
     if (!blogPost) {
       return res.status(404).json({ message: 'Blog post not found' });
     }
-    res.blogPost = blogPost; // Assign blog post instance to res.blogPost
+    res.blogPost = blogPost; 
     next();
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
 }
 
-// Delete a blog post
+// Delete a blogpost
 router.delete('/:id', getBlogPost, async (req, res) => {
   try {
-    await BlogPost.deleteOne({ _id: req.params.id }); // Delete the blog post by ID
+    await BlogPost.deleteOne({ _id: req.params.id }); 
     res.json({ message: 'Blog post deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });
