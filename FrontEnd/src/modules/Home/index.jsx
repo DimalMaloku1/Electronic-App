@@ -10,8 +10,8 @@ import Slider from '../../components/Slider'
 import Header from '../../components/Header'
 
 
-import AuthorListing from '../../Lab2Cruds/AuthorListing';
-import BlogPostListing from '../../Lab2Cruds/BlogPostListing';
+import DeviceListing from '../../Lab2Cruds/DeviceListing';
+import SensorListing from '../../Lab2Cruds/SensorListing';
 
 
 const Home = () => {
@@ -117,10 +117,10 @@ const Home = () => {
 
     <div class="flex flex-col gap-8">
       <div class=" p-4">
-        <AuthorListing />
+        <DeviceListing />
       </div>
       <div class="p-4">
-        <BlogPostListing />
+        <SensorListing />
       </div>
     </div>
 

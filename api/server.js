@@ -26,13 +26,13 @@ mongoose.connect(connectionString, {
 });
 
 // Models
-const Author = require('./models/author');
-const BlogPost = require('./models/blogPost');
+const Device = require('./models/device');
+const Sensor = require('./models/sensor');
 
 
 // Routes
-app.use('/api/authors', require('./routes/authorRoutes'));
-app.use('/api/blogposts', require('./routes/blogPostRoutes'));
+app.use('/api/devices', require('./routes/deviceRoutes'));
+app.use('/api/sensors', require('./routes/sensorRoutes'));
 
 // Start the server
 app.listen(PORT, () => {

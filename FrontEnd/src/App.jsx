@@ -32,13 +32,13 @@ import CategoriesEdit from './Admin/CategoriesEdit'
 import ReviewLayout from './adminComponents/AdminReview/ReviewLayout'
 import ReviewListing from './adminComponents/AdminReview/ReviewListing'
 
-import AuthorListing from './Lab2Cruds/AuthorListing';
-import AuthorCreate from './Lab2Cruds/AuthorCreate';
-import AuthorEdit from './Lab2Cruds/AuthorEdit'
+import DeviceListing from './Lab2Cruds/DeviceListing';
+import DeviceCreate from './Lab2Cruds/DeviceCreate';
+import DeviceEdit from './Lab2Cruds/DeviceEdit'
 
-import BlogPostListing from './Lab2Cruds/BlogPostListing';
-import BlogPostCreate from './Lab2Cruds/BlogPostCreate';
-import BlogPostEdit from './Lab2Cruds/BlogPostEdit'
+import SensorListing from './Lab2Cruds/SensorListing';
+import SensorCreate from './Lab2Cruds/SensorCreate';
+import SensorEdit from './Lab2Cruds/SensorEdit'
 
 
 function App() {
@@ -80,14 +80,14 @@ function App() {
         <Route path="*" element={<div>404</div>} />
        
 
-       <Route path="/authors" element={<AuthorListing />} />
-        <Route path="/authors/new" element={<AuthorCreate />} />
-        <Route path="/authors/edit/:id" element={<AuthorEdit />} />
+       <Route path="/devices" element={<DeviceListing />} />
+        <Route path="/devices/new" element={<DeviceCreate />} />
+        <Route path="/devices/edit/:id" element={<DeviceEdit />} />
 
 
-        <Route path="/blogposts" element={<BlogPostListing />} />
-        <Route path="/blogposts/new" element={<BlogPostCreate />} />
-        <Route path="/blogposts/edit/:id" element={<BlogPostEdit />} />
+        <Route path="/sensors" element={<SensorListing />} />
+        <Route path="/sensors/new" element={<SensorCreate />} />
+        <Route path="/sensors/edit/:id" element={<SensorEdit />} />
       </Routes>
       <Footer/>
     </div>
